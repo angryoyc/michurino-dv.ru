@@ -1,10 +1,12 @@
 out
 help
+static/lib
+static/lib/*
+static/less/styles.css
 node_modules
 config.json
 *.log
 trash
 trash/*
-static/less/styles.css
 .DS_Store
 

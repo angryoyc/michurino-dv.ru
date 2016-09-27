@@ -158,7 +158,7 @@ var api = require('../modules/api');
 //	app.all('/video/tnl/:id', controllers.video.tnl);
 
 
-//	app.get('/', controllers.root);
+	app.get('/', controllers.root);
 
 //	app.all('/', controllers.news.last);
 

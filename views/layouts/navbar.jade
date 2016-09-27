@@ -1,0 +1,74 @@
+nav.navbar.navbar-default(role="navigation")
+	div.container-fluid
+
+		div.navbar-header
+			button.navbar-toggle(type="button", data-toggle="collapse", data-target="#bs-example-navbar-collapse-1")
+				span.sr-only Toggle navigation
+				span.icon-bar
+				span.icon-bar
+				span.icon-bar
+			a.navbar-brand.mainmenutext(href="/", tooltip='В начало')
+				span.glyphicon.glyphicon-home
+
+		div.collapse.navbar-collapse(id="bs-example-navbar-collapse-1")
+			ul.nav.navbar-nav
+				li.dropdown
+					a.dropdown-toggle.mainmenutext(data-toggle="dropdown") Телекомпания
+					ul.dropdown-menu(role="menu")
+						li
+							a(href='/proglist/view') Программа передач
+						li
+							a(href='/prog') Наши программы
+						li
+							a(href='/') Новостная лента
+						li.divider
+						li
+							a(href='/about') Наш офис в Хабаровске
+				li
+					a.mainmenutext(href='/tvprogramm') Рекламодателям
+
+				li.dropdown
+					a.dropdown-toggle.mainmenutext(data-toggle="dropdown", tooltip='Подать или найти бегущую строку на телеканалах г.Хабаровска: РЕН ТВ, 6ТВ, СТС, СЭТ ТВ, Амега-ТВ') Бегущая строка
+					ul.dropdown-menu(role="menu")
+						li
+							a(href='//stroka.settv.ru/addoffer') Подать новую
+
+						li
+							a(href='//stroka.settv.ru/profile') Оплатить / Изменить
+
+						li
+							a(href='//stroka.settv.ru') Искать поданные / Ознакомится с правилами
+
+
+				block b2
+
+			ul.nav.navbar-nav.navbar-right
+				li.dropdown
+					if(!req.isAuthenticated())
+						a.dropdown-toggle.mainmenutext(href='/login_form', data-toggle="dropdown") вход 
+							span(class="glyphicon glyphicon-log-in")
+						ul.dropdown-menu(role="menu")
+							li
+								a(href="/login#/form") Здешний пользователь
+							li
+								a(href="/login#/registration") Регистрация здесь
+							li.divider
+							li
+								a(href="/auth/fb") Пользователь Facebook
+							li
+								a(href="/auth/ok") Пользователь Odnoklassniki
+							li
+								a(href="/auth/vk") Пользователь Vkontakte
+					else
+						a.dropdown-toggle.mainmenutext(href='#', data-toggle="dropdown")=req.user.username + ' ['+req.user.provider+']'
+							span.caret
+						ul.dropdown-menu(role="menu")
+							li
+								a(href="/profile") Личный кабинет
+							if (req.user && req.user.rights & 32)==32
+								li.divider
+								li
+									a(href="/admin") Администрирование
+							li.divider
+							li
+								a(href="/logout") Выход
