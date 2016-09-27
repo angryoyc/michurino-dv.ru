@@ -8,7 +8,7 @@ module.exports = {
 	users: function(req, res){
 		res.render('admin/users/index', {ng_app: 'admin', req:req});
 	},
-	news: function(req, res){
-		res.render('admin/news/index', {ng_app: 'admin', req:req});
+	stead: function(req, res){
+		res.render('admin/stead/index', {ng_app: 'admin', req:req});
 	}
 };

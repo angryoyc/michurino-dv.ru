@@ -1,0 +1,38 @@
+extends ../layouts/admin_layout
+
+block b1
+	script(type="text/javascript" src='/static/lib/tinymce/tinymce.min.js')
+	link(rel='stylesheet', href='/static/css/master.css')
+  
+block b3
+	.mainslider
+		.mpad.p1.active
+			.row
+				.col-md-2.col-xs-12
+					div(ng-controller='index')
+
+						p.text-center
+							img(src='/static/images/logo_transp.png')
+
+						h4.text-center.top30 Администрирование
+						ul.list-group
+							li.list-group-item
+								a(href='#/info') Общая информация
+							li.list-group-item
+								a(href='#/users') Пользователи
+							li.list-group-item
+								a(href='#/stead') Участки
+							li.list-group-item
+								a(href='/logout') Выход
+				.col-md-10.col-xs-12.colordark
+					div.animation1(ng-view=true)
+
+block b4
+	script(src='/static/js/admin/index.js')
+	script(src='/static/js/admin/info.js')
+	script(src='/static/js/admin/users.js')
+	script(src='/static/js/admin/stead.js')
+	script(src='/static/js/account.js')
+	script(src='/static/lib/angular-md5/angular-md5.min.js')
+	script(type="text/javascript", src='/static/lib/angular-ui-tinymce/dist/tinymce.min.js')
+

@@ -13,12 +13,12 @@
     "type": "git",
     "url": "ssh://serg@settv.ru:1022/opt/git/michurino-dv.ru.git"
   },
-  "keywords": [
-  ],
+  "keywords": [],
   "dependencies": {
     "async": "0",
     "cf": "git+ssh://serg@settv.ru:1022/opt/git/cf.git",
     "colors": "*",
+    "connect-memcached": "^0.2.0",
     "db": "git+ssh://serg@settv.ru:1022/opt/git/db.git",
     "delivery": "git+ssh://serg@settv.ru:1022/opt/git/delivery.git",
     "express": "3",
@@ -27,13 +27,13 @@
     "less": "*",
     "method-override": "^2.1.3",
     "moment": "2",
-    "pg": "*",
-    "require-tree": "~0.3.2",
     "passport": "0.2",
     "passport-facebook": "*",
     "passport-local": "*",
     "passport-odnoklassniki": "*",
     "passport-vkontakte": "*",
+    "pg": "*",
+    "require-tree": "~0.3.2",
     "supertest": "0.4.0",
     "web": "git+ssh://serg@settv.ru:1022/opt/git/web.git"
   },

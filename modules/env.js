@@ -1,5 +1,59 @@
 var env={};
+//- env.conf=require("../config.json");
+
+//var async=require('async');
+//var util=require('util');
+
 var cf = require('cf');
+
+/*
+var db = require('db');
+env.sql=function(sql, values, onok, onerr){
+	db.sql(
+		sql, 
+		values, 
+		function(result){
+			onok(result);
+		},
+		function(err){
+			err.number=103;
+			err.sql=sql;
+			err.values=values;
+			if(typeof(onerr)=='function'){
+				onerr(err);
+			};
+		}
+	);
+};
+*/
+
+// вызов аналогичен std_go за исключением того, что добавлена проверка на iduser (должен соответствовать пользователю в сессии, или пользователь в сесси должен иметь админовские права - 32)
+// если iduser не указан, то он берется из сесии
+env.pvt_go=function(req, res, do_routine, rights){
+	var rght = rights || 0;
+	req.body.iduser = req.body.iduser || 0;
+
+	if(req && req.user && !req.body.user) {
+		req.body.user = req.user;
+		user_rght = req.user.rights;
+	}else{
+		user_rght = 0;
+	};
+
+	var iduser_sess = cf.isObject(req.body.user)?parseInt(req.body.user.iduser):0;
+	if(req.body.iduser>0){ // если в запросе указан iduser
+		if(iduser_sess!=req.body.iduser){
+			//- console.log('Редактируем другого пользователя')
+			env.std_go(req, res, do_routine, (rght | 3)); // то требуем права на доступ к админке и права менять пользователей
+		}else{
+			//-console.log('Редактируем себя', rght)
+			env.std_go(req, res, do_routine, rght); // инчае не требуем (iduser будет браться из сессии)
+		};
+	}else{
+		req.body.iduser = iduser_sess;
+		env.std_go(req, res, do_routine, rght); // инчае не требуем (iduser будет браться из сессии)
+	};
+};
 
 env.std_go=function(req, res, do_routine, rights){
 	var startat = new Date();
@@ -18,6 +72,7 @@ env.std_go=function(req, res, do_routine, rights){
 	if(req && req.session) {
 		req.body.session = req.session;
 	};
+
 
 	if((user_rght & rght) == rght){
 		do_routine(
@@ -125,6 +180,78 @@ var errors={
 	118: 'Invalid password'
 };
 
+
+/*
+module.exports = {
+	go: function (data, callback, req, res){
+		data.error = 0;
+		data.message = 'Ok';
+		var ret;
+		if(data.incoming.cmd && data.incoming.cmd!='doc'){
+			if(typeof(index[data.incoming.schema+'_' + data.incoming.cmd])!='undefined'){
+				if(typeof(index[data.incoming.schema+'_' + data.incoming.cmd].go)=='function'){
+					index[data.incoming.schema+'_'+data.incoming.cmd].go(env, data, callback, req, res);
+				}else{
+					console.log(data);
+					ret=env.errorGenerator(101);
+					callback(ret);
+				};
+			}else{
+				console.log(data);
+				ret=env.errorGenerator(101);
+				callback(ret);
+			}
+		}else{
+			data.incoming.doc=true;
+			this.gethelp(data,callback);
+		};
+
+	},
+	gethelp: function (data, callback, req, res){
+		console.log('Doc requested!'.warn);
+		if(data.incoming.cmd && data.incoming.cmd!='doc'){
+			data.doctemplate='doc/callapi';
+			if(typeof(index[data.incoming.schema+'_' + data.incoming.cmd].gethelp)=='function'){
+				index[data.incoming.schema+'_'+data.incoming.cmd].gethelp(env, data, function(help){
+					help.schema=data.incoming.schema;
+					help.apicall=data.incoming.cmd;
+					callback(help);
+				});
+			}else{
+				console.log(data);
+				ret=env.errorGenerator(101);
+				callback();
+			};
+		}else{
+			data.doctemplate='doc/'+data.incoming.schema+'_index';
+			schemahelp.apicalls=[];
+			var r=new RegExp('^'+data.incoming.schema+'_');
+			async.forEachLimit(
+				Object.keys(index),
+				3,
+				function(sch, cb){
+					if(sch.match(r)){
+						if(typeof(index[sch].gethelp)=='function'){
+							index[sch].gethelp(env, data, function(help){
+								schemahelp.apicalls.push({'callname':sch.replace(r,''), title:help.title});
+								cb();
+							});
+						}else{
+							cb();
+						};
+					}else{
+						cb();
+					};
+				},
+				function(err){
+					schemahelp.schema=data.incoming.schema;
+					callback(schemahelp);
+				}
+			);
+		};
+	}
+};
+*/
 
 
 

@@ -1,0 +1,57 @@
+{
+	"name": "new.settv.ru",
+	"server":{
+		"port": 3035
+	},
+
+	"db":{
+		"connectionstring": "postgres://postgres:jlyfrj@127.0.0.1/settv"
+	},
+
+	"memcache": [
+		{ "host": "127.0.0.1", "port": 11211 }
+	],
+
+	"color_theme": {
+		"silly": "rainbow",
+		"input": "grey",
+		"verbose": "cyan",
+		"prompt": "grey",
+		"info": "green",
+		"data": "grey",
+		"help": "cyan",
+		"warn": "grey",
+		"debug": "blue",
+		"error": "red",
+		"params": "yellow"
+	},
+
+
+	"email": {
+		"checked": "gmail",
+		"gmail": {
+			"service": "Gmail",
+			"user": "serg.osipov@gmail.com",
+			"pass": "wbrynhty"
+		},
+		"settv": {
+			"host": "smtp.settv.ru",
+			"port": "25",
+			"user": "bot@settv.ru",
+			"pass": "ctnjgjklykfqy"
+		},
+		"groups":{
+			"string_dst_note": "Получатели файлов выгрузок бегущих строк",
+			"string_dst":[
+				{"email": "serg.osipov@gmail.com", "note": "пока я сам"},
+				{"email": "serg.osipov@attava.ru", "note": "пока я сам"}
+			],
+			"string_moderators_note": "Модераторы, проверяющие поданные в эфир строки",
+			"string_moderators": [
+				{"email": "serg.osipov@gmail.com", "note": "пока я сам"},
+				{"email": "serg.osipov@attava.ru", "note": "пока я сам"}
+			]
+		}
+	}
+
+}

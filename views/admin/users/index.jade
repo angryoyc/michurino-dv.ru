@@ -1,0 +1,40 @@
+include edit
+
+h4 Пользователи
+.pad
+	table.table
+		thead
+			tr
+				th(rowspan=2)
+					input#term(ng-model='data.term', placeholder='начни набирать имя')
+				th(rowspan=2) Включен
+				th(rowspan=2) Провайдер
+				th.text-center(colspan=3) Права
+				th.text-center(rowspan=2) 
+				th.text-center(rowspan=2) 
+			tr
+				th.pointer(title='Админка') [+1]
+				th.pointer(title='Пользователи') [+2]
+				th.pointer(title='Участки') [+4]
+				//-
+					th.pointer(title='Новостные тэги') [+8]
+					th.pointer(title='Новости') [+16]
+		tbody
+			tr(ng-repeat='u in data.list')
+				td 
+					a(href='#', ng-click='showPanelEdit($index, $event)') {{u.username}}
+				td
+					input(type='checkbox', ng-model='u.enabled', disabled='')
+				td {{u.provider}}
+				td(ng-class="{red: rightBit(u.rights,1)=='Да'}") {{rightBit(u.rights,1)}}
+				td(ng-class="{red: rightBit(u.rights,2)=='Да'}") {{rightBit(u.rights,2)}}
+				td(ng-class="{red: rightBit(u.rights,4)=='Да'}") {{rightBit(u.rights,4)}}
+				//-
+					td(ng-class="{red: rightBit(u.rights,8)=='Да'}") {{rightBit(u.rights,8)}}
+					td(ng-class="{red: rightBit(u.rights,16)=='Да'}") {{rightBit(u.rights,16)}}
+				td
+					a(href='#', ng-click='showPanelEdit($index, $event)')
+						span.glyphicon.glyphicon-edit
+				td
+					a(href='#', ng-click='removeStart($index, $event)')
+						span.glyphicon.glyphicon-remove.red

@@ -1,0 +1,74 @@
+.modal.fade.top30#modal_edit(tabindex="-1", role="dialog", aria-hidden="true")
+	.modal-dialog.modal-lg
+		.modal-content
+			.modal-header
+				button.close(type="button", data-dismiss="modal", aria-label="Close", ng-click="hidePanel()")
+					span(aria-hidden="true") &times;
+				h3 редактируем пользователя
+					span.bold(ng-class='{green:data.curr.enabled, grey:!data.curr.enabled}')  "{{data.curr.username}}"
+			.modal-body(style='background-color:#f9f9f9;')
+				form(class="form-horizontal", role="form")
+					div.form-group
+						.col-sm-2(style='height:120px')
+							img.img-responsive.img-thumbnail.top10.bottom10(ng-src='{{data.curr.photo_url}}', width=110, height=110)
+						.col-sm-10
+							div.form-group
+								label.col-sm-3.control-label Включен
+								.col-sm-9
+									input(type="checkbox", ng-model='data.curr.enabled')
+							div.form-group
+								label.col-sm-3.control-label Имя пользователя
+								.col-sm-9
+									input.form-control(type="text", readonly=true, ng-model='data.curr.username')
+							div.form-group
+								label.col-sm-3.control-label Провайдер
+								.col-sm-9
+									input.form-control(type="text", readonly=true, ng-model='data.curr.provider')
+
+							div.form-group(ng-if='data.curr.provider=="settv"')
+								label.col-sm-3.control-label Сменить пароль
+								.col-sm-4
+									input.form-control(type="password", ng-model='data.curr.pass', placeholder='пароль')
+								.col-sm-4
+									input.form-control(type="password", ng-model='data.curr.pass2', placeholder='пароль ещё раз')
+								.col-sm-1
+									input(type='checkbox', tooltip='Оповестить по СМС', ng-model='data.curr.sendsms')
+
+
+					div.form-group
+						label.col-sm-8.control-label Права доступа к интерфейсу Администратора
+						.col-sm-4
+							div.btn-group
+								button.btn.btn-default(type="button", ng-model="data.curr.r[0]", btn-radio="true") Да
+								button.btn.btn-default(type="button", ng-model="data.curr.r[0]", btn-radio="false") Нет
+					div.form-group
+						label.col-sm-8.control-label Права редактирования Пользователей.
+						.col-sm-4
+							div.btn-group
+								button.btn.btn-default(type="button", ng-model="data.curr.r[1]", btn-radio="true") Да
+								button.btn.btn-default(type="button", ng-model="data.curr.r[1]", btn-radio="false") Нет
+					div.form-group
+						label.col-sm-8.control-label Права редактирования Новостных Рубрик
+						.col-sm-4
+							div.btn-group
+								button.btn.btn-default(type="button", ng-model="data.curr.r[2]", btn-radio="true") Да
+								button.btn.btn-default(type="button", ng-model="data.curr.r[2]", btn-radio="false") Нет
+					div.form-group
+						label.col-sm-8.control-label Права редактирования Новостных Тэгов
+						.col-sm-4
+							div.btn-group
+								button.btn.btn-default(type="button", ng-model="data.curr.r[3]", btn-radio="true") Да
+								button.btn.btn-default(type="button", ng-model="data.curr.r[3]", btn-radio="false") Нет
+					div.form-group
+						label.col-sm-8.control-label Права редактирование Новостей
+						.col-sm-4
+							div.btn-group
+								button.btn.btn-default(type="button", ng-model="data.curr.r[4]", btn-radio="true") Да
+								button.btn.btn-default(type="button", ng-model="data.curr.r[4]", btn-radio="false") Нет
+			.modal-footer.margin0
+				.row
+					.col-xs-2.text-left
+					.col-xs-8
+					.col-xs-2
+						button.btn.btn-sm.btn.btn-primary(ng-click='saveUserData()') Сохранить
+

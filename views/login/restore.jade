@@ -1,0 +1,24 @@
+div.modal-dialog
+	div.modal-content
+		div.modal-header
+			h3 Восстановление пароля
+
+		div.modal-body
+			form.form-horizontal
+
+				.form-group.has-success.has-feedback
+					.col-md-1
+					.col-md-10
+						.input-group.col-md-12.text-left
+							span.input-group-addon(style='width: 180px; text-align: right;') Укажите ваш телефон:
+							input.form-control.bold(type="text", placeholder="", autofocus="autofocus", ng-model='data.phone.value', ng-blur='data.phone.value=normalizePhone(data.phone.value)')
+						span.glyphicon.glyphicon-ok.form-control-feedback(ng-if='data.phone.isok')
+					.col-md-1
+
+		div.modal-footer
+			button.btn.btn-sm.btn-primary(ng-click='restore()', ng-show="data.phone.isok && data.formstate=='input'") Восстановить
+			.alert.alert-info(ng-show="data.formstate=='sending'") восстанавливаю...
+			.alert.alert-success.text-left(ng-show="data.formstate=='restored'")
+				!='На указанный Вами телефон была отправлена СМС с новым паролём. Используйте его для '
+				a(href='#/form') входа
+				!='. Рекомндуем сразу после входа изменить пароль на другой, который вы сможете запомнить. Процедура смены пароля производится в личном кабинете.'

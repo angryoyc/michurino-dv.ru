@@ -1,0 +1,13 @@
+div.modal-dialog
+	div.modal-content
+		div.modal-header
+			h3.red ОШИБКА!
+		div.modal-body
+			form.form-horizontal
+				.alert.alert-danger
+					h4(ng-show='data.number==118') Неверный пароль
+					h4(ng-show='data.number==104') Пользователь не найден
+					h4(ng-show='data.number==117') Пользователь заблокирован
+					h4(ng-show='data.number==113') Недостаточно прав
+		div.modal-footer
+			a.btn.btn-default(href='#/form') Попробовать ещё раз

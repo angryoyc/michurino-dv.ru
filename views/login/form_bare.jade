@@ -1,0 +1,58 @@
+div(class='modal-body')
+	div(class="panel panel-default")
+		div(class="panel-body") 
+			p войти используя вашу регистрацию в одной из социальных сетей:
+			span.auth_login.right20
+				a(href="/auth/vk" title='ВКонтакте') vk.com
+			span.auth_login.right20
+				a(href="/auth/fb" title='Facebook') facebook.com
+			span.auth_login.right20
+				a(href="/auth/ok" title='Одноклассники') odnoklassniki.ru
+
+	p 
+		big или
+
+	div(class="panel panel-default")
+		div(class="panel-body") 
+			p войти под именем регистрации на нашем сайте:
+			.row
+				.col-md-2
+				.col-md-8
+					if message && !message.match(/^Miss/) && !message.match(/^OK/)
+						div(class="alert alert-danger")
+							button(type="button", class="close", data-dismiss="alert") (!)
+							h4 Неудачная регистрация!
+							span(class="label label-danger")=auth.message
+					form#formid.form-horizontal(ng-submit='submit();', method='POST', action='/login')
+						.form-group
+							label.col-md-2.control-label(for='f1') Тел.
+							.col-md-10
+								input(type="hidden", name="something", value=something, ng-init="init('"+something+"')")
+								input#f1.input-sm.form-control.bold(type="text", placeholder="+7 999 999 9999", ng-model='data.phone.value', name='username', ng-blur='data.phone.value=normalizePhone(data.phone.value)')
+						.form-group
+							label.col-md-2.control-label(for='f2') Пароль
+							.col-md-10
+								input#f2.input-sm.form-control(type="password", placeholder="мойкрутойпароль2945", ng-model='data.pass1.value', name='password')
+						.form-group.text-right
+							.col-md-12
+								button.btn.btn-success.btn-sm(type="submit") Войти &nbsp;
+									span(class="glyphicon glyphicon-log-in")
+				.col-md-2
+
+			.row
+				.col-md-2
+				.col-md-8
+					hr.tiny
+				.col-md-2
+
+			.row
+				.col-md-2
+				.col-md-4
+					div
+						a(href='#/registration')
+							small регистрация нового
+				.col-md-4
+					div.text-right
+						a(href='#/restore')
+							small я забыл пароль
+				.col-md-2

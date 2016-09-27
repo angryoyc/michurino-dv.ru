@@ -1,0 +1,47 @@
+h4 Общая информация
+.pad
+	table.table
+		thead
+			tr
+				th(width='90%') Показатель
+				th Значение
+				
+		tbody
+			tr
+				td Пользователей
+				td
+
+			tr
+				td 
+					!=' &nbsp; - в том числе активных'
+				td
+					span.bold {{data.info.users_enabled_counter}}
+
+			tr
+				td 
+					!=' &nbsp; - в том числе блокированых'
+				td
+					span.bold {{data.info.users_disabled_counter}}
+
+			tr
+				td Новостных записей
+				td
+					span.bold {{data.info.news_counter}}
+
+			tr
+				td 
+					!='Видеоматериалов'
+				td
+					span.bold {{data.info.product_counter}}
+
+			tr
+				td 
+					!='Изображений'
+				td
+					span.bold {{data.info.file_counter}}
+
+			tr
+				td 
+					!='Тэгов'
+				td
+					span.bold {{data.info.tag_counter}}

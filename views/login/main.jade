@@ -1,0 +1,14 @@
+extends ../layouts/admin_layout
+block b1
+	link(rel='stylesheet', href='/static/css/master.css')
+
+block b3
+	div(ng-controller='main', ng-init="init('"+(username?username:'')+"', '"+message+"')")
+
+	div.animation3(ng-view=true)
+
+block b4
+	script(src='/static/js/login/main.js')
+	script(src='/static/js/account.js')
+	script(src='/static/lib/angular-md5/angular-md5.min.js')
+

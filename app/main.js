@@ -28,6 +28,7 @@ app.use(express.json());
 app.use(express.urlencoded());
 
 app.use(methodOverride('X-HTTP-Method-Override'));
+app.use(require('../modules/express_mc_sessions')(conf, express));
 
 passport=require('../modules/passport.js')();
 app.use(passport.initialize());
@@ -50,6 +51,8 @@ var api = require('../modules/api');
 	app.all('/api/:scheme/:method', api.go);
 
 /* ----------------------- routes ------------------------------ */
+	app.all('/', require('../modules/common_actions_mw'));
+	app.all('/*', require('../modules/common_actions_mw'));
 
 	// -----------------  LOCAL  ---------------------
 	app.post('/login', function(req, res, next) {
@@ -146,12 +149,13 @@ var api = require('../modules/api');
 	app.all('/login/restore', controllers.login.restore);
 	app.all('/login/error', controllers.login.error);
 
-	app.all('/about', controllers.about);
-
 	app.all('/admin', ensureAuthenticatedAdmin, controllers.admin.index);
 	app.all('/admin/info', ensureAuthenticatedAdmin, controllers.admin.info);
 	app.all('/admin/users', ensureAuthenticatedAdmin, controllers.admin.users);
-	app.all('/admin/news', ensureAuthenticatedAdmin, controllers.admin.news);
+	app.all('/admin/stead', ensureAuthenticatedAdmin, controllers.admin.stead);
+
+
+
 
 //	app.all('/video/src/:id', controllers.video.src);
 //	app.all('/video/pvw/:id', controllers.video.pvw);
@@ -164,11 +168,12 @@ var api = require('../modules/api');
 
 
 /* --------------------- end routes ------------------------------ */
-
+/*
 function ensureAuthenticated(req, res, next) {
   if (req.isAuthenticated()) { return next(); }
-  res.redirect('/login')
+  res.redirect('/admin')
 };
+*/
 
 function ensureAuthenticatedAdmin(req, res, next) {
   if (req.isAuthenticated() && req.user && ((req.user.rights || 0) & 1)==1) { return next(); }
