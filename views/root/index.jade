@@ -12,7 +12,7 @@ block b3
 					.row
 						.col-xs-6
 							br
-							small Тел.: +7 (4212) 909090
+							small Тел.: +7 (4212) 25 87 87
 						.col-xs-6.text-right
 							div 
 								small
@@ -38,9 +38,15 @@ block b3
 
 
 		.mpad.p2(ng-class='{active:!mode}')
-			button(ng-click='turnNext()')
-				small.glyphicon.glyphicon-chevron-left
-				span  На главную
+			.row
+				.col-md-2
+					button(ng-click='turnNext()')
+						small.glyphicon.glyphicon-chevron-left
+						span  На главную
+					hr
+					pre {{data.curr | json}}
+				.col-md-10
+					include mainsvg
 
 block b4
 	script(src='/static/js/root/index.js')

@@ -4,7 +4,7 @@ var env				= require('../../modules/env');
 var db 				= require('db');
 var async 				= require('async');
 var user_data_ro	= require('../user/data_ro').do;
-var myname 			= 'settv';
+var myname 			= 'mc';
 
 
 // менять права и вкл/выкл можно только если у пользователя под которым выполняется запрос есть права 3 (доступ к админке и право менять пользователей)
@@ -26,14 +26,14 @@ exports.do=function(arg, callback, callback_err, idata){
 
 	if(iduser){
 		// проверим пользователя на существование
-		db.sql("select * from public.user where iduser=$1;", [ iduser ], function(result){
+		db.sql("select * from m.users where iduser=$1;", [ iduser ], function(result){
 			if(result.rows.length>0){
 				var user = result.rows[0];
 				async.parallel(
 					[
 						function(cb){
 							if((arg.user.rights & 3)==3){
-								db.sql("update public.user set enabled=$2, rights=$3 where iduser=$1;", [ user.iduser, enabled, rights ], function(result){
+								db.sql("update m.users set enabled=$2, rights=$3 where iduser=$1;", [ user.iduser, enabled, rights ], function(result){
 									cb();
 								}, cb);
 							}else{
@@ -42,7 +42,7 @@ exports.do=function(arg, callback, callback_err, idata){
 						},
 						function(cb){
 							if(md5pass){
-								db.sql("update public.user set md5pass=$2 where iduser=$1;", [ user.iduser, md5pass ], function(result){
+								db.sql("update m.users set md5pass=$2 where iduser=$1;", [ user.iduser, md5pass ], function(result){
 									cb();
 								}, cb);
 							}else{

@@ -1,0 +1,77 @@
+.modal.fade.top30#modal_edit(tabindex="-1", role="dialog", aria-hidden="true")
+	.modal-dialog.modal-lg
+		.modal-content
+			.modal-header
+				button.close(type="button", data-dismiss="modal", aria-label="Close", ng-click="hidePanel()")
+					span(aria-hidden="true") &times;
+				h3 редактируем участок
+					span.bold(ng-class="{green:data.curr.status=='free', gray:!(data.curr.status=='free')}")  "{{data.curr.cadastr}}"
+			.modal-body(style='background-color:#f9f9f9;')
+				style.
+					.contur{
+						fill: yellow;
+						stroke:#999;
+						stroke-width:1px;
+						stroke-linecap:butt;
+						stroke-linejoin:miter;
+						stroke-opacity: 1;
+						cursor: pointer;
+					}
+					.contur:hover{
+						stroke: red;
+						stroke-width:2px;
+					}
+				.row
+					.col-md-5
+						svg(version="1.1", id="Livello_1", xmlns="http://www.w3.org/2000/svg", xmlns:xlink="http://www.w3.org/1999/xlink")
+							g(id="layer1")
+								path.contur(id="path3055", d="m {{'5,5'}} {{data.curr.points}} z")
+					.col-md-7
+						form(class="form-horizontal", role="form")
+							div.form-group
+								label.col-sm-5.control-label Номер
+								.col-sm-7
+									input.form-control(type="text", readonly=true, ng-model='data.curr.pp')
+							div.form-group
+								label.col-sm-5.control-label Ряд
+								.col-sm-7
+									input.form-control(type="text", readonly=true, ng-model='data.curr.groupnum')
+							div.form-group
+								label.col-sm-5.control-label Кадастровый номер
+								.col-sm-7
+									input.form-control(type="text", readonly=true, ng-model='data.curr.cadastr')
+
+							div.form-group
+								label.col-sm-5.control-label Площадь, м*м
+								.col-sm-7
+									input.form-control(type="text", readonly=true, ng-model='data.curr.s')
+
+							div.form-group
+								label.col-sm-5.control-label Стоимость, руб.
+								.col-sm-7
+									input.form-control(type="text", readonly=true, value='{{data.cost*data.curr.s | currency}}')
+
+							div.form-group
+								label.col-sm-5.control-label Статус
+								.col-sm-7
+									select.form-control(ng-model='data.curr.status')
+										option(value='free')!='Свободен'
+										option(value='busy')!='Занят'
+
+							div.form-group
+								label.col-sm-5.control-label Координаты начальной позиции (px)
+								.col-sm-7
+									textarea.form-control(ng-model='data.curr.start', rows=1)
+
+							div.form-group
+								label.col-sm-5.control-label Координаты на схеме (px)
+								.col-sm-7
+									textarea.form-control(ng-model='data.curr.points', rows=3)
+
+			.modal-footer.margin0
+				.row
+					.col-xs-2.text-left
+					.col-xs-8
+					.col-xs-2
+						button.btn.btn-sm.btn.btn-primary(ng-click='saveStead()') Сохранить
+

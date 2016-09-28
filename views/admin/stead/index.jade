@@ -1,2 +1,21 @@
+include edit
+
 h4 Участки
 .pad
+	table.table
+		thead
+			tr
+				th #
+				th Кадастровый номер
+				th Ряд
+				th Площадь (м*м)
+				th Стоимость
+		tbody
+			tr(ng-repeat='st in data.rows')
+				td {{st.pp}}
+				td
+					a(href='#', ng-click='showPanelEdit($index, $event)', ng-class="{red:(st.status=='busy')}")  {{st.cadastr}}
+				td {{st.groupnum}}
+				td {{st.s}}
+				td(ng-class="{red:(st.status=='busy')}") {{st.s*data.cost | currency}}
+	span Стоимость указана с исходя из цены {{cost | currency}} за кв. метр.

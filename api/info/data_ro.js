@@ -26,20 +26,20 @@ exports.do=function(arg, callback, callback_err, idata){
 //				}, cb);
 //			},
 			function(cb){
-				db.sql('select count(*) as c from public.user where enabled=true;', [], function(result){
+				db.sql('select count(*) as c from m.users where enabled=true;', [], function(result){
 					data.users_enabled_counter = result.rows[0].c;
 					cb();
 				}, cb);
 			},
 			function(cb){
-				db.sql('select count(*) as c from public.user where enabled=false;', [], function(result){
+				db.sql('select count(*) as c from m.users where enabled=false;', [], function(result){
 					data.users_disabled_counter = result.rows[0].c;
 					cb();
 				}, cb);
 			},
 			function(cb){
-				db.sql('select count(*) as c from public.product;', [], function(result){
-					data.product_counter = result.rows[0].c;
+				db.sql('select count(*) as c from m.steads;', [], function(result){
+					data.steads_counter = result.rows[0].c;
 					cb();
 				}, cb);
 			}

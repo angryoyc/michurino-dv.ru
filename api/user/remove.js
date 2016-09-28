@@ -23,7 +23,7 @@ exports.do=function(arg, callback, callback_err, idata){
 
 	if(iduser){
 		// проверим пользователя на существование
-		db.sql("select * from public.user where iduser=$1;", [ iduser ], function(result){
+		db.sql("select * from m.users where iduser=$1;", [ iduser ], function(result){
 			if(result.rows.length>0){
 				var user = result.rows[0];
 				async.parallel(
@@ -43,7 +43,7 @@ exports.do=function(arg, callback, callback_err, idata){
 								callback(data);
 							}else{
 								// пользователь гол как сокол, можно смело удалять. Удаляем.
-								db.sql("delete from public.user where iduser=$1;", [ user.iduser ], function(){
+								db.sql("delete from m.users where iduser=$1;", [ user.iduser ], function(){
 									data.deleted = true;
 									callback(data);
 								}, callback_err);

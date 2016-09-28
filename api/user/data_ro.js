@@ -6,9 +6,9 @@ var cf=require('cf');
 var crypto = require('crypto');
 var db = require('db');
 
-var sql1="select * from public.user where provider=$1 and id=$2";
-var sql2="select * from public.user where username ilike $1";
-var sql3="select * from public.user where iduser=$1";
+var sql1="select * from m.users where provider=$1 and id=$2";
+var sql2="select * from m.users where username ilike $1";
+var sql3="select * from m.users where iduser=$1";
 
 // GO
 exports.go = function(req, res){

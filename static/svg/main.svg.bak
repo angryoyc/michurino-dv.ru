@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:osb="http://www.openswatchbook.org/uri/2009/osb"
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   id="svg3039"
+   version="1.1"
+   inkscape:version="0.48.5 r10040"
+   width="3507"
+   height="2550"
+   sodipodi:docname="план.jpg"
+   enable-background="new">
+  <metadata
+     id="metadata3045">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <defs
+     id="defs3043">
+    <linearGradient
+       inkscape:collect="always"
+       id="linearGradient3840"
+       osb:paint="gradient">
+      <stop
+         style="stop-color:#ff0000;stop-opacity:1;"
+         offset="0"
+         id="stop3842" />
+      <stop
+         style="stop-color:#ff0000;stop-opacity:0;"
+         offset="1"
+         id="stop3844" />
+    </linearGradient>
+  </defs>
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="1668"
+     inkscape:window-height="985"
+     id="namedview3041"
+     showgrid="false"
+     inkscape:zoom="0.14558081"
+     inkscape:cx="458.94965"
+     inkscape:cy="646.99218"
+     inkscape:window-x="0"
+     inkscape:window-y="27"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1" />
+  <image
+     width="3507"
+     height="2550"
+     xlink:href="file:///home/serg/%D0%94%D0%BE%D0%BA%D1%83%D0%BC%D0%B5%D0%BD%D1%82%D1%8B/%D0%BF%D0%BB%D0%B0%D0%BD.jpg"
+     id="image3047"
+     x="0"
+     y="0"
+     style="fill:none" />
+  <g
+     inkscape:groupmode="layer"
+     id="layer1"
+     inkscape:label="Границы"
+     style="display:none;opacity:1">
+    <path
+       style="fill:#fa0000;fill-opacity:0.08130080000000001;stroke:#f00000;stroke-width:3;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+       d="m 464.12232,349.55902 274.42857,-20.03572 596.51781,-4.85714 61.9286,-5.16072 79.8393,-20.64285 115.9643,-40.98215 10.9286,38.55358 -34.3036,22.76785 -168.7857,108.98215 102.6071,124.46428 307.5179,371.26786 250.1428,-137.51786 123.8572,215.5357 949.875,162.7143 10.9285,43.7143 -314.8035,966.2678 -15.4822,79.8393 -250.1428,73.7679 -17.6072,37.0357 -803.25,-272 -121.125,-45.2322 -151.1785,28.8393 -2.125,5.4643 -58.8929,-16.0893 -92.8929,-162.4107 -865.4821,-498.7679 z"
+       id="path3051"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="ccccccccccccccccccccccccccc" />
+  </g>
+</svg>
