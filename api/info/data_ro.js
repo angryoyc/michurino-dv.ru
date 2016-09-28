@@ -19,12 +19,12 @@ exports.do=function(arg, callback, callback_err, idata){
 	var values = [];
 	async.parallel(
 		[
-			function(cb){
-				db.sql('select count(*) as c from news;', [], function(result){
-					data.news_counter = result.rows[0].c;
-					cb();
-				}, cb);
-			},
+//			function(cb){
+//				db.sql('select count(*) as c from steads;', [], function(result){
+//					data.steads_counter = result.rows[0].c;
+//					cb();
+//				}, cb);
+//			},
 			function(cb){
 				db.sql('select count(*) as c from public.user where enabled=true;', [], function(result){
 					data.users_enabled_counter = result.rows[0].c;
@@ -40,18 +40,6 @@ exports.do=function(arg, callback, callback_err, idata){
 			function(cb){
 				db.sql('select count(*) as c from public.product;', [], function(result){
 					data.product_counter = result.rows[0].c;
-					cb();
-				}, cb);
-			},
-			function(cb){
-				db.sql('select count(*) as c from public.file;', [], function(result){
-					data.file_counter = result.rows[0].c;
-					cb();
-				}, cb);
-			},
-			function(cb){
-				db.sql('select count(*) as c from public.tags;', [], function(result){
-					data.tag_counter = result.rows[0].c;
 					cb();
 				}, cb);
 			}
