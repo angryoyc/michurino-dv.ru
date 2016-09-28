@@ -1,4 +1,4 @@
 HOST='127.0.0.1'
 USER='postgres'
-DB='fs'
+DB='MICHURINO'
 PORT='6432'
