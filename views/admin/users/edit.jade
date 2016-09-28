@@ -34,37 +34,21 @@
 								.col-sm-1
 									input(type='checkbox', tooltip='Оповестить по СМС', ng-model='data.curr.sendsms')
 
-
 					div.form-group
 						label.col-sm-8.control-label Права доступа к интерфейсу Администратора
 						.col-sm-4
 							div.btn-group
-								button.btn.btn-default(type="button", ng-model="data.curr.r[0]", btn-radio="true") Да
-								button.btn.btn-default(type="button", ng-model="data.curr.r[0]", btn-radio="false") Нет
+								input(type='checkbox', ng-model='data.curr.r[0]')
 					div.form-group
 						label.col-sm-8.control-label Права редактирования Пользователей.
 						.col-sm-4
 							div.btn-group
-								button.btn.btn-default(type="button", ng-model="data.curr.r[1]", btn-radio="true") Да
-								button.btn.btn-default(type="button", ng-model="data.curr.r[1]", btn-radio="false") Нет
+								input(type='checkbox', ng-model='data.curr.r[1]')
 					div.form-group
-						label.col-sm-8.control-label Права редактирования Новостных Рубрик
+						label.col-sm-8.control-label Права редактирования Участков
 						.col-sm-4
 							div.btn-group
-								button.btn.btn-default(type="button", ng-model="data.curr.r[2]", btn-radio="true") Да
-								button.btn.btn-default(type="button", ng-model="data.curr.r[2]", btn-radio="false") Нет
-					div.form-group
-						label.col-sm-8.control-label Права редактирования Новостных Тэгов
-						.col-sm-4
-							div.btn-group
-								button.btn.btn-default(type="button", ng-model="data.curr.r[3]", btn-radio="true") Да
-								button.btn.btn-default(type="button", ng-model="data.curr.r[3]", btn-radio="false") Нет
-					div.form-group
-						label.col-sm-8.control-label Права редактирование Новостей
-						.col-sm-4
-							div.btn-group
-								button.btn.btn-default(type="button", ng-model="data.curr.r[4]", btn-radio="true") Да
-								button.btn.btn-default(type="button", ng-model="data.curr.r[4]", btn-radio="false") Нет
+								input(type='checkbox', ng-model='data.curr.r[2]')
 			.modal-footer.margin0
 				.row
 					.col-xs-2.text-left
