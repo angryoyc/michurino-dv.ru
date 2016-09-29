@@ -21,13 +21,59 @@
 						stroke: red;
 						stroke-width:2px;
 					}
+					.nocontur{
+						fill: yellow;
+						stroke: none;
+						cursor: pointer;
+					}
+					.nocontur:hover{
+						stroke: red;
+						stroke-width:2px;
+					}
+					.labeltext{
+						font-size:			140px;
+						font-style:			normal;
+						font-weight:		normal;
+						line-height:		0%;
+						letter-spacing:		0px;
+						word-spacing:		0px;
+						fill:				#000000;
+						fill-opacity:		1;
+						stroke:				none;
+						font-family:		Sans;
+					}
+					.labelspan{
+						text-align:center;
+						line-height:0%;
+						text-anchor:middle;
+						fill:#ff0000;
+						fill-opacity:1;
+					}
+					.s1{
+						font-size:20px;
+						fill:#555555;
+					}
+					.s2{
+						font-size:16px;
+						fill:#ff0000;
+					}
+					.stepen{
+						font-size:65%;
+						baseline-shift:super;
+					}
 				.row
 					.col-md-3
 						svg(version="1.1", id="Livello_1", xmlns="http://www.w3.org/2000/svg", xmlns:xlink="http://www.w3.org/1999/xlink", width='100%', viewbox='{{calcViewbox(data.curr.points)}}')
 							g(id="layer1")
 								path.contur(id="path3055", d="m {{calcStart(data.curr.points)}} {{data.curr.points}} z")
-								text(xml:space="preserve", style="font-size:18px;font-style:normal;font-weight:normal;line-height:0%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans", x="{{data.curr.center.x}}", y="{{data.curr.center.y}}")
-									tspan(sodipodi:role="line", x="{{data.curr.center.x}}", y="{{data.curr.center.y}}", style="font-size:18px;text-align:center;line-height:0%;text-anchor:middle;fill:#ff0000;fill-opacity:1")!='{{data.curr.s}}'
+
+								text.labeltext()
+									tspan.labelspan.s1(x="{{data.curr.center.x}}", y="{{data.curr.center.y+5}}")!='№ {{data.curr.pp}}'
+									tspan.labelspan.s2(x="{{data.curr.center.x}}", y="{{data.curr.center.y+25}}")
+										!='{{data.curr.s}} м'
+										tspan.stepen!='2'
+
+								path.nocontur(id="path3056", d="m {{data.curr.center.x-2}},{{data.curr.center.y-2}} 5,0 0,5 -5,0 z")
 
 					.col-md-9
 						form(class="form-horizontal", role="form")

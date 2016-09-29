@@ -1,4 +1,4 @@
-angular.module('admin', ['ngRoute', 'ui.bootstrap', 'api', 'angular-md5', 'ui.bootstrap', 'ui.tinymce']);
+angular.module('admin', ['ngRoute', 'ui.bootstrap', 'api', 'angular-md5', 'ui.bootstrap', 'ui.tinymce', 'geom']);
 	
 
 angular.module('admin').config(['$routeProvider', function($routeProvider) {

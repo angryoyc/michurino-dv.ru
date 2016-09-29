@@ -1,4 +1,4 @@
-angular.module('admin').controller('stead', function($scope, api){
+angular.module('admin').controller('stead', function($scope, api, geom){
 	$scope.data = {};
 	$scope.data.cost = 550;
 
@@ -18,7 +18,7 @@ angular.module('admin').controller('stead', function($scope, api){
 		$scope.data.curr=stead;
 		$scope.data.curr_index=index;
 
-		$scope.data.curr.center = $scope.calcCenter($scope.data.curr.points);
+		$scope.data.curr.center = geom.calcCenter($scope.data.curr.points);
 
 		$('#modal_edit').modal('show');
 	};
@@ -32,15 +32,15 @@ angular.module('admin').controller('stead', function($scope, api){
 	};
 
 	$scope.calcStart=function(points){
-		var ex = $scope.calcExtremums(points);
+		var ex = geom.calcExtremums(points);
 		return [(-1)*ex.min.x + 5, (-1)*ex.min.y + 5].join(',');
 	}
 
 	$scope.calcViewbox=function(points){
-		var ex = $scope.calcExtremums(points);
+		var ex = geom.calcExtremums(points);
 		return [0, 0, (ex.max.x-ex.min.x) + 10, (ex.max.y - ex.min.y) + 10].join(' ');
 	}
-
+/*
 	$scope.calcExtremums=function(points){
 		var max = {x:0, y:0};
 		var min = {x:0, y:0};
@@ -68,7 +68,8 @@ angular.module('admin').controller('stead', function($scope, api){
 	};
 
 	$scope.calcCenter=function(points){
-		var start = {x:0, y:0};
+		var ex = $scope.calcExtremums(points);
+		var start = {x: (-1) * (ex.min.x + 5), y: (-1) * (ex.min.y + 5)};
 		var vertexes = [start];
 		$scope.makePointsArray(points).reduce(function(prev, pair){
 			var next = { x: (prev.x + pair.x), y: (prev.y + pair.y) };
@@ -103,5 +104,5 @@ angular.module('admin').controller('stead', function($scope, api){
 	$scope.getSegLength=function(seg){
 		return Math.sqrt((seg.end.x-seg.start.x) * (seg.end.x-seg.start.x) + (seg.end.y-seg.start.y) * (seg.end.y-seg.start.y) );
 	};
-
+*/
 });

@@ -23,8 +23,40 @@ style.
 		stroke-width:5;
 		fill:yellow;
 	}
+	.labeltext{
+		font-size:			140px;
+		font-style:			normal;
+		font-weight:		normal;
+		line-height:		0%;
+		letter-spacing:		0px;
+		word-spacing:		0px;
+		fill:				#000000;
+		fill-opacity:		1;
+		stroke:				none;
+		font-family:		Sans;
+		cursor:				pointer;
+	}
+	.labelspan{
+		text-align:center;
+		line-height:0%;
+		text-anchor:middle;
+		fill:#ff0000;
+		fill-opacity:1;
+	}
+	.s1{
+		font-size:20px;
+		fill:#555555;
+	}
+	.s2{
+		font-size:16px;
+		fill:#ff0000;
+	}
+	.stepen{
+		font-size:65%;
+		baseline-shift:super;
+	}
 
-svg(xmlns:osb="http://www.openswatchbook.org/uri/2009/osb", xmlns:dc="http://purl.org/dc/elements/1.1/", xmlns:cc="http://creativecommons.org/ns#", xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#",  xmlns:svg="http://www.w3.org/2000/svg", xmlns="http://www.w3.org/2000/svg", xmlns:xlink="http://www.w3.org/1999/xlink", xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd", version="1.1", width="1024", height="745" viewBox="0 0 3507 2550")
+svg(xmlns:osb="http://www.openswatchbook.org/uri/2009/osb", xmlns:dc="http://purl.org/dc/elements/1.1/", xmlns:cc="http://creativecommons.org/ns#", xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#",  xmlns:svg="http://www.w3.org/2000/svg", xmlns="http://www.w3.org/2000/svg", xmlns:xlink="http://www.w3.org/1999/xlink", xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd", version="1.1", width="100%" viewBox="0 0 2800 2200")
 	g(inkscape:groupmode="layer", id="layer1", inkscape:label="Границы", style="display:inline")
 
 		path(style="fill:#dddddd;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none", d="m 0,0 3505,0 0,2550 -3505,0 z", id="path01")
@@ -37,6 +69,13 @@ svg(xmlns:osb="http://www.openswatchbook.org/uri/2009/osb", xmlns:dc="http://pur
 		path(style="fill:none;stroke:#0058ff;stroke-width:3;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none", d="m 643.86342,375.61279 318.26708,-0.27622 10e-5,341.60715 640.1168,360.47498 -195.1015,254.5071 -766.38981,-430.74761 z", id="path3787")
 		path(style="fill:none;stroke:#0058ff;stroke-width:3;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none", d="m 268.00581,375.68184 321.02925,-0.20716 0,559.74686 786.43574,443.42596 -192.2752,255.2272 -915.73478,-514.326 z", id="path3789")
 
-	g(inkscape:groupmode="layer", id="layer4", inkscape:label="Участки", style="display:inline")
-		path.stead(ng-repeat='st in data.rows', d="m {{st.start}} {{st.points}} z", title="{{st.s}}", ng-mouseover='hover(st)')
+	g(inkscape:groupmode="layer", id="layer4{{$index+1}}", inkscape:label="Участки", style="display:inline")
+		path.stead(d="m {{st.start}} {{st.points}} z", ng-mouseover='hover(st)', ng-repeat='st in data.rows')
+		text.labeltext(ng-repeat='st in data.rows')
+			tspan.labelspan.s1(x="{{st.center.x}}", y="{{st.center.y}}", ng-show='st.center.x>0')
+				tspan(ng-bind='"№ "')
+				tspan(ng-bind='st.pp')
+			tspan.labelspan.s2(x="{{st.center.x}}", y="{{st.center.y+27}}", ng-show='st.center.x>0')
+				!='{{st.s}} м'
+				tspan.stepen!='2'
 
