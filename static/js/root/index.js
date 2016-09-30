@@ -2,7 +2,7 @@ angular.module('root', ['api', 'geom']);
 
 angular.module('root').controller('root', function($scope, api, geom){
 	$scope.mode=true;
-	$scope.data={};
+	$scope.data={cost:550};
 
 	$scope.turnNext=function(){
 		if(!$scope.data.rows) $scope.loadSteads();
@@ -28,7 +28,26 @@ angular.module('root').controller('root', function($scope, api, geom){
 	};
 
 	$scope.hover=function(st){
-		$scope.data.curr=st;
+		if(st){
+			if(st.status!='busy'){
+				if($scope.data.curr){
+					var idstead = $scope.data.curr.idstead;
+					$scope.data.curr.parent.selected = false;
+					delete $scope.data.curr;
+					if(st.idstead!=idstead){
+						$scope.data.curr = {};
+						angular.extend($scope.data.curr, st);
+						$scope.data.curr.parent = st;
+						$scope.data.curr.parent.selected = true;
+					};
+				}else{
+					$scope.data.curr={};
+					angular.extend($scope.data.curr,st);
+					$scope.data.curr.parent=st;
+					$scope.data.curr.parent.selected=true;
+				};
+			}
+		};
 	}
 
 });
