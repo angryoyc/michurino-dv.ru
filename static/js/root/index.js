@@ -1,17 +1,22 @@
-angular.module('root', ['api', 'geom']);
+angular.module('root', ['ngRoute', 'api', 'geom']);
 
-angular.module('root').controller('root', function($scope, api, geom){
-	$scope.mode=true;
+angular.module('root').config(['$routeProvider', function($routeProvider) {
+	$routeProvider.when('/main',   {templateUrl: '/root/main', controller: 'main'});
+	$routeProvider.when('/schem',   {templateUrl: '/root/schem', controller: 'schem'});
+	$routeProvider.otherwise({redirectTo: '/main'});
+}]);
+
+angular.module('root').controller('index', function($scope, $rootScope){
+});
+
+angular.module('root').controller('main', function($scope, $rootScope, $timeout){
+	$timeout(function(){$scope.mode=true;}, 200);
+	//$scope.mode=true;
+});
+
+
+angular.module('root').controller('schem', function($scope, api, geom, $timeout){
 	$scope.data={cost:550};
-
-	$scope.turnNext=function(){
-		if(!$scope.data.rows) $scope.loadSteads();
-		$scope.mode=!$scope.mode;
-	};
-
-	$scope.turnPrev=function(){
-		$scope.mode=!$scope.mode;
-	};
 
 	$scope.loadSteads=function(){
 		return api.call('/api/stead/list_ro', {}, true, true)
@@ -23,9 +28,13 @@ angular.module('root').controller('root', function($scope, api, geom){
 				row.strt={};
 				row.strt.x = 1*a[0];
 				row.strt.y = 1*a[1];
+				$scope.mode=true;
+				//$timeout(function(){$scope.mode=true;}, 500)
 			});
 		});
 	};
+
+	$scope.loadSteads();
 
 	$scope.hover=function(st){
 		if(st){
@@ -39,12 +48,15 @@ angular.module('root').controller('root', function($scope, api, geom){
 						angular.extend($scope.data.curr, st);
 						$scope.data.curr.parent = st;
 						$scope.data.curr.parent.selected = true;
+					}else{
+						$('div#proppanel').collapse('hide');
 					};
 				}else{
 					$scope.data.curr={};
 					angular.extend($scope.data.curr,st);
 					$scope.data.curr.parent=st;
 					$scope.data.curr.parent.selected=true;
+					$('div#proppanel').collapse('show');
 				};
 			}
 		};

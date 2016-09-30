@@ -15,6 +15,7 @@
   },
   "keywords": [],
   "dependencies": {
+    "angular-animate": "^1.5.8",
     "async": "0",
     "cf": "git+ssh://serg@settv.ru:1022/opt/git/cf.git",
     "colors": "*",

@@ -16,35 +16,29 @@ body{
 	*/
 	width: calc(100% - 32px);
 	overflow: hidden;
-	border-radius: 4px;
-	box-shadow: 0 4px 16px rgba(0,0,0,.2);
+	
 }
 
 .mainslider .mpad{
-	float: left;
 	margin: 0;
-	display: none;
-/*	height: 100%;
-*/
 	width: 100%;
-	left: 100%;
-/*	position: absolute;*/
 	border-radius: 4px;
+	border-radius: 4px;
+	box-shadow: 0 4px 16px rgba(0,0,0,.2);
 	box-shadow: inset 0 3px 2px rgba(255,255,255,.02), inset 0 0 0 1px rgba(255,255,255,.08);
 	color: #fff;
 	font: 15px/25px "Whitney HTF", Whitney, "Alegreya Sans", Lato, sans-serif;
 	text-shadow: 0 1px 3px rgba(0,0,0,.15);
 	padding: 30px;
-	-webkit-transition: all ease 0.5s;
-	-moz-transition: all ease 0.5s;
-	-ms-transition: all ease 0.5s;
-	-o-transition: all ease 0.5s;
-	transition: all ease 0.5s;
+	-webkit-transition: all ease 0.3s;
+	-moz-transition: all ease 0.3s;
+	-ms-transition: all ease 0.3s;
+	-o-transition: all ease 0.3s;
+	transition: all ease 0.3s;
 	min-width: 640px;
-	opacity: 0.1;
+	opacity: 0;
 }
 .mainslider .active{
-	left: 0px !important;
 	display: block;
 	opacity: 1;
 }
@@ -54,7 +48,8 @@ body{
 .p2{
 	background: linear-gradient(-45deg, #009881, #86c883);
 }
-button {
+
+.btn {
 	border-radius: 4px;
 	padding: 10px;
 	border: solid 1px white;
@@ -63,7 +58,7 @@ button {
 	color: white;
 }
 
-input {
+.inp {
 	border-radius: 2px;
 	padding: 5px;
 	border: solid 1px white;
@@ -71,12 +66,13 @@ input {
 	color: black;
 }
 
-button:active {
+.btn:active {
 	border: solid 2px white;
 }
-button:hover {
+.btn:hover {
 	background-color: #00b69a;
 }
+
 hr{
 	border-top: solid 1px white;
 	padding-top:0x;
@@ -133,22 +129,32 @@ hr{
 	padding: 10px;
 	background-color: #b4f499;
 	overflow: hidden;
-	margin-bottom:30px;
+	margin-bottom: 30px;
 }
 
 .details div{
 	font-size:12px;
-	padding: 3px;
+	padding: 0px;
+	margin: 0px;
 }
 
 .details div.lbl{
 	color: #888;
-	text-align: right;
+	text-align: left;
 	white-space: nowrap;
+	font-size: 15px;
+	line-height: 16px;
+	margin-top: 15px;
 }
 
 .details div.val{
 	color: #009881;
 	text-align: left;
 	white-space: nowrap;
+	border: solid 1px white;
+	border-radius: 4px;
+	line-height: 28px;
+	font-size: 18px;
+	background-color: white;
+	padding-left: 10px;
 }

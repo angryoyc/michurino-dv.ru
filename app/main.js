@@ -162,9 +162,9 @@ var api = require('../modules/api');
 //	app.all('/video/tnl/:id', controllers.video.tnl);
 
 
-	app.get('/', controllers.root);
-
-//	app.all('/', controllers.news.last);
+	app.get('/', controllers.root.index);
+	app.all('/root/main', controllers.root.main);
+	app.all('/root/schem', controllers.root.schem);
 
 
 /* --------------------- end routes ------------------------------ */

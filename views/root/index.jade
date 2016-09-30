@@ -1,93 +1,11 @@
 extends ../layouts/ang_layout
+
 block b1
 	link(rel='stylesheet', href='/static/css/master.css')
 
 block b3
-	.mainslider(ng-controller='root')
-		.mpad.p1(ng-class='{active:mode}')
-			.row.percent20
-				.col-xs-2
-					img(src='/static/images/logo_transp.png')
-				.col-xs-8
-					.row
-						.col-xs-6
-							small Тел.: +7 (4212) 778 706
-							br
-							small Тел.: +7 (4212) 25 87 87
-						.col-xs-6.text-right
-							div 
-								small
-									i Я знаю город будет!
-							div 
-								small
-									i Я знаю саду цвесть... 
-					.row
-						.col-md-12
-							hr
-				.col-xs-2.text-right
-					button(ng-click='turnNext()')
-						span Схема
-						small.glyphicon.glyphicon-chevron-right
-			.row.percent80
-				.col-xs-2
-				.col-xs-6.percent100
-					.frame2
-						h2 Приглашаем приобрести участки в уютном посёлке "МИЧУРИНО"!
-						br
-						h4(style='color: #ddd; line-height: 25px;')
-							| В коттеджном посёлке планируется создание следующей инфраструктуры:
-							| собственная эксплуатационная служба, выполняющая функции ТСЖ, в том числе:
-							ul
-								li собственная эксплуатационная служба, выполняющая функции ТСЖ, в том числе:
-									ul
-										li поддержание мест общего пользования в надлежащем порядке;
-										li уборка общественной территории и дорог;
-										li освещение внутренних дорог и мест общего пользования;
-										li вывоз бытового мусора;
-										li охрана;
-								li планирунтся газификация района;
-								li гостевая автопарковка;
-								li детская и спортивная площадки;
-								li зона отдыха;
-								li магазин;
-								li водоём.
-						h4 
-							| Ознакомиться с планировкой участков и ценами вы можете на 
-							a.pointer( href='#', ng-click='turnNext()' )  схеме
 
-				.col-xs-2.text-right
+	.mainslider(ng-view=true)
 
-		.mpad.p2(ng-class='{active:!mode}')
-			.row.percent100
-				.col-lg-2
-					button(ng-click='turnNext()')
-						small.glyphicon.glyphicon-chevron-left
-						span  На главную
-					hr
-					div.details(ng-show='data.curr')
-						.row
-							.col-xs-5.lbl №:
-							.col-xs-7.val {{data.curr.pp}}
-						.row
-							.col-xs-5.lbl Ряд:
-							.col-xs-7.val {{data.curr.groupnum}}
-						.row
-							.col-xs-5.lbl № в кадастре:
-							.col-xs-7.val {{data.curr.cadastr}}
-						.row
-							.col-xs-5.lbl Площадь, м*м:
-							.col-xs-7.val {{data.curr.s}}
-						.row
-							.col-xs-5.lbl Стоимость:
-							.col-xs-7.val
-								strong {{data.cost * data.curr.s | currency}}
-						.row
-							.col-xs-12.text-center
-								button(ng-click='stakeThis(data.curr)') забронировать
-				.col-lg-8.percent100
-					.frame2
-						include mainsvg
-				.col-lg-2.text-center
-					img(src='/static/images/logo_transp.png')
 block b4
 	script(src='/static/js/root/index.js')
