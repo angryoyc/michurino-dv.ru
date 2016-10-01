@@ -60,6 +60,19 @@ angular.module('root').controller('schem', function($scope, api, geom, $timeout)
 				};
 			}
 		};
+	};
+
+	$scope.stakeThis=function(st){
+		if($scope.data.curr){
+			if(!$scope.data.curr.form){
+				$scope.data.curr.form = {};
+				$scope.data.curr.form.phone='';
+				$timeout(function(){$('input#phone').focus();}, 100);
+			}else{
+				delete $scope.data.curr.form;
+			}
+			
+		}
 	}
 
 });

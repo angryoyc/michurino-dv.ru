@@ -49,7 +49,7 @@ body{
 	background: linear-gradient(-45deg, #009881, #86c883);
 }
 
-.btn {
+.btn1{
 	border-radius: 4px;
 	padding: 10px;
 	border: solid 1px white;
@@ -66,10 +66,10 @@ body{
 	color: black;
 }
 
-.btn:active {
+.btn1:active {
 	border: solid 2px white;
 }
-.btn:hover {
+.btn1:hover {
 	background-color: #00b69a;
 }
 
@@ -114,6 +114,9 @@ hr{
 
 .top30{
 	margin-top: 30px;
+}
+.padding30{
+	padding: 30px !important;
 }
 
 .red{color: red !important;}
