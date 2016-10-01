@@ -32,7 +32,7 @@
 							strong {{data.cost * data.curr.s | currency}}
 					.row(ng-show='data.curr.form')
 						.col-xs-12
-							form.top30(ng-submit='send()')
+							form.top30(ng-submit='sendReserveRequest(data.curr)')
 								.alert.alert-info.top30.padding30
 									label.text-center
 										big Укажите телефон, по которому с вами можно будет связаться для бронирования данного участка.

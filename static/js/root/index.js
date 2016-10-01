@@ -73,7 +73,21 @@ angular.module('root').controller('schem', function($scope, api, geom, $timeout)
 			}
 			
 		}
-	}
+	};
+
+	$scope.sendReserveRequest=function(st){
+		if($scope.data.curr.form.phone){
+			api.call('/api/send/reserve_request', {phone: $scope.data.curr.form.phone, pp:st.pp}, true, true)
+			.then(function(result){
+				if(result.sent){
+					delete $scope.data.curr.form;
+					swal("Отлично!", "Ваш запрос отправлен", "success");
+				}else{
+					swal("Неудача", result.message, "error");
+				};
+			});
+		};
+	};
 
 });
 

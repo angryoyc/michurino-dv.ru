@@ -36,6 +36,7 @@
     "pg": "*",
     "require-tree": "~0.3.2",
     "supertest": "0.4.0",
+    "delivery": "git+ssh://serg@settv.ru:1022/opt/git/delivery.git",
     "web": "git+ssh://serg@settv.ru:1022/opt/git/web.git"
   },
   "devDependencies": {
