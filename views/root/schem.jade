@@ -34,13 +34,17 @@
 						.col-xs-12
 							form.top30(ng-submit='sendReserveRequest(data.curr)')
 								.alert.alert-info.top30.padding30
-									label.text-center
-										big Укажите телефон, по которому с вами можно будет связаться для бронирования данного участка.
-									.input-group.top30
-										span.input-group-addon Тел.:
-										input#phone.form-control(placeholder='ваш телефон', ng-model='data.curr.form.phone')
-										span.input-group-btn
-											button.btn.btn-default отправить
+									div(ng-show='!data.curr.form.sending')
+										label.text-center
+											big Укажите телефон, по которому с вами можно будет связаться для бронирования данного участка.
+										.input-group.top30
+											span.input-group-addon Тел.:
+											input#phone.form-control(placeholder='ваш телефон', ng-model='data.curr.form.phone')
+											span.input-group-btn
+												button.btn.btn-default отправить
+									div.text-center(ng-show='data.curr.form.sending')
+										h4 отправляю...
+										img(src='/static/images/progress25.gif')
 
 					.row
 						.col-xs-12.text-center

@@ -77,12 +77,15 @@ angular.module('root').controller('schem', function($scope, api, geom, $timeout)
 
 	$scope.sendReserveRequest=function(st){
 		if($scope.data.curr.form.phone){
+			$scope.data.curr.form.sending=true;
 			api.call('/api/send/reserve_request', {phone: $scope.data.curr.form.phone, pp:st.pp}, true, true)
 			.then(function(result){
 				if(result.sent){
+					$scope.data.curr.form.sending=false;
 					delete $scope.data.curr.form;
 					swal("Отлично!", "Ваш запрос отправлен", "success");
 				}else{
+					$scope.data.curr.form.sending=false;
 					swal("Неудача", result.message, "error");
 				};
 			});
