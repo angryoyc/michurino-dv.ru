@@ -12,6 +12,15 @@ angular.module('root').controller('index', function($scope, $rootScope){
 angular.module('root').controller('main', function($scope, $rootScope, $timeout){
 	$timeout(function(){$scope.mode=true;}, 200);
 	//$scope.mode=true;
+
+
+	$scope.nextSlide=function(){
+		$('div#carousel-example-generic.carousel').carousel('next');
+	}
+	$scope.prevSlide=function(){
+		$('div#carousel-example-generic.carousel').carousel('prev');
+	}
+
 });
 
 
@@ -91,6 +100,7 @@ angular.module('root').controller('schem', function($scope, api, geom, $timeout)
 			});
 		};
 	};
+
 
 });
 

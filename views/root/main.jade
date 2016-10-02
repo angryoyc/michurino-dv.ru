@@ -1,53 +1,70 @@
-.mpad.p1(ng-class='{active: mode}')
-	.row.percent20
-		.col-xs-2
+.mpad.p1(ng-class='{act: mode}')
+	.row
+		.col-xs-3.text-center
 			img(src='/static/images/logo_transp.png')
-		.col-xs-8
-			.row
-				.col-xs-6
-					small Тел.: +7 (4212) 778 706
-					br
-					small Тел.: +7 (4212) 25 87 87
-				.col-xs-6.text-right
-					div 
-						small
-							i Я знаю город будет!
-					div 
-						small
-							i Я знаю саду цвесть... 
-			.row
-				.col-md-12
-					hr
+			div.top30
+				small Тел.: +7 (4212) 778 706
+				br
+				small Тел.: +7 (4212) 25 87 87
+
+		.col-xs-7
+
+			h2.text-center Приглашаем приобрести участки в уютном посёлке!
+			br
+
+			div#carousel-example-generic.carousel.slide(data-ride="carousel")
+				ol.carousel-indicators
+					li.active(data-target="#carousel-example-generic", data-slide-to="0")
+					li(data-target="#carousel-example-generic", data-slide-to="1")
+				.carousel-inner(role="listbox")
+					.item.active
+						img(src="/static/images/sputnik2.png")
+						.carousel-caption 
+					.item
+						img(src="/static/images/sputnik3.png")
+						.carousel-caption 
+				//- ng-href="#carousel-example-generic", 
+				a.left.carousel-control(role="button", data-slide="prev", ng-click='prevSlide()')
+					span.glyphicon.glyphicon-chevron-left(aria-hidden="true")
+					span.sr-only Previous
+				a.right.carousel-control(role="button", data-slide="next", ng-click='nextSlide()')
+					span.glyphicon.glyphicon-chevron-right(aria-hidden="true")
+					span.sr-only Next
+
+
+
+			h4(style='color: #ddd; line-height: 25px;')
+				| В коттеджном посёлке планируется создание следующей инфраструктуры:
+				| собственная эксплуатационная служба, выполняющая функции ТСЖ, в том числе:
+				ul
+					li собственная эксплуатационная служба, выполняющая функции ТСЖ, в том числе:
+						ul
+							li поддержание мест общего пользования в надлежащем порядке;
+							li уборка общественной территории и дорог;
+							li освещение внутренних дорог и мест общего пользования;
+							li вывоз бытового мусора;
+							li охрана;
+					li планирунтся газификация района;
+					li гостевая автопарковка;
+					li детская и спортивная площадки;
+					li зона отдыха;
+					li магазин;
+					li водоём.
+			h4 
+				| Ознакомиться с планировкой участков и ценами вы можете на 
+				//- a.pointer( href='#', ng-click='turnNext()' )  схеме
+				a.pointer( href='#/schem'  )  схеме
+
+
+
+
 		.col-xs-2.text-right
 			//- button(ng-click='turnNext()')
 			a.btn1( href='#/schem' )
 				span Схема
 				small.glyphicon.glyphicon-chevron-right
-	.row.percent80
-		.col-xs-2
-		.col-xs-6.percent100
-			.frame2
-				h2 Приглашаем приобрести участки в уютном посёлке "МИЧУРИНО"!
-				br
-				h4(style='color: #ddd; line-height: 25px;')
-					| В коттеджном посёлке планируется создание следующей инфраструктуры:
-					| собственная эксплуатационная служба, выполняющая функции ТСЖ, в том числе:
-					ul
-						li собственная эксплуатационная служба, выполняющая функции ТСЖ, в том числе:
-							ul
-								li поддержание мест общего пользования в надлежащем порядке;
-								li уборка общественной территории и дорог;
-								li освещение внутренних дорог и мест общего пользования;
-								li вывоз бытового мусора;
-								li охрана;
-						li планирунтся газификация района;
-						li гостевая автопарковка;
-						li детская и спортивная площадки;
-						li зона отдыха;
-						li магазин;
-						li водоём.
-				h4 
-					| Ознакомиться с планировкой участков и ценами вы можете на 
-					//- a.pointer( href='#', ng-click='turnNext()' )  схеме
-					a.pointer( href='#/schem'  )  схеме
-		.col-xs-2.text-right
+
+
+
+
+

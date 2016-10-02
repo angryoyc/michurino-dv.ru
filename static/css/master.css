@@ -38,7 +38,8 @@ body{
 	min-width: 640px;
 	opacity: 0;
 }
-.mainslider .active{
+
+.mainslider .act{
 	display: block;
 	opacity: 1;
 }
@@ -66,7 +67,7 @@ body{
 	color: black;
 }
 
-.btn1:active {
+.btn1:act {
 	border: solid 2px white;
 }
 .btn1:hover {

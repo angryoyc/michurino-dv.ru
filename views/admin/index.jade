@@ -6,13 +6,13 @@ block b1
   
 block b3
 	.mainslider
-		.mpad.p1.active
-			.row.percent100
+		.mpad.p1(ng-class='{act: true}')
+			.row
 				.col-md-2.col-xs-12
 					div(ng-controller='index')
 
 						p.text-center
-							img(src='/static/images/logo_transp.png')
+							img(src='/static/images/logo_transp_sm.png')
 
 						h4.text-center.top30 Администрирование
 						ul.list-group
@@ -24,9 +24,8 @@ block b3
 								a(href='#/stead') Участки
 							li.list-group-item
 								a(href='/logout') Выход
-				.col-md-10.col-xs-12.colordark.percent100
-					.frame2
-						div.animation1(ng-view=true)
+				.col-md-10.col-xs-12.colordark
+					div(ng-view=true)
 
 block b4
 	script(src='/static/js/admin/index.js')
