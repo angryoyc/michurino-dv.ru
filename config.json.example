@@ -28,30 +28,21 @@
 
 
 	"email": {
-		"checked": "gmail",
-		"gmail": {
-			"service": "Gmail",
-			"user": "serg.osipov@gmail.com",
-			"pass": "wbrynhty"
-		},
-		"settv": {
-			"host": "smtp.settv.ru",
+		"checked": "yandex",
+		"settv.old": {
+			"host": "172.16.2.1",
 			"port": "25",
 			"user": "bot@settv.ru",
-			"pass": "ctnjgjklykfqy"
+			"pass": "ctnjykfqy",
+			"name": "SETTV.RU"
 		},
-		"groups":{
-			"string_dst_note": "Получатели файлов выгрузок бегущих строк",
-			"string_dst":[
-				{"email": "serg.osipov@gmail.com", "note": "пока я сам"},
-				{"email": "serg.osipov@attava.ru", "note": "пока я сам"}
-			],
-			"string_moderators_note": "Модераторы, проверяющие поданные в эфир строки",
-			"string_moderators": [
-				{"email": "serg.osipov@gmail.com", "note": "пока я сам"},
-				{"email": "serg.osipov@attava.ru", "note": "пока я сам"}
-			]
+		"yandex": {
+			"service": "Yandex",
+			"user": "info@michurino-dv.ru",
+			"pass": "rjgthybr",
+			"name": "MICHURINO-DV.RU"
 		}
 	}
+
 
 }
