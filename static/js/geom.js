@@ -47,13 +47,13 @@ angular.module('geom', []).factory('geom', function(){
 				return next;
 			}, start);
 			while(self.getMaxSegLength(vertexes)>1){
-				vertexes = self.getSegments(vertexes).map((seg)=>{return self.segmentCenter(seg)});
+				vertexes = self.getSegments(vertexes).map(function(seg){return self.segmentCenter(seg)});
 			};
 			return (vertexes[0]);
 		},
 		getSegments: function(vertexes){
 			var segments=[];
-			vertexes.forEach((v,i)=>{
+			vertexes.forEach(function(v,i){
 				segments.push({start:v, end:((i+1)>vertexes.length-1)?vertexes[0]:vertexes[i+1]});
 			});
 			return segments;
@@ -62,7 +62,7 @@ angular.module('geom', []).factory('geom', function(){
 			return {x:((seg.end.x+seg.start.x)/2), y:((seg.end.y+seg.start.y)/2)};
 		},
 		getMaxSegLength: function(vertexes){
-			return self.getSegments(vertexes).reduce((prev, seg)=>{
+			return self.getSegments(vertexes).reduce(function(prev, seg){
 				var l = self.getSegLength(seg);
 				return (prev>l)?prev:l;
 			}, 0);

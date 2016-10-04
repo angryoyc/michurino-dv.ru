@@ -10,8 +10,9 @@ angular.module('root').controller('index', function($scope, $rootScope){
 });
 
 angular.module('root').controller('main', function($scope, $rootScope, $timeout){
-	$timeout(function(){$scope.mode=true;}, 200);
-	//$scope.mode=true;
+	$timeout(function(){
+		$scope.mode=true;
+	}, 200);
 
 
 	$scope.nextSlide=function(){

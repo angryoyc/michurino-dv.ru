@@ -8,7 +8,7 @@ var conf			= require('../../config.json');
 
 // GO
 exports.go = function(req, res){
-	env.pvt_go(req, res, exports.do, 4);
+	env.std_go(req, res, exports.do);
 };
 
 // DO
