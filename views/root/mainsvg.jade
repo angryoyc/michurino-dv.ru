@@ -1,9 +1,9 @@
 
 style.
 	.stead{
-		fill: #eeeeee;
-		stroke:#777777;
-		stroke-width:1;
+		fill: #60ba80;
+		stroke:#01a38e;
+		stroke-width:5;
 		stroke-linecap:butt;
 		stroke-linejoin:miter;
 		stroke-miterlimit:4;
@@ -17,22 +17,27 @@ style.
 		-o-transition: all ease 0.27s;
 		transition: all ease 0.27s;
 	}
-	.stead:hover{
-		stroke:green;
+	.stead:hover .labeltext{
+		/*stroke:green;
 		stroke-opacity:1;
 		stroke-width:5;
-		/*fill:yellow;*/
+		fill:yellow;
+		*/
+		font-weight: bold;
+		stroke: red;
 	}
 	
 	.stead.busy{
-		fill: #638362 !important;
+		fill: #12846e !important;
 	}
 
+
 	.selected, .selected:hover{
-		stroke:red;
+		/* stroke:red; 
 		stroke-opacity:1;
-		stroke-width:5;
-		fill: #009881;
+		stroke-width:5; 
+		fill: #009881;*/
+		fill: #8fc479;
 	}
 
 	.labeltext{
@@ -55,13 +60,31 @@ style.
 		fill:#ff0000;
 		fill-opacity:1;
 	}
+
 	.s1{
 		font-size:24px;
-		fill:#555555;
+		fill: #d5edea;
+		stroke: #d5edea;
+		stroke-opacity:1;
+		stroke-width:1;
 	}
+
+	.busy .s1{
+		fill: #000000;
+		stroke: #000000;
+	}
+
 	.s2{
 		font-size:20px;
-		fill:#ff0000;
+		fill: #91da0a;
+		stroke: #91da0a;
+		stroke-opacity:1;
+		stroke-width:1;
+	}
+
+	.busy .s2{
+		fill: #000000;
+		stroke: #000000;
 	}
 
 	.onselected tspan.s1,.onselected tspan.s2{
@@ -73,18 +96,17 @@ style.
 		baseline-shift:super;
 	}
 
-svg(xmlns:osb="http://www.openswatchbook.org/uri/2009/osb", xmlns:dc="http://purl.org/dc/elements/1.1/", xmlns:cc="http://creativecommons.org/ns#", xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#",  xmlns:svg="http://www.w3.org/2000/svg", xmlns="http://www.w3.org/2000/svg", xmlns:xlink="http://www.w3.org/1999/xlink", xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd", version="1.1", width="100%" viewBox="40 30 2720 2120", style='border: solid #007777 1px;')
+svg(xmlns:osb="http://www.openswatchbook.org/uri/2009/osb", xmlns:dc="http://purl.org/dc/elements/1.1/", xmlns:cc="http://creativecommons.org/ns#", xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#",  xmlns:svg="http://www.w3.org/2000/svg", xmlns="http://www.w3.org/2000/svg", xmlns:xlink="http://www.w3.org/1999/xlink", xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd", version="1.1", width="100%" viewBox="40 30 2720 2120")
+	//- , style='border: solid #007777 1px;'
 	g(inkscape:groupmode="layer", id="layer1", inkscape:label="Границы", style="display:inline")
-
-		path(style="fill:#ffffff;fill-opacity:0.7;", d="m 0,0 2760,0 0,2150 -2760,0 z", id="path01")
-
-		path(style="fill:#fa0000;fill-opacity:0.0813008;stroke:#f00000;stroke-width:3;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none", d="m 54.137862,144.40729 275.502688,-23.03924 596.42888,-11.38811 61.86837,-5.83847 79.6084,-21.515778 115.5087,-42.249386 11.35,38.431611 -34.0522,23.142073 -169.926,112.38616 106.3074,125.67712 307.6582,364.75359 250.9659,-139.46718 125.4285,214.94793 951.5995,153.08562 10.6252,45.93577 -306.5486,964.969 -13.8259,80.004 -250.1014,75.7211 -17.2006,38.7888 -805.4069,-266.1325 -120.7843,-43.9033 -152.2348,31.5978 -1.7888,7.1445 -59.3418,-18.4819 -92.36893,-152.4538 -56.22189,-32.4597 -813.049618,-469.4144 z", id="path3051")
-		path(style="fill:#ffffff;fill-opacity:1;stroke:#ff0000;stroke-width:3;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none", d="m 1429.2016,1481.1163 473.0469,99.2187 -167.7596,358.4124 -489.5283,-229.6205 z", id="path2996")
+		path(style="fill:#009881;stroke: none;", d="m 0,0 2760,0 0,2150 -2760,0 z", id="path01")
+		path(style="fill:#12846e;stroke:#8fc479;stroke-width:17;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none", d="m 54.137862,144.40729 275.502688,-23.03924 596.42888,-11.38811 61.86837,-5.83847 79.6084,-21.515778 115.5087,-42.249386 11.35,38.431611 -34.0522,23.142073 -169.926,112.38616 106.3074,125.67712 307.6582,364.75359 250.9659,-139.46718 125.4285,214.94793 951.5995,153.08562 10.6252,45.93577 -306.5486,964.969 -13.8259,80.004 -250.1014,75.7211 -17.2006,38.7888 -805.4069,-266.1325 -120.7843,-43.9033 -152.2348,31.5978 -1.7888,7.1445 -59.3418,-18.4819 -92.36893,-152.4538 -56.22189,-32.4597 -813.049618,-469.4144 z", id="path3051")
+		path(style="fill:#12846e;fill-opacity:1;stroke:#8fc479;stroke-width:5;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none", d="m 1429.2016,1481.1163 473.0469,99.2187 -167.7596,358.4124 -489.5283,-229.6205 z", id="path2996")
 
 	g(inkscape:groupmode="layer", id="layer3", inkscape:label="Дороги", style="display:inline")
-		path(style="fill:none;stroke:#0058ff;stroke-width:3;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;display:inline", d="m 54.31014,144.39452 28.776338,-2.4392 3.148252,185.82225 14.67332,17.14433 1000.00035,0 25.8518,30.6641 -110.2868,0 -0.067,309.92923 315.9257,182.3998 295.4579,170.58267 190.0842,-252.25029 48.7868,7.8494 -804.7717,1067.96819 -45.4829,-12.2338 124.1436,-164.7441 -927.65918,-535.5843 0,-773.9168 -158.6225,-0.1595 z", id="path3766")
-		path(style="fill:none;stroke:#0058ff;stroke-width:3;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none", d="m 641.36793,375.586 319.26786,0 0,342.2059 633.29771,365.6346 L 1400.3504,1340.32 641.36793,902.12128 z", id="path3787")
-		path(style="fill:none;stroke:#0058ff;stroke-width:3;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none", d="m 267.92717,375.586 320.68397,4e-5 2e-5,556.99437 779.75094,450.18949 -194.4417,258.0329 -905.99323,-523.0754 z", id="path3789")
+		path(style="fill:#92ccc8;stroke:#00987f;stroke-width:5;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;display:inline", d="m 54.31014,144.39452 28.776338,-2.4392 3.148252,185.82225 14.67332,17.14433 1000.00035,0 25.8518,30.6641 -110.2868,0 -0.067,309.92923 315.9257,182.3998 295.4579,170.58267 190.0842,-252.25029 48.7868,7.8494 -804.7717,1067.96819 -45.4829,-12.2338 124.1436,-164.7441 -927.65918,-535.5843 0,-773.9168 -158.6225,-0.1595 z", id="path3766")
+		path(style="fill:#92ccc8;stroke:#00987f;stroke-width:5;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none", d="m 641.36793,375.586 319.26786,0 0,342.2059 633.29771,365.6346 L 1400.3504,1340.32 641.36793,902.12128 z", id="path3787")
+		path(style="fill:#92ccc8;stroke:#00987f;stroke-width:5;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none", d="m 267.92717,375.586 320.68397,4e-5 2e-5,556.99437 779.75094,450.18949 -194.4417,258.0329 -905.99323,-523.0754 z", id="path3789")
 
 	g(inkscape:groupmode="layer", id="layer4{{$index+1}}", inkscape:label="Участки", style="display:inline")
 		path.stead(d="m {{st.start}} {{st.points}} z", ng-click='hover(st)', ng-repeat='st in data.rows', ng-class="{selected:st.selected, busy: st.status=='busy'}")
