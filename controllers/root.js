@@ -7,7 +7,7 @@ module.exports={
 		res.render('root/main', {ng_app:'root', req:req, conf:conf});
 	},
 	schem: function(req, res){
-		res.render('root/schem', {ng_app:'root', req:req, conf:conf});
+		res.render('root/schem', {ng_app:'root', req:req, conf:conf, fs: require('fs')});
 	}
 }
 
