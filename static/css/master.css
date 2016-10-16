@@ -47,7 +47,7 @@ body{
 	opacity: 1;
 }
 .p1{
-	background: linear-gradient(45deg, #86c883, #009881);
+	background: linear-gradient(90deg, #009881, #86c883);
 }
 .p2{
 	background: linear-gradient(-90deg, #009881, #86c883);
