@@ -113,12 +113,12 @@ svg(xmlns:osb="http://www.openswatchbook.org/uri/2009/osb", xmlns:dc="http://pur
 		path(style="fill:#92ccc8;stroke:#00987f;stroke-width:5;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none", d="m 267.92717,375.586 320.68397,4e-5 2e-5,556.99437 779.75094,450.18949 -194.4417,258.0329 -905.99323,-523.0754 z", id="path3789")
 
 	g(inkscape:groupmode="layer", id="layer4{{$index+1}}", inkscape:label="Участки", style="display:inline")
-		path.stead(d="m {{st.start}} {{st.points}} z", ng-click='hover(st)', ng-repeat='st in data.rows', ng-class="{selected:st.selected, busy: st.status=='busy'}")
+		path.stead(ng-attr-d="m {{st.start}} {{st.points}} z", ng-click='hover(st)', ng-repeat='st in data.rows', ng-class="{selected:st.selected, busy: st.status=='busy'}")
 		text.labeltext(ng-repeat='st in data.rows', ng-click='hover(st)', ng-class='{onselected:st.selected}')
-			tspan.labelspan.s1(x="{{st.center.x}}", y="{{st.center.y}}", ng-show='st.center.x>0')
+			tspan.labelspan.s1(ng-attr-x="{{st.center.x}}", ng-attr-y="{{st.center.y}}", ng-show='st.center.x>0')
 				tspan(ng-bind='"№ "')
 				tspan(ng-bind='st.pp')
-			tspan.labelspan.s2(x="{{st.center.x}}", y="{{st.center.y+27}}", ng-show='st.center.x>0')
+			tspan.labelspan.s2(ng-attr-x="{{st.center.x}}", ng-attr-y="{{st.center.y+27}}", ng-show='st.center.x>0')
 				!='{{st.s}} м'
 				tspan.stepen!='2'
 
