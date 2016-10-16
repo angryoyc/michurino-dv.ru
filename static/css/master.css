@@ -2,6 +2,7 @@ body{
 	height: 100%;
 	background: #21272c;
 	display: block;
+	position: relative;
 }
 
 .mainslider{
@@ -9,27 +10,28 @@ body{
 	left: 16px;
 	top: 16px;
 	right: 16px;
+	bottom: 16px;
 	width: 100%;
-	/*height: 100%;
+	/*
+	height: 100%;
 	height: calc(100% - 32px);
 	bottom: 16px;
 	*/
 	width: calc(100% - 32px);
-	overflow: hidden;
-	
+	border-radius: 4px;
 }
 
 .mainslider .mpad{
 	margin: 0;
 	width: 100%;
-	border-radius: 4px;
+	height: 100%;
 	border-radius: 4px;
 	box-shadow: 0 4px 16px rgba(0,0,0,.2);
 	box-shadow: inset 0 3px 2px rgba(255,255,255,.02), inset 0 0 0 1px rgba(255,255,255,.08);
 	color: #fff;
 	font: 15px/25px "Whitney HTF", Whitney, "Alegreya Sans", Lato, sans-serif;
 	text-shadow: 0 1px 3px rgba(0,0,0,.15);
-	padding: 30px;
+	padding: 0px;
 	-webkit-transition: all ease 0.3s;
 	-moz-transition: all ease 0.3s;
 	-ms-transition: all ease 0.3s;
@@ -37,6 +39,7 @@ body{
 	transition: all ease 0.3s;
 	min-width: 640px;
 	opacity: 0;
+	overflow: hidden;
 }
 
 .mainslider .act{
@@ -113,9 +116,10 @@ hr{
 	font-weight:800;
 }
 
-.top30{
-	margin-top: 30px;
-}
+.top4{margin-top: 0px;}
+.top5{margin-top: 5px;}
+.top30{margin-top: 30px;}
+
 .padding30{
 	padding: 30px !important;
 }
@@ -124,17 +128,45 @@ hr{
 .green{color: green !important;}
 .gray{color: #aaa !important;}
 
+.button_pad{
+	position:absolute;
+	top: 30px;
+	left: 30px;
+}
 
+.margins{
+	margin: 30px;
+}
+
+.shadow{
+	-webkit-box-shadow: 0 0 10px 2px rgba(0,0,0,0.3) ;
+	box-shadow: 0 0 10px 2px rgba(0,0,0,0.3) ;
+}
 
 .details{
+	position:absolute;
+	/* top: 17%; */
+	top: 400px;
+	right: -100%;
+	width: 300px;
 	border: solid 1px white;
 	border-radius: 4px;
-	width: 100%;
 	padding: 10px;
 	background-color: #b4f499;
 	overflow: hidden;
 	margin-bottom: 30px;
+	-webkit-transition: all ease 0.2s;
+	-moz-transition: all ease 0.2s;
+	-ms-transition: all ease 0.2s;
+	-o-transition: all ease 0.2s;
+	transition: all ease 0.2s;
 }
+
+
+.details_visible{
+	right: calc(25% - 150px) !important;
+}
+
 
 .details div{
 	font-size:12px;

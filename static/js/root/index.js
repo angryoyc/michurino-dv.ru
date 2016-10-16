@@ -13,19 +13,17 @@ angular.module('root').controller('main', function($scope, $rootScope, $timeout)
 	$timeout(function(){
 		$scope.mode=true;
 	}, 200);
-
-
 	$scope.nextSlide=function(){
 		$('div#carousel-example-generic.carousel').carousel('next');
 	}
 	$scope.prevSlide=function(){
 		$('div#carousel-example-generic.carousel').carousel('prev');
 	}
-
 });
 
 
 angular.module('root').controller('schem', function($scope, api, geom, $timeout){
+
 	$scope.data={cost:550};
 
 	$scope.loadSteads=function(){
@@ -68,6 +66,7 @@ angular.module('root').controller('schem', function($scope, api, geom, $timeout)
 					$scope.data.curr.parent.selected=true;
 					$('div#proppanel').collapse('show');
 				};
+				$timeout($scope.setSidebarPosition, 300);
 			}
 		};
 	};
@@ -81,7 +80,7 @@ angular.module('root').controller('schem', function($scope, api, geom, $timeout)
 			}else{
 				delete $scope.data.curr.form;
 			}
-			
+			$timeout($scope.setSidebarPosition, 300);
 		}
 	};
 
@@ -98,11 +97,26 @@ angular.module('root').controller('schem', function($scope, api, geom, $timeout)
 					$scope.data.curr.form.sending=false;
 					swal("Неудача", result.message, "error");
 				};
+				$timeout($scope.setSidebarPosition, 300);
 			});
 		};
 	};
 
 
+
+	$scope.sidebarInit = function(){
+		$(window).scroll($scope.setSidebarPosition);
+	};
+
+
+	$scope.setSidebarPosition = function() {
+		if($scope.data.curr && $scope.data.curr.parent && $scope.data.curr.parent.selected){
+			var top = ($(window.top).height() - $("#sidebar").height())/2 + $(window).scrollTop();
+			$("#sidebar").stop().animate({top:  top});
+		}
+	};
+
+	$scope.sidebarInit();
 });
 
 

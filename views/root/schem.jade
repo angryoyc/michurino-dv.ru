@@ -1,56 +1,59 @@
+
 .mpad.p2(ng-class='{act: mode}', collapse)
-	.row.percent100
-		.col-lg-3
-			a.btn1(href='#/main')
-				small.glyphicon.glyphicon-chevron-left
-				span  На главную
-
-			div.details.top30()
-				.row
-					.col-xs-12.text-center.top30
-						img(src='/static/images/logo_transp.png')
-				div#proppanel.collapse
-					.row
-						.col-xs-12.lbl № участка:
-						.col-xs-12.val {{data.curr.pp}}
-					.row
-						.col-xs-12.lbl Ряд:
-						.col-xs-12.val {{data.curr.groupnum}}
-					.row
-						.col-xs-12.lbl № в кадастре:
-						.col-xs-12.val {{data.curr.cadastr}}
-					.row
-						.col-xs-12.lbl 
-							| Площадь
-						.col-xs-12.val 
-							span {{data.curr.s}} 
-							span  м
-							sup 2
-					.row
-						.col-xs-12.lbl Стоимость:
-						.col-xs-12.val
-							strong {{data.cost * data.curr.s | currency}}
-					.row(ng-show='data.curr.form')
-						.col-xs-12
-							form.top30(ng-submit='sendReserveRequest(data.curr)')
-								.alert.alert-info.top30.padding30
-									div(ng-show='!data.curr.form.sending')
-										label.text-center
-											big Укажите телефон, по которому с вами можно будет связаться для бронирования данного участка.
-										.input-group.top30
-											input#phone.form-control(placeholder='ваш телефон', ng-model='data.curr.form.phone')
-											span.input-group-btn
-												button.btn.btn-default отправить
-									div.text-center(ng-show='data.curr.form.sending')
-										h4 отправляю...
-										img(src='/static/images/progress25.gif')
-
-					.row
-						.col-xs-12.text-center
-							button.btn1.top30(ng-click='stakeThis(data.curr)')
-								span(ng-show='!data.curr.form')  забронировать
-								span(ng-show='data.curr.form')  отмена
-
-
-		.col-lg-9
+	.row
+		.col-lg-12.top4
+			include header
+	.row
+		.col-lg-12
 			include mainsvg
+
+	.button_pad
+		a.btn1.shadow(href='#/main')
+			small.glyphicon.glyphicon-chevron-left
+			span  На главную
+
+div#sidebar.details.shadow(ng-class='{details_visible:data.curr.parent.selected}')
+	.row
+		.col-xs-12.text-center.top30
+			img(src='/static/images/logo_transp.png')
+	div#proppanel.collapse
+		.row
+			.col-xs-12.lbl № участка:
+			.col-xs-12.val {{data.curr.pp}}
+		.row
+			.col-xs-12.lbl Ряд:
+			.col-xs-12.val {{data.curr.groupnum}}
+		.row
+			.col-xs-12.lbl № в кадастре:
+			.col-xs-12.val {{data.curr.cadastr}}
+		.row
+			.col-xs-12.lbl 
+				| Площадь
+			.col-xs-12.val 
+				span {{data.curr.s}} 
+				span  м
+				sup 2
+		.row
+			.col-xs-12.lbl Стоимость:
+			.col-xs-12.val
+				strong {{data.cost * data.curr.s | currency}}
+		.row(ng-show='data.curr.form')
+			.col-xs-12
+				form.top30(ng-submit='sendReserveRequest(data.curr)')
+					.alert.alert-info.top30.padding30
+						div(ng-show='!data.curr.form.sending')
+							label.text-center
+								big Укажите телефон, по которому с вами можно будет связаться для бронирования данного участка.
+							.input-group.top30
+								input#phone.form-control(placeholder='ваш телефон', ng-model='data.curr.form.phone')
+								span.input-group-btn
+									button.btn.btn-default отправить
+						div.text-center(ng-show='data.curr.form.sending')
+							h4 отправляю...
+							img(src='/static/images/progress25.gif')
+		.row
+			.col-xs-12.text-center
+				button.btn1.top30(ng-click='stakeThis(data.curr)')
+					span(ng-show='!data.curr.form')  забронировать
+					span(ng-show='data.curr.form')  отмена
+
