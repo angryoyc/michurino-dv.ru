@@ -146,8 +146,8 @@ hr{
 .details{
 	position:absolute;
 	/* top: 17%; */
-	top: 400px;
-	right: -100%;
+	top: -100%;
+	right: calc(25% - 150px);
 	width: 300px;
 	border: solid 1px white;
 	border-radius: 4px;
@@ -164,7 +164,7 @@ hr{
 
 
 .details_visible{
-	right: calc(25% - 150px) !important;
+	top: 400px !important;
 }
 
 
