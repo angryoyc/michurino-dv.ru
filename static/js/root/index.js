@@ -49,6 +49,7 @@ angular.module('root').controller('schem', function($scope, api, geom, $timeout)
 				if($scope.data.curr){
 					var idstead = $scope.data.curr.idstead;
 					if(st.idstead!=idstead){
+						setSelected(false);
 						$scope.data.curr = {};
 						angular.extend($scope.data.curr, st);
 						$scope.data.curr.parent = st;
@@ -105,12 +106,11 @@ angular.module('root').controller('schem', function($scope, api, geom, $timeout)
 	$scope.setSidebarPosition = function(mode) {
 		var top;
 		if(mode){
-			top = ($("#mainsvg").height() - $("#sidebar").height())/2;
+			top = ($(window.top).height() - $("#sidebar").height())/2  + $(window.top).scrollTop();
 			// + $("#mainsvg").position().top;
 		}else{
 			top = '-100%';
 		}
-		console.log(top);
 		$("#sidebar").css('top', top);
 	};
 
