@@ -37,7 +37,6 @@ angular.module('root').controller('schem', function($scope, api, geom, $timeout)
 				row.strt.x = 1*a[0];
 				row.strt.y = 1*a[1];
 				$scope.mode=true;
-				//$timeout(function(){$scope.mode=true;}, 500)
 			});
 		});
 	};
@@ -49,26 +48,28 @@ angular.module('root').controller('schem', function($scope, api, geom, $timeout)
 			if(st.status!='busy'){
 				if($scope.data.curr){
 					var idstead = $scope.data.curr.idstead;
-					$scope.data.curr.parent.selected = false;
-					delete $scope.data.curr;
 					if(st.idstead!=idstead){
 						$scope.data.curr = {};
 						angular.extend($scope.data.curr, st);
 						$scope.data.curr.parent = st;
-						$scope.data.curr.parent.selected = true;
+						setSelected(true);
 					}else{
-						$('div#proppanel').collapse('hide');
+						setSelected(false);
+						delete $scope.data.curr;
 					};
 				}else{
 					$scope.data.curr={};
 					angular.extend($scope.data.curr,st);
 					$scope.data.curr.parent=st;
-					$scope.data.curr.parent.selected=true;
-					$('div#proppanel').collapse('show');
+					setSelected(true);
 				};
-				$timeout($scope.setSidebarPosition, 300);
 			}
 		};
+	};
+
+	var setSelected=function(sel){
+		$scope.data.curr.parent.selected=sel;
+		$scope.setSidebarPosition(sel);
 	};
 
 	$scope.stakeThis=function(st){
@@ -80,7 +81,6 @@ angular.module('root').controller('schem', function($scope, api, geom, $timeout)
 			}else{
 				delete $scope.data.curr.form;
 			}
-			$timeout($scope.setSidebarPosition, 300);
 		}
 	};
 
@@ -102,21 +102,18 @@ angular.module('root').controller('schem', function($scope, api, geom, $timeout)
 		};
 	};
 
-
-
-	$scope.sidebarInit = function(){
-		$(window).scroll($scope.setSidebarPosition);
-	};
-
-
-	$scope.setSidebarPosition = function() {
-		if($scope.data.curr && $scope.data.curr.parent && $scope.data.curr.parent.selected){
-			var top = ($(window.top).height() - $("#sidebar").height())/2 + $(window).scrollTop();
-			$("#sidebar").stop().animate({top:  top});
+	$scope.setSidebarPosition = function(mode) {
+		var top;
+		if(mode){
+			top = ($("#mainsvg").height() - $("#sidebar").height())/2;
+			// + $("#mainsvg").position().top;
+		}else{
+			top = '-100%';
 		}
+		console.log(top);
+		$("#sidebar").css('top', top);
 	};
 
-	$scope.sidebarInit();
 });
 
 

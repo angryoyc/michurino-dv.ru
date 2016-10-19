@@ -1,5 +1,5 @@
 
-.mpad.p2(ng-class='{act: mode}', collapse)
+.mpad#schem.p2(ng-class='{act: mode}', collapse)
 	.row
 		.col-lg-12
 			include header
@@ -12,11 +12,13 @@
 			small.glyphicon.glyphicon-chevron-left
 			span  На главную
 
-div#sidebar.details.shadow(ng-class='{details_visible:data.curr.parent.selected}')
+//- ng-class='{details_visible:data.curr.parent.selected}'
+div#sidebar.details.shadow()
 	.row
 		.col-xs-12.text-center.top30
 			img(src='/static/images/logo_transp.png')
-	div#proppanel.collapse
+	//- div#proppanel.collapse
+	div
 		.row
 			.col-xs-12.lbl № участка:
 			.col-xs-12.val {{data.curr.pp}}
