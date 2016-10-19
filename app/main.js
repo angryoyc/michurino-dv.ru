@@ -153,6 +153,8 @@ var api = require('../modules/api');
 	app.all('/admin/info', ensureAuthenticatedAdmin, controllers.admin.info);
 	app.all('/admin/users', ensureAuthenticatedAdmin, controllers.admin.users);
 	app.all('/admin/stead', ensureAuthenticatedAdmin, controllers.admin.stead);
+	app.all('/admin/gallery', ensureAuthenticatedAdmin, controllers.admin.gallery.index);
+	app.all('/admin/gallery/edit', ensureAuthenticatedAdmin, controllers.admin.gallery.edit);
 
 
 

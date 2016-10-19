@@ -1,0 +1,88 @@
+h3 редактируем галерею #
+	span.bold(ng-class='{green:data.curr.enabled, grey:!data.curr.enabled}')  "{{data.curr.idgallery}}"
+style.
+	.tabbody{
+		background-color: #fff !important;
+		border-left: solid 1px #ddd !important;
+		border-bottom: solid 1px #ddd !important;
+		border-right: solid 1px #ddd !important;
+		padding: 30px;
+	}
+tabset()
+	tab.pointer(heading="Основные")
+		.tabbody
+			table.table.table-condensed
+				tbody
+					tr
+						td.text-right(width='15%', style='border: 0px; padding-top:10px;') Номер:
+						td.bold(width='85%', style='border: 0px; padding-top:10px;') {{data.curr.idgallery}}
+					tr
+						td.text-right Заголовок:
+						td 
+							input.form-control(ng-model='data.curr.title')
+					tr
+						td.text-right Текст:
+						td 
+							textarea#gallerybody.form-control(rows='10', style='width:100%;', ui-tinymce="tinymceOptions", ng-model="data.curr.note")
+				tfoot
+					tr
+						td(colspan=2)
+							button.btn.btn-sm.btn-primary(ng-click='save(data.curr)', ng-show='isNeedSave()') Сохранить
+	tab.pointer(heading="Изображения")
+		.tabbody
+			.row
+				.col-xs-4(ng-repeat='f in data.curr.files')
+					.pad(style='height:170px;')
+						.row
+							.col-xs-7.text-center
+								img.img-thumbnail.img-responsive.center-block(ng-src='/img/{{f.md5}}', style='max-height:150px;')
+							.col-xs-5
+								.text-right
+									a.pointer(ng-click='ulink_image(f)', title='Удалить')
+										span.glyphicon.glyphicon-remove
+								.text-left
+									.top20.namebox(title='{{f.filename}}')
+										span='{{f.filename}}'
+									.namebox
+										span='{{(f.size/1024) | number:0}} kb'
+									.namebox
+										span='{{f.mime}}'
+									a.pointer(ng-attr-href='/image/{{f.md5}}', target='_blank')
+										small оригинал
+
+			input#imulated(nv-file-select=true, type="file", multiple=true, style='display:none', uploader="uploader")
+			div.top30(ng-show="uploader.isHTML5")
+				table.table.dropbox.my-drop-zone(nv-file-drop='{}', uploader="uploader")
+					thead
+						tr
+							td(colspan=5)
+								.box2(ng-click='openFileDialog()')
+									h3.text-center перетащи файлы сюда
+									p.text-center.pointer
+										small (или нежно кликни здесь)
+					thead(ng-show='uploader.queue.length>0')
+						tr
+							th(width="50%") 
+							th(ng-show="uploader.isHTML5") размер
+							th(ng-show="uploader.isHTML5") загружено
+							th() статус
+							th()
+					tbody(ng-show='uploader.queue.length>0')
+						tr.animation1(ng-repeat="item in uploader.queue")
+							td(ng-show="uploader.isHTML5", nowrap=true) {{ item.file.size/1024/1024|number:2 }} MB
+							td(ng-show="uploader.isHTML5")
+								div(class="progress", style="margin-bottom: 0;")
+									div(class="progress-bar", role="progressbar", ng-style="{ 'width': item.progress + '%' }")
+							td.text-center(style='width: 10%')
+								span(ng-show="item.isSuccess") 
+									i.glyphicon.glyphicon-ok
+								span(ng-show="item.isCancel") 
+									i.glyphicon.glyphicon-ban-circle
+								span(ng-show="item.isError")
+									i.glyphicon.glyphicon-remove
+							td.text-right(style='width: 25%', nowrap=true)
+								button.btn.btn-warning.btn-xs(type="button", ng-click="item.cancel()", ng-disabled="!item.isUploading")
+									span.glyphicon.glyphicon-ban-circle.right5
+									!='Отменить'
+
+

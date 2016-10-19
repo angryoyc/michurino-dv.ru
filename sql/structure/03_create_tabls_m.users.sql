@@ -45,7 +45,7 @@ ALTER TABLE m.users_iduser_seq OWNER TO postgres;
 ALTER SEQUENCE m.users_iduser_seq OWNED BY m.users.iduser;
 ALTER TABLE ONLY m.users ALTER COLUMN iduser SET DEFAULT nextval('m.users_iduser_seq'::regclass);
 SELECT pg_catalog.setval('m.users_iduser_seq', 1, false);
-ALTER TABLE ONLY m.users ADD CONSTRAINT unit_pkey PRIMARY KEY (iduser);
+ALTER TABLE ONLY m.users ADD CONSTRAINT user_pkey PRIMARY KEY (iduser);
 
 --
 -- GRANTS:

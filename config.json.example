@@ -26,6 +26,11 @@
 		"params": "yellow"
 	},
 
+	"filestore":{
+		"temp": "/tmp",
+		"path": "/home/serg/my/projects/new.settv.ru/uploads"
+	},
+
 
 	"email": {
 		"checked": "yandex",

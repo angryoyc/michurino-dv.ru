@@ -22,16 +22,22 @@ block b3
 								li.list-group-item
 									a(href='#/stead') Участки
 								li.list-group-item
+									a(href='#/gallery') Галереи
+								li.list-group-item
 									a(href='/logout') Выход
 					.col-md-10.col-xs-12.colordark
 							div(ng-view=true)
 
 block b4
-	script(src='/static/js/admin/index.js')
-	script(src='/static/js/admin/info.js')
-	script(src='/static/js/admin/users.js')
-	script(src='/static/js/admin/stead.js')
-	script(src='/static/js/account.js')
-	script(src='/static/lib/angular-md5/angular-md5.min.js')
+	script(type="text/javascript", src="/static/lib/angular-file-upload/dist/angular-file-upload.min.js")
+	script(type="text/javascript", src='/static/lib/angular-ui-tinymce/dist/tinymce.min.js')
+
+	script(type="text/javascript", src='/static/js/admin/index.js')
+	script(type="text/javascript", src='/static/js/admin/info.js')
+	script(type="text/javascript", src='/static/js/admin/users.js')
+	script(type="text/javascript", src='/static/js/admin/stead.js')
+	script(type="text/javascript", src='/static/js/admin/gallery.js')
+	script(type="text/javascript", src='/static/js/account.js')
+	script(type="text/javascript", src='/static/lib/angular-md5/angular-md5.min.js')
 	script(type="text/javascript", src='/static/lib/angular-ui-tinymce/dist/tinymce.min.js')
 

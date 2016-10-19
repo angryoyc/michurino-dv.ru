@@ -174,10 +174,11 @@ var errors={
 	111: 'Operation not permit :: {1}',
 	113: 'Access denied',
 	114: 'Unable to delete record - linked data present',
-	115: 'Not ready method',
+	115: 'Unable to update record',
 	116: 'Value already taken',
 	117: 'Disabled',
-	118: 'Invalid password'
+	118: 'Invalid password',
+	119: 'Not ready method'
 };
 
 

@@ -1,0 +1,30 @@
+h4 Галлереи
+
+.pad
+	table.table.table-condensed
+		caption
+			button.btn.btn-default.btn-sm(ng-click='add()')
+				| новая  
+				span.glyphicon.glyphicon-plus
+		thead
+			tr
+				th #
+				th
+					input#term(ng-model='data.term', placeholder='начни набирать')
+				th Опубликовано
+			tr
+				th найдено:
+				th.red(colspan=2) {{data.total}}
+		tbody
+			tr(ng-repeat='n in data.rows')
+				td.bold(ng-class='{green:n.enabled}') {{n.idgallery}}
+				td 
+					a.pointer(ng-click='showEditPanel($index)') {{n.title}}
+				td {{n.published | date}}
+		tfoot
+			tr
+				td.text-center(colspan=3)
+					nav(aria-label="Pages")
+						ul.pagination
+							li(ng-repeat='p in data.pager.list', ng-class="{active:p.offset==data.offset}")
+								a.pointer(ng-click='loadList(p.offset, event)') {{p.caption}}
