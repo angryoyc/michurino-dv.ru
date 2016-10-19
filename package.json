@@ -33,10 +33,10 @@
     "pg": "*",
     "require-tree": "~0.3.2",
     "supertest": "0.4.0",
-    "delivery": "git+ssh://serg@settv.ru:1022/opt/git/delivery.git",
-    "db": "git+ssh://serg@settv.ru:1022/opt/git/db.git",
-    "cf": "git+ssh://serg@settv.ru:1022/opt/git/cf.git",
-    "web": "git+ssh://serg@settv.ru:1022/opt/git/web.git"
+    "delivery": "git+https://github.com/angryoyc/delivery.git",
+    "db": "git+https://github.com/angryoyc/db.git",
+    "cf": "git+https://github.com/angryoyc/cf.git",
+    "web": "git+https://github.com/angryoyc/web.git"
   },
   "devDependencies": {
     "jsdoc": "^3.3.0-beta1"
