@@ -17,11 +17,8 @@
   "dependencies": {
     "angular-animate": "^1.5.8",
     "async": "0",
-    "cf": "git+ssh://serg@settv.ru:1022/opt/git/cf.git",
     "colors": "*",
     "connect-memcached": "^0.2.0",
-    "db": "git+ssh://serg@settv.ru:1022/opt/git/db.git",
-    "delivery": "git+ssh://serg@settv.ru:1022/opt/git/delivery.git",
     "express": "3",
     "express-session": "^1.7.4",
     "jade": "*",
@@ -37,6 +34,8 @@
     "require-tree": "~0.3.2",
     "supertest": "0.4.0",
     "delivery": "git+ssh://serg@settv.ru:1022/opt/git/delivery.git",
+    "db": "git+ssh://serg@settv.ru:1022/opt/git/db.git",
+    "cf": "git+ssh://serg@settv.ru:1022/opt/git/cf.git",
     "web": "git+ssh://serg@settv.ru:1022/opt/git/web.git"
   },
   "devDependencies": {
