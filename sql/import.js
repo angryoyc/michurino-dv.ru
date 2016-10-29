@@ -2,15 +2,15 @@
 
 var fs=require('fs');
 
-fs.readFile('../static/svg/main.svg', 'utf8', (err, data) => {
+fs.readFile('../static/svg/main_decorated_new_fit.svg', 'utf8', (err, data) => {
   if (err) throw err;
   var d=
   data
   .replace(/\n/g, ' ')
   .replace(/ +/g,' ')
   .match(/\sd\=\".+?\"/g) //"
-  .filter(function(a, index){
-    return index>4;
+  .filter(function(a, index, arr){
+    return index>(arr.length-73);
   })
   .map(function(l){
   	var a=l.match(/\sd\=\"(.)\s(.+)\sz\"/) //"

@@ -38,9 +38,7 @@ angular.module('geom', []).factory('geom', function(){
 				var ex = self.calcExtremums(points);
 				start = {x: (-1) * (ex.min.x + 5), y: (-1) * (ex.min.y + 5)};
 			};
-
 			var vertexes = [start];
-
 			self.makePointsArray(points).reduce(function(prev, pair){
 				var next = { x: (prev.x + pair.x), y: (prev.y + pair.y) };
 				vertexes.push(next);
