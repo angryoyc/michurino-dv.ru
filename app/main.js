@@ -165,8 +165,8 @@ var api = require('../modules/api');
 
 
 	app.get('/', controllers.root.index);
-	app.all('/root/main', controllers.root.main);
-	app.all('/root/schem', controllers.root.schem);
+//	app.all('/root/main', controllers.root.main);
+//	app.all('/root/schem', controllers.root.schem);
 
 
 /* --------------------- end routes ------------------------------ */

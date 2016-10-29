@@ -34,7 +34,7 @@ body{
 	-o-transition: all ease 0.3s;
 	transition: all ease 0.3s;
 	min-width: 640px;
-	opacity: 0;
+	opacity: 1;
 	overflow: hidden;
 }
 
