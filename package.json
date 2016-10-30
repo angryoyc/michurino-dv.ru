@@ -31,6 +31,7 @@
     "passport-odnoklassniki": "*",
     "passport-vkontakte": "*",
     "pg": "*",
+    "multer": "^1.2.0",
     "require-tree": "~0.3.2",
     "supertest": "0.4.0",
     "promisedfs": "git+https://github.com/angryoyc/promisedfs.git",

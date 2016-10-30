@@ -27,13 +27,13 @@ exports.do=function(arg, callback, callback_err, idata){
 			if(result.rows.length>0){
 				// запись об этом файле уже присутствует в базе. Перезапишем имя и mimetype
 				data.idfile = result.rows[0].idfile;
-				db.sql("update m.files set filename=$2, mime=$3, size=$4, path=$5 where idfile=$1;", [result.rows[0].idfile, filename, mimetype, size, path], function(result){
+				db.sql("update m.files set filename=$2, mimetype=$3, size=$4, path=$5 where idfile=$1;", [result.rows[0].idfile, filename, mimetype, size, path], function(result){
 					callback(data);
 				}, callback_err);
 			}else{
 				// запись об этом файле отсутствует в базе. Создадим ее (md5, имя и mimetype)
 				var values = [filename, mimetype, md5, path, size];
-				db.sql("insert into m.files (filename, mime, md5, path, type, size) values ($1, $2, $3, $4, 'image', $5) returning idfile;", values, function(result){
+				db.sql("insert into m.files (filename, mimetype, md5, path, type, size) values ($1, $2, $3, $4, 'image', $5) returning idfile;", values, function(result){
 					data.idfile = result.rows[0].idfile;
 					callback(data);
 				}, callback_err);

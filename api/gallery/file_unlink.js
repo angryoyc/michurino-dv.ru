@@ -16,7 +16,7 @@ exports.do=function(arg, callback, callback_err, idata){
 	data.idgallery = arg.idgallery?parseInt(arg.idgallery):0;
 
 	if(data.idfile>0 && data.idgallery>0){
-		db.sql("delete from m.gallery2file where idfile=$1 and idgallery=$2;", [data.idfile, data.idgallery], function(result){
+		db.sql("delete from m.gallery2files where idfile=$1 and idgallery=$2;", [data.idfile, data.idgallery], function(result){
 			data.unlinked=true;
 			return_data(data, callback, callback_err, data);
 		}, callback_err);
@@ -27,7 +27,7 @@ exports.do=function(arg, callback, callback_err, idata){
 
 var return_data = exports.return_data = function (arg, callback, callback_err, idata){
 	var data = idata || {};
-	db.sql("select files.idfile, files.md5, files.filename, files.mime, files.size, files.note from m.gallery2file inner join m.files on gallery2file.idfile=file.idfile  where gallery2file.idgallery=$1;", [data.idgallery], function(result){
+	db.sql("select files.idfile, files.md5, files.filename, files.mimetype, files.size, files.note from m.gallery2files inner join m.files on gallery2files.idfile=files.idfile  where gallery2files.idgallery=$1;", [data.idgallery], function(result){
 		data.rows=result.rows;
 		callback(data);
 	}, callback_err);

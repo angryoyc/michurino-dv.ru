@@ -96,23 +96,10 @@ style.
 		baseline-shift:super;
 	}
 
-svg#mainsvg(xmlns:osb="http://www.openswatchbook.org/uri/2009/osb", xmlns:dc="http://purl.org/dc/elements/1.1/", xmlns:cc="http://creativecommons.org/ns#", xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#",  xmlns:svg="http://www.w3.org/2000/svg", xmlns="http://www.w3.org/2000/svg", xmlns:xlink="http://www.w3.org/1999/xlink", xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd", version="1.1", width="100%" viewBox="0 0 2270 1940")
+svg#mainsvg(xmlns:osb="http://www.openswatchbook.org/uri/2009/osb", xmlns:dc="http://purl.org/dc/elements/1.1/", xmlns:cc="http://creativecommons.org/ns#", xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#",  xmlns:svg="http://www.w3.org/2000/svg", xmlns="http://www.w3.org/2000/svg", xmlns:xlink="http://www.w3.org/1999/xlink", xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd", version="1.1", width="100%", viewBox="0 0 2270 1940")
 
 	- var xml = fs.readFileSync('/home/serg/my/projects/michurino-dv.ru/static/svg/decor_new_fit.svg')
 	g(inkscape:groupmode="layer", id="layer0", inkscape:label="декор", style="display:inline", )!= xml
-
-	//- transform="translate(-67.548706,-2)"
-
-	//-
-		g(inkscape:groupmode="layer", id="layer0", inkscape:label="декор", style="display:inline")!= xml
-		g(inkscape:groupmode="layer", id="layer1", inkscape:label="Границы", style="display:inline")
-			//- path(style="fill:#009881;stroke: none;", d="m 0,0 2760,0 0,2150 -2760,0 z", id="path01")
-			path(style="fill:#12846e;stroke:#8fc479;stroke-width:17;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none", d="m 54.137862,144.40729 275.502688,-23.03924 596.42888,-11.38811 61.86837,-5.83847 79.6084,-21.515778 115.5087,-42.249386 11.35,38.431611 -34.0522,23.142073 -169.926,112.38616 106.3074,125.67712 307.6582,364.75359 250.9659,-139.46718 125.4285,214.94793 951.5995,153.08562 10.6252,45.93577 -306.5486,964.969 -13.8259,80.004 -250.1014,75.7211 -17.2006,38.7888 -805.4069,-266.1325 -120.7843,-43.9033 -152.2348,31.5978 -1.7888,7.1445 -59.3418,-18.4819 -92.36893,-152.4538 -56.22189,-32.4597 -813.049618,-469.4144 z", id="path3051")
-			path(style="fill:#12846e;fill-opacity:1;stroke:#8fc479;stroke-width:5;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none", d="m 1429.2016,1481.1163 473.0469,99.2187 -167.7596,358.4124 -489.5283,-229.6205 z", id="path2996")
-		g(inkscape:groupmode="layer", id="layer3", inkscape:label="Дороги", style="display:inline")
-			path(style="fill:#92ccc8;stroke:#00987f;stroke-width:5;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;display:inline", d="m 54.31014,144.39452 28.776338,-2.4392 3.148252,185.82225 14.67332,17.14433 1000.00035,0 25.8518,30.6641 -110.2868,0 -0.067,309.92923 315.9257,182.3998 295.4579,170.58267 190.0842,-252.25029 48.7868,7.8494 -804.7717,1067.96819 -45.4829,-12.2338 124.1436,-164.7441 -927.65918,-535.5843 0,-773.9168 -158.6225,-0.1595 z", id="path3766")
-			path(style="fill:#92ccc8;stroke:#00987f;stroke-width:5;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none", d="m 641.36793,375.586 319.26786,0 0,342.2059 633.29771,365.6346 L 1400.3504,1340.32 641.36793,902.12128 z", id="path3787")
-			path(style="fill:#92ccc8;stroke:#00987f;stroke-width:5;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none", d="m 267.92717,375.586 320.68397,4e-5 2e-5,556.99437 779.75094,450.18949 -194.4417,258.0329 -905.99323,-523.0754 z", id="path3789")
 
 	g(inkscape:groupmode="layer", id="layer4{{$index+1}}", inkscape:label="Участки", style="display:inline")
 		path.stead(ng-attr-d="m {{st.start}} {{st.points}} z", ng-click='hover(st)', ng-repeat='st in data.rows', ng-class="{selected:st.selected, busy: st.status=='busy'}")

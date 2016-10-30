@@ -105,9 +105,9 @@ angular.module('root').controller('schem', function($scope, api, geom, $timeout)
 
 	$scope.setSidebarPosition = function(mode) {
 		var top;
+		$("#sidebar").css('display', 'block');
 		if(mode){
-			top = ($(window.top).height() - $("#sidebar").height())/2  + $(window.top).scrollTop();
-			// + $("#mainsvg").position().top;
+			top = ($(window).height() - $("#sidebar").height())/2  + $(window.top).scrollTop() - 50;
 		}else{
 			top = '-100%';
 		}

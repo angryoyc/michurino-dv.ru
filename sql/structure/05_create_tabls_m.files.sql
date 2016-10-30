@@ -26,7 +26,8 @@ CREATE TABLE m.files (
 	filename varchar(250),
 	note text,
 	mimetype varchar(20),
-	size int,
+	"type" varchar(20),
+	"size" int,
 	dt timestamp
 );
 

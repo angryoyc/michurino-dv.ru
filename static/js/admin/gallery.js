@@ -64,7 +64,6 @@ angular.module('admin').controller('gallery_edit', ['$scope', 'api', '$routePara
 
 //- Файлы изображений
 	$scope.uploader = new FileUploader();
-
 	$scope.uploader.url               = '/api/file/uploader';
 	$scope.uploader.alias             = 'ufile';
 	$scope.uploader.formData          = [{idgallery:idgallery}];
@@ -125,18 +124,6 @@ angular.module('admin').controller('gallery_edit', ['$scope', 'api', '$routePara
 	};
 
 	$scope.loadgalleryData(idgallery)
-
-/*
-	$scope.saveBak=function(){
-		if($scope.data.curr){
-			var bak = $scope.data.curr.bak = {};
-			bak.title = $scope.data.curr.title;
-			bak.note = $scope.data.curr.note;
-			bak.enabled = $scope.data.curr.enabled;
-		};
-	};
-*/
-
 
 	$scope.saveBak=function(){
 		if($scope.data.curr){

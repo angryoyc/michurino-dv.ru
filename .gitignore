@@ -10,4 +10,4 @@ trash
 trash/*
 .DS_Store
 sql/!!config.conf
-
+uploads/

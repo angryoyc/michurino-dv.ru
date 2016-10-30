@@ -27,7 +27,19 @@ html(lang='en', ng-app=ng_app)
 		block b1
 
 	body
-		block b3
+		.mainslider(ng-controller='schem')
+			block b5
+			.mpad
+				.row
+					.col-lg-12
+						include header
+				.row
+					.col-lg-12
+						block b3
+				.row
+					.col-lg-12
+						include footer
+
 
 		//- SweetAlert
 		script(src="/static/lib/sweetalert/dist/sweetalert.min.js")

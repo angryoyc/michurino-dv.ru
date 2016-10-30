@@ -1,5 +1,5 @@
 h3 редактируем галерею #
-	span.bold(ng-class='{green:data.curr.enabled, grey:!data.curr.enabled}')  "{{data.curr.idgallery}}"
+	span.bold(ng-class='{green:data.curr.enabled, grey:!data.curr.enabled}') {{data.curr.idgallery}}
 style.
 	.tabbody{
 		background-color: #fff !important;
@@ -8,8 +8,9 @@ style.
 		border-right: solid 1px #ddd !important;
 		padding: 30px;
 	}
-tabset()
-	tab.pointer(heading="Основные")
+
+uib-tabset()
+	uib-tab.pointer(heading="Основные")
 		.tabbody
 			table.table.table-condensed
 				tbody
@@ -28,14 +29,23 @@ tabset()
 					tr
 						td(colspan=2)
 							button.btn.btn-sm.btn-primary(ng-click='save(data.curr)', ng-show='isNeedSave()') Сохранить
-	tab.pointer(heading="Изображения")
+	uib-tab.pointer(heading="Изображения")
 		.tabbody
 			.row
 				.col-xs-4(ng-repeat='f in data.curr.files')
+					.thumbnail
+						img(ng-src='/img/240x240/{{f.md5}}')
+						.caption
+							h3 Что это?
+							p Я пока не знаю, что здесь изображено, но обязательно это выясню
+							p
+								a.btn.btn-default.btn-xs.right5(ng-click='ulink_image(f)', title='Удалить') удалить
+								a.btn.btn-default.btn-xs(ng-click='ulink_image(f)', title='Удалить') подписать
+				//-
 					.pad(style='height:170px;')
 						.row
 							.col-xs-7.text-center
-								img.img-thumbnail.img-responsive.center-block(ng-src='/img/{{f.md5}}', style='max-height:150px;')
+								img.img-thumbnail.img-responsive.center-block(ng-src='/img/240x240/{{f.md5}}', style='max-height:150px;')
 							.col-xs-5
 								.text-right
 									a.pointer(ng-click='ulink_image(f)', title='Удалить')
@@ -47,7 +57,7 @@ tabset()
 										span='{{(f.size/1024) | number:0}} kb'
 									.namebox
 										span='{{f.mime}}'
-									a.pointer(ng-attr-href='/image/{{f.md5}}', target='_blank')
+									a.pointer(ng-attr-href='/img/{{f.md5}}', target='_blank')
 										small оригинал
 
 			input#imulated(nv-file-select=true, type="file", multiple=true, style='display:none', uploader="uploader")

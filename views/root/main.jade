@@ -3,18 +3,11 @@ extends ../layouts/ang_layout
 block b1
 	link(rel='stylesheet', href='/static/css/master.css')
 
+block b5
+	include parts/details
+
 block b3
-
-
-	.mainslider(ng-controller='schem')
-		.mpad#schem.p2(ng-class='{act: mode}', collapse)
-			.row
-				.col-lg-12
-					include parts/header
-			.row
-				.col-lg-12
-					include parts/mainsvg
-		include parts/details
+	include parts/mainsvg
 
 block b4
 	script(src='/static/js/root/index.js')

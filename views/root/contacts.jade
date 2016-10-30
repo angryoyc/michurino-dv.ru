@@ -1,62 +1,37 @@
-.mpad.p1(ng-class='{act: mode}')
+extends ../layouts/ang_layout
+
+block b1
+	link(rel='stylesheet', href='/static/css/master.css')
+
+block b3
 	.row
-		.col-lg-12
-			include parts/header
-	.row
-		.col-xs-3.text-center
-			div.top30
-				small Тел.: +7 (4212) 778 706
-				br
-				small Тел.: +7 (4212) 25 87 87
-			div.top30
-				script(src="//yastatic.net/es5-shims/0.0.2/es5-shims.min.js")
-				script(src="//yastatic.net/share2/share.js")
-				div.ya-share2(data-services="vkontakte,facebook,odnoklassniki,whatsapp")
+		.col-xs-3
 		.col-xs-6
-			h2.text-center Приглашаем приобрести участки в уютном посёлке!
-			br
-			div#carousel-example-generic.carousel.slide(data-ride="carousel")
-				ol.carousel-indicators
-					li.active(data-target="#carousel-example-generic", data-slide-to="0")
-					li(data-target="#carousel-example-generic", data-slide-to="1")
-				.carousel-inner(role="listbox")
-					.item.active
-						img(src="/static/images/sputnik2.png")
-						.carousel-caption 
-					.item
-						img(src="/static/images/sputnik3.png")
-						.carousel-caption 
-				a.left.carousel-control(role="button", data-slide="prev", ng-click='prevSlide()')
-					span.glyphicon.glyphicon-chevron-left(aria-hidden="true")
-					span.sr-only Previous
-				a.right.carousel-control(role="button", data-slide="next", ng-click='nextSlide()')
-					span.glyphicon.glyphicon-chevron-right(aria-hidden="true")
-					span.sr-only Next
-			h4(style='color: #ddd; line-height: 25px;')
-				| В коттеджном посёлке планируется создание следующей инфраструктуры:
-				ul
-					li собственная эксплуатационная служба, выполняющая функции ТСЖ, в том числе:
-						ul
-							li поддержание мест общего пользования в надлежащем порядке;
-							li уборка общественной территории и дорог;
-							li освещение внутренних дорог и мест общего пользования;
-							li вывоз бытового мусора;
-							li охрана;
-					li планирунтся газификация района;
-					li гостевая автопарковка;
-					li детская и спортивная площадки;
-					li зона отдыха;
-					li магазин;
-					li водоём.
-			h4 
-				| Ознакомиться с планировкой участков и ценами вы можете на 
-				//- a.pointer( href='#', ng-click='turnNext()' )  схеме
-				a.pointer( href='#/schem'  )  схеме
-		.col-xs-3.text-right
-			.margins
-				a.btn1( href='#/schem' )
-					span Схема
-					small.glyphicon.glyphicon-chevron-right
+			.row
+				.col-md-6
+					div.top30.text-left
+						big Тел.: +7 (4212) 778 706
+						br
+						big Тел.: +7 (4212) 25 87 87
+						br
+						big E-mail:  
+						big
+							a(href='mailto:info@michurino-dv.ru') info@michurino-dv.ru
+				.col-md-6.text-center
+					div.top30
+						script(src="//yastatic.net/es5-shims/0.0.2/es5-shims.min.js")
+						script(src="//yastatic.net/share2/share.js")
+						div.ya-share2(data-services="vkontakte,facebook,odnoklassniki,whatsapp")
+			.row.top30
+				.col-md-12
+					a.thumbnail(href="/static/images/sputnik2.png", target='_blank')
+						img(src='/static/images/sputnik2.png')
+
+		.col-xs-3
+
+block b4
+	script(src='/static/js/root/index.js')
+
 
 
 

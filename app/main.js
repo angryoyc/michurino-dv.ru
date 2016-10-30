@@ -7,6 +7,8 @@ var controllers = requiretree('../controllers');		// важен порядок
 
 var express = require('express');
 var app = express();
+var multer = require('multer');
+var uploader;
 
 
 var colors = require('colors');
@@ -26,6 +28,19 @@ app.use(express.cookieParser());
 
 app.use(express.json());
 app.use(express.urlencoded());
+
+if(conf.filestore && conf.filestore.temp && typeof(conf.filestore.temp)=='string'){
+	var temp;
+	if(conf.filestore.temp.match(/^\//)){ //"
+		temp = conf.filestore.temp;
+	}else{
+		temp = __dirname + '/../'+conf.filestore.temp
+	}
+	console.log('Temp folder: ' + temp);
+	uploader = multer({ dest:temp });
+};
+
+
 
 app.use(methodOverride('X-HTTP-Method-Override'));
 app.use(require('../modules/express_mc_sessions')(conf, express));
@@ -47,6 +62,8 @@ if ('development' == app.get('env')){app.use(express.errorHandler());};
 
 
 var api = require('../modules/api');
+
+	if(uploader) app.post('/api/file/uploader', uploader.single('ufile'));
 
 	app.all('/api/:scheme/:method', api.go);
 
@@ -165,6 +182,12 @@ var api = require('../modules/api');
 
 
 	app.get('/', controllers.root.index);
+	app.get('/about', controllers.root.about);
+	app.get('/news', controllers.root.news);
+	app.get('/gallery', controllers.root.gallery);
+	app.get('/contacts', controllers.root.contacts);
+	app.get('/ekopark', controllers.root.ekopark);
+
 //	app.all('/root/main', controllers.root.main);
 //	app.all('/root/schem', controllers.root.schem);
 

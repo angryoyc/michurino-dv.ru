@@ -1,0 +1,38 @@
+extends ../layouts/ang_layout
+
+block b1
+	link(rel='stylesheet', href='/static/css/master.css')
+
+block b3
+	.row
+		.col-xs-1
+		.col-xs-10
+			div#carousel-example-generic.carousel.slide.top30(data-ride="carousel")
+				ol.carousel-indicators
+					li.active(data-target="#carousel-example-generic", data-slide-to="0")
+					li(data-target="#carousel-example-generic", data-slide-to="1")
+				.carousel-inner(role="listbox")
+					.item.active
+						img(src="/static/images/sputnik2.png")
+						.carousel-caption 
+					.item
+						img(src="/static/images/sputnik3.png")
+						.carousel-caption 
+				a.left.carousel-control(role="button", data-slide="prev", ng-click='prevSlide()')
+					span.glyphicon.glyphicon-chevron-left(aria-hidden="true")
+					span.sr-only Previous
+				a.right.carousel-control(role="button", data-slide="next", ng-click='nextSlide()')
+					span.glyphicon.glyphicon-chevron-right(aria-hidden="true")
+					span.sr-only Next
+		.col-xs-1
+	.row.top30
+
+block b4
+	script(src='/static/js/root/index.js')
+
+
+
+
+
+
+

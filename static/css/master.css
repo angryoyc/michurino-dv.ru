@@ -24,7 +24,7 @@ body{
 	border-radius: 4px;
 	box-shadow: 0 4px 16px rgba(0,0,0,.2);
 	box-shadow: inset 0 3px 2px rgba(255,255,255,.02), inset 0 0 0 1px rgba(255,255,255,.08);
-	color: #fff;
+	color: #00977f;
 	font: 15px/25px "Whitney HTF", Whitney, "Alegreya Sans", Lato, sans-serif;
 	text-shadow: 0 1px 3px rgba(0,0,0,.15);
 	padding: 0px;
@@ -35,20 +35,13 @@ body{
 	transition: all ease 0.3s;
 	min-width: 640px;
 	opacity: 1;
+	background: #ededed;
 	overflow: hidden;
 }
 
 .mainslider .act{
 	display: block;
 	opacity: 1;
-}
-.p1{
-	/* background: linear-gradient(90deg, #009881, #86c883); */
-	background: #ededed;
-}
-.p2{
-	/* background: linear-gradient(-90deg, #009881, #86c883); */
-	background: #ededed;
 }
 
 .btn1{
@@ -59,6 +52,7 @@ body{
 	background-color: #009881;
 	color: white;
 }
+
 
 .inp {
 	border-radius: 2px;
@@ -73,6 +67,15 @@ body{
 }
 .btn1:hover {
 	background-color: #00b69a;
+}
+
+
+.right5{
+	margin-right: 5px;
+}
+
+.dropbox{
+	border: dashed #777 3px;
 }
 
 hr{
@@ -122,6 +125,14 @@ hr{
 	padding: 30px !important;
 }
 
+.pointer{
+	cursor: pointer;
+}
+
+.default{
+	cursor: default;
+}
+
 .red{color: red !important;}
 .green{color: green !important;}
 .gray{color: #aaa !important;}
@@ -137,8 +148,9 @@ hr{
 
 .details{
 	position:absolute;
-	/* top: 17%; */
 	top: -100%;
+	display: none;
+
 	right: calc(18% - 150px);
 	width: 300px;
 	border: solid 1px white;
@@ -152,12 +164,15 @@ hr{
 	-ms-transition: all ease 0.2s;
 	-o-transition: all ease 0.2s;
 	transition: all ease 0.2s;
+	z-index: 9000;
 }
 
-
+/*
 .details_visible{
 	top: 400px !important;
+	display: block !important;
 }
+*/
 
 
 .details div{
