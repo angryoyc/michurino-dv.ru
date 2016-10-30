@@ -6,7 +6,7 @@ var return_data = require('../gallery/file_unlink').return_data;
 
 // GO
 exports.go = function(req, res){
-	env.std_go(req, res, exports.do, 16);
+	env.std_go(req, res, exports.do, (1+8));
 };
 
 // DO
