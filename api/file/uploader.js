@@ -26,7 +26,7 @@ exports.do=function(arg, callback, callback_err, idata){
 	var idgallery = (arg.idgallery || 0);
 	
 	
-	console.log(arg);
+	//- console.log(arg);
 
 	if(idgallery>0 && cf.isArray(arg.files)){
 		async.forEachLimit(

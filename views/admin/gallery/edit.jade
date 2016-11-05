@@ -39,38 +39,34 @@ uib-tabset()
 				.col-xs-4(ng-repeat='f in data.curr.files')
 					.thumbnail
 						img(ng-src='/img/240x240/{{f.md5}}')
-						.caption(ng-show='!f.edit')
-							h3(ng-bind='f.title')
-							p(ng-bind='f.note')
-							p
-								a.btn.btn-default.btn-xs.right5(ng-click='ulink_image(f)', title='Удалить') удалить
-								a.btn.btn-default.btn-xs(ng-click='fileEditStart(f)', title='Удалить') подписать
-						.caption(ng-if='f.edit')
-							form(ng-submit='fileEditSave(f)')
-								input#filetitle.input.form-control.input-sm(ng-model='f.edit.title', placeholder='заголовок')
-								textarea.input.form-control.input-sm.top5(ng-model='f.edit.note', placeholder='подпись', rows=3)
-								p.text-right.top5
-									button.btn.btn-default.btn-xs
-										big.bold ок
-								
-				//-
-					.pad(style='height:170px;')
-						.row
-							.col-xs-7.text-center
-								img.img-thumbnail.img-responsive.center-block(ng-src='/img/240x240/{{f.md5}}', style='max-height:150px;')
-							.col-xs-5
-								.text-right
-									a.pointer(ng-click='ulink_image(f)', title='Удалить')
-										span.glyphicon.glyphicon-remove
-								.text-left
-									.top20.namebox(title='{{f.filename}}')
-										span='{{f.filename}}'
-									.namebox
-										span='{{(f.size/1024) | number:0}} kb'
-									.namebox
-										span='{{f.mime}}'
-									a.pointer(ng-attr-href='/img/{{f.md5}}', target='_blank')
-										small оригинал
+
+						.caption
+							div.text-right
+								span.pointer.glyphicon.glyphicon-zoom-in(ng-click='f.withdetails=!f.withdetails', ng-show='!f.withdetails')
+								span.pointer.glyphicon.glyphicon-zoom-out(ng-click='f.withdetails=!f.withdetails', ng-show='f.withdetails')
+							div(ng-show='f.withdetails', style='border-bottom: solid #eee 1px;')
+								.namebox
+									small='{{(f.size/1024) | number:0}} kb'
+								.namebox
+									small='{{f.mime}}'
+								a.pointer(ng-attr-href='/img/{{f.md5}}', target='_blank')
+									small(ng-bind='f.filename')
+
+
+							div(ng-show='!f.edit')
+								h3(ng-bind='f.title', style='margin-top:0px;')
+								p(ng-bind='f.note')
+								p
+									a.btn.btn-default.btn-xs.right5(ng-click='ulink_image(f)', title='Удалить') удалить
+									a.btn.btn-default.btn-xs(ng-click='fileEditStart(f)', title='Удалить') подписать
+
+							div(ng-if='f.edit')
+								form(ng-submit='fileEditSave(f)')
+									input#filetitle.input.form-control.input-sm(ng-model='f.edit.title', placeholder='заголовок')
+									textarea.input.form-control.input-sm.top5(ng-model='f.edit.note', placeholder='подпись', rows=3)
+									p.text-right.top5
+										button.btn.btn-default.btn-xs
+											big.bold ок
 
 			input#imulated(nv-file-select=true, type="file", multiple=true, style='display:none', uploader="uploader")
 			div.top30(ng-show="uploader.isHTML5")
