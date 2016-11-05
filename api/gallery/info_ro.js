@@ -21,7 +21,7 @@ exports.do=function(arg, callback, callback_err, idata){
 			async.parallel(
 				[
 					function(cb){ //- Файлы
-						db.sql('select files.idfile, files.filename, note, md5, mimetype, size from m.gallery2files inner join m.files on files.idfile=gallery2files.idfile where gallery2files.idgallery=$1;', [data.idgallery], function(result){
+						db.sql('select files.idfile, files.filename, files.title, files.note, files.md5, files.mimetype, files.size from m.gallery2files inner join m.files on files.idfile=gallery2files.idfile where gallery2files.idgallery=$1 order by gallery2files.dt;', [data.idgallery], function(result){
 							data.files = result.rows;
 							cb();
 						}, cb)

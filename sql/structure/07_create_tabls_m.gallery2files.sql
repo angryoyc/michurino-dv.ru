@@ -20,6 +20,7 @@ SET default_with_oids = false;
 drop table m.gallery2files cascade;
 
 CREATE TABLE m.gallery2files (
+	dt timestamp,
 	idgallery bigint NOT NULL,
 	idfile bigint NOT NULL
 );

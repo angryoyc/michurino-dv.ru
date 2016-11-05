@@ -15,7 +15,7 @@ var api_gallery_file_link	= require('../gallery/file_link').do;
 // GO
 exports.go = function(req, res){
 	req.body.files = req.file?[req.file]:(req.files || []);
-	env.std_go(req, res, exports.do);
+	env.std_go(req, res, exports.do, (8+1));
 };
 
 // DO

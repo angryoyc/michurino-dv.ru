@@ -11,7 +11,7 @@ var db			= require('db');
 
 // GO
 exports.go = function(req, res){
-	env.std_go(req, res, exports.do);
+	env.std_go(req, res, exports.do, (8+1));
 };
 
 // DO

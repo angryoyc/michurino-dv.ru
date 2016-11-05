@@ -29,7 +29,7 @@ exports.do=function(arg, callback, callback_err, idata){
 		where.push('gallery.title ilike \'%\' || $' + values.length + ' || \'%\'');
 	};
 
-	var sql = 'select count(1) OVER() as total, idgallery, title, dt, enabled from m.gallery';
+	var sql = 'select count(1) OVER() as total, idgallery, title, dt, enabled, (select count(*) from m.gallery2files where gallery2files.idgallery=m.gallery.idgallery) as filecounter from m.gallery';
 
 	db.sql(sql + (where.length>0?' where ' + where.join(' and '):'') + ' order by gallery.dt desc, gallery.idgallery desc offset $1 limit $2;', values, function(result){
 		data.total = (result.rows.length>0)?result.rows[0].total:0;

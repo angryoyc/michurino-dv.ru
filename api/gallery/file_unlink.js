@@ -5,7 +5,7 @@ var db = require('db');
 
 // GO
 exports.go = function(req, res){
-	env.std_go(req, res, exports.do, 16);
+	env.std_go(req, res, exports.do, (1+8));
 };
 
 // DO
@@ -27,7 +27,7 @@ exports.do=function(arg, callback, callback_err, idata){
 
 var return_data = exports.return_data = function (arg, callback, callback_err, idata){
 	var data = idata || {};
-	db.sql("select files.idfile, files.md5, files.filename, files.mimetype, files.size, files.note from m.gallery2files inner join m.files on gallery2files.idfile=files.idfile  where gallery2files.idgallery=$1;", [data.idgallery], function(result){
+	db.sql("select files.idfile, files.md5, files.filename, files.mimetype, files.size, files.title, files.note from m.gallery2files inner join m.files on gallery2files.idfile=files.idfile  where gallery2files.idgallery=$1 order by gallery2files.dt;", [data.idgallery], function(result){
 		data.rows=result.rows;
 		callback(data);
 	}, callback_err);

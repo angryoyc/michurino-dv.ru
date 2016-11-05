@@ -27,6 +27,8 @@ CREATE TABLE m.gallery (
 	dt timestamp
 );
 
+alter table m.gallery alter column "enabled" set default false;
+
 ALTER TABLE m.gallery OWNER TO postgres;
 
 

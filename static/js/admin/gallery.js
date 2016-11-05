@@ -2,12 +2,6 @@ angular.module('admin').controller('gallery', function($scope, api, $rootScope, 
 
 	$scope.data = { rows:[], term:($rootScope.data?$rootScope.data.term:'') };
 
-/*
-	$scope.hidePanel = function(){
-		$('#modal_edit').modal('hide');
-	};
-*/
-
 	$timeout(function(){
 		$('#term').focus();
 	}, 200);
@@ -20,7 +14,7 @@ angular.module('admin').controller('gallery', function($scope, api, $rootScope, 
 			offs = offset;
 		};
 		if(event) event.preventDefault();
-		return api.call('/api/gallery/list_ro', {offset: offs, limit:10, term: $scope.data.term || ($rootScope.data?$rootScope.data.term:'') || ''}, true, true)
+		return api.call('/api/gallery/list_ro', {offset: offs, limit:10, term: $scope.data.term }, true, true)
 		.then(function(result){
 			$scope.data.rows   = result.rows;
 			$scope.data.total  = result.total;
@@ -34,16 +28,14 @@ angular.module('admin').controller('gallery', function($scope, api, $rootScope, 
 		$scope.loadList();
 	});
 
-
-
-
 	// ДОБАВИТЬ
 	$scope.add = function(){
-		return api.call('/api/gallery/add', {title: '--==новая галерея==--' }, true)
+		return api.call('/api/gallery/add', {title: $scope.data.term  || '--==новая галерея==--'}, true)
 		.then(function(result){
-			$scope.data.curr=result;
-			$scope.saveBak();
-			return $scope.data.curr;
+			if(!$rootScope.data) $rootScope.data = {};
+			$rootScope.data.offset = $scope.data.offset;
+			$rootScope.data.term = $scope.data.term;
+			$location.url('/gallery/edit/' + result.idgallery);
 		});
 	};
 
@@ -59,8 +51,14 @@ angular.module('admin').controller('gallery', function($scope, api, $rootScope, 
 
 });
 
-angular.module('admin').controller('gallery_edit', ['$scope', 'api', '$routeParams', '$rootScope', 'FileUploader', function($scope, api, $routeParams, $rootScope, FileUploader){
+angular.module('admin').controller('gallery_edit', ['$scope', 'api', '$routeParams', '$rootScope', 'FileUploader', '$timeout', '$location', function($scope, api, $routeParams, $rootScope, FileUploader, $timeout, $location){
+
 	var idgallery = $routeParams["idgallery"];
+
+	$scope.stopEdit = function(){
+		$location.url('/gallery');
+	};
+
 
 //- Файлы изображений
 	$scope.uploader = new FileUploader();
@@ -133,6 +131,21 @@ angular.module('admin').controller('gallery_edit', ['$scope', 'api', '$routePara
 			bak.enabled = $scope.data.curr.enabled;
 		};
 	};
+
+	$scope.fileEditStart=function(file){
+		file.edit={title: file.title || '', note: file.note || ''};
+		$timeout(function(){$('#filetitle').focus()},100);
+	};
+
+	$scope.fileEditSave=function(file){
+		return api.call('/api/file/update', { idfile:file.idfile, title:file.edit.title, note:file.edit.note }, true, true)
+		.then(function(result){
+			file.title = result.title;
+			file.note = result.note;
+			delete file.edit;
+		});
+	};
+
 
 // # SAVE
 	$scope.save = function(curr){

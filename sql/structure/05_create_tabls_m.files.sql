@@ -24,6 +24,7 @@ CREATE TABLE m.files (
 	md5 varchar(32),
 	path varchar(250),
 	filename varchar(250),
+	title varchar(250),
 	note text,
 	mimetype varchar(20),
 	"type" varchar(20),

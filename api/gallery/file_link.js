@@ -6,7 +6,7 @@ var return_data = require('../gallery/file_unlink').return_data;
 
 // GO
 exports.go = function(req, res){
-	env.std_go(req, res, exports.do, 16);
+	env.std_go(req, res, exports.do, (1+8));
 };
 
 // DO
@@ -19,7 +19,7 @@ exports.do=function(arg, callback, callback_err, idata){
 	if(data.idfile>0 && data.idgallery>0){
 		db.sql("select * from m.gallery2files where idfile=$1 and idgallery=$2;", [data.idfile, data.idgallery], function(result){
 			if(!(result.rows.length>0)){
-				db.sql("insert into m.gallery2files (idfile, idgallery) values ($1, $2);", [data.idfile, data.idgallery], function(result){
+				db.sql("insert into m.gallery2files (dt, idfile, idgallery) values (now(), $1, $2);", [data.idfile, data.idgallery], function(result){
 					data.linked = true;
 					return_data(data, callback, callback_err, data);
 				}, callback_err);

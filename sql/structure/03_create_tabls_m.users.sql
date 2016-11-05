@@ -63,8 +63,8 @@ REVOKE ALL ON SEQUENCE m.users_iduser_seq FROM site;
 GRANT ALL ON SEQUENCE m.users_iduser_seq TO postgres;
 GRANT ALL ON SEQUENCE m.users_iduser_seq TO site;
 
-insert into m.users (username, md5pass, enabled, dt, rights, provider) values ('admin', 'f6fdffe48c908deb0f4c3bd36c032e72', true, now(), 7, 'mc') returning iduser;
-insert into m.users (username, md5pass, enabled, dt, rights, provider) values ('serg', 'e0e581846e613fb1beadc89c885ba0fa', true, now(), 7, 'mc') returning iduser;
+insert into m.users (username, md5pass, enabled, dt, rights, provider) values ('admin', 'f6fdffe48c908deb0f4c3bd36c032e72', true, now(), 15, 'mc') returning iduser;
+insert into m.users (username, md5pass, enabled, dt, rights, provider) values ('serg', 'e0e581846e613fb1beadc89c885ba0fa', true, now(), 15, 'mc') returning iduser;
 
 update m.users set id=iduser where iduser=(select iduser from m.users where username='admin');
 select * from m.users;

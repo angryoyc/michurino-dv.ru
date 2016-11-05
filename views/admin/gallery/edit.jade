@@ -18,6 +18,10 @@ uib-tabset()
 						td.text-right(width='15%', style='border: 0px; padding-top:10px;') Номер:
 						td.bold(width='85%', style='border: 0px; padding-top:10px;') {{data.curr.idgallery}}
 					tr
+						td.text-right Активная
+						td
+							input(ng-model="data.curr.enabled", type='checkbox')
+					tr
 						td.text-right Заголовок:
 						td 
 							input.form-control(ng-model='data.curr.title')
@@ -35,12 +39,20 @@ uib-tabset()
 				.col-xs-4(ng-repeat='f in data.curr.files')
 					.thumbnail
 						img(ng-src='/img/240x240/{{f.md5}}')
-						.caption
-							h3 Что это?
-							p Я пока не знаю, что здесь изображено, но обязательно это выясню
+						.caption(ng-show='!f.edit')
+							h3(ng-bind='f.title')
+							p(ng-bind='f.note')
 							p
 								a.btn.btn-default.btn-xs.right5(ng-click='ulink_image(f)', title='Удалить') удалить
-								a.btn.btn-default.btn-xs(ng-click='ulink_image(f)', title='Удалить') подписать
+								a.btn.btn-default.btn-xs(ng-click='fileEditStart(f)', title='Удалить') подписать
+						.caption(ng-if='f.edit')
+							form(ng-submit='fileEditSave(f)')
+								input#filetitle.input.form-control.input-sm(ng-model='f.edit.title', placeholder='заголовок')
+								textarea.input.form-control.input-sm.top5(ng-model='f.edit.note', placeholder='подпись', rows=3)
+								p.text-right.top5
+									button.btn.btn-default.btn-xs
+										big.bold ок
+								
 				//-
 					.pad(style='height:170px;')
 						.row
@@ -94,5 +106,6 @@ uib-tabset()
 								button.btn.btn-warning.btn-xs(type="button", ng-click="item.cancel()", ng-disabled="!item.isUploading")
 									span.glyphicon.glyphicon-ban-circle.right5
 									!='Отменить'
-
+p.text-right.top5
+	button.btn.btn-default.btn-sm(ng-click='stopEdit()') закрыть
 

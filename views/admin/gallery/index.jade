@@ -4,13 +4,16 @@ h4 Галлереи
 	table.table.table-condensed
 		caption
 			button.btn.btn-default.btn-sm(ng-click='add()')
-				| новая  
 				span.glyphicon.glyphicon-plus
+				|   новая  
 		thead
 			tr
 				th #
 				th
+					span.glyphicon.glyphicon-ok
+				th
 					input#term(ng-model='data.term', placeholder='начни набирать')
+				th.text-center Изображений
 				th Опубликовано
 			tr
 				th найдено:
@@ -18,8 +21,13 @@ h4 Галлереи
 		tbody
 			tr(ng-repeat='n in data.rows')
 				td.bold(ng-class='{green:n.enabled}') {{n.idgallery}}
+				td
+					span.glyphicon.glyphicon-check.green(ng-show='n.enabled')
+					span.glyphicon.glyphicon-unchecked(ng-show='!n.enabled')
 				td 
 					a.pointer(ng-click='showEditPanel($index)') {{n.title}}
+				td.text-center
+					span {{n.filecounter}}
 				td {{n.published | date}}
 		tfoot
 			tr
