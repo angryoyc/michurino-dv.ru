@@ -18,6 +18,9 @@ module.exports = {
 		edit: function(req, res){
 			res.render('admin/gallery/edit', {ng_app: 'admin', req:req});
 		}
+	},
+	params: function(req, res){
+		res.render('admin/params', {ng_app: 'admin', req:req});
 	}
 
 };

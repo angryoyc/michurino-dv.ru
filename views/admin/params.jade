@@ -1,0 +1,17 @@
+h4 Параметры
+.pad
+	table.table
+		thead
+			tr
+				th(style='width:20%;') Показатель
+				th Значение
+		tbody
+			tr(ng-repeat='p in data.rows')
+				td(ng-bind='p.param')
+				td
+					.row
+						form(ng-submit='saveParam(p)')
+							.col-md-8
+								input.form-control.inp.input-sm(ng-model='p.val')
+							.col-md-4
+								button.btn.btn-sm.btn-primary(ng-show='p.val!=p.bak') сохранить

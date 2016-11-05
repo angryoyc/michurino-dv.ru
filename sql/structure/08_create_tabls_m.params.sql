@@ -58,3 +58,8 @@ REVOKE ALL ON SEQUENCE m.params_idparam_seq FROM site;
 GRANT ALL ON SEQUENCE m.params_idparam_seq TO postgres;
 GRANT ALL ON SEQUENCE m.params_idparam_seq TO site;
 
+insert into m.params (param, val) values ('email','info@michurino-dv.ru');
+insert into m.params (param, val) values ('phone','778-706');
+insert into m.params (param, val) values ('cost','550');
+
+select * from m.params;
