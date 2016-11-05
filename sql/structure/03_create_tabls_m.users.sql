@@ -14,7 +14,7 @@ SET default_tablespace = '';
 SET default_with_oids = false;
 
 --
--- Name: unit; Type: TABLE; Schema: m; Owner: postgres
+-- Name: users; Type: TABLE; Schema: m; Owner: postgres
 --
 
 drop table m.users cascade;

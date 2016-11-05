@@ -14,7 +14,7 @@ SET default_tablespace = '';
 SET default_with_oids = false;
 
 --
--- Name: unit; Type: TABLE; Schema: m; Owner: postgres
+-- Name: steads; Type: TABLE; Schema: m; Owner: postgres
 --
 
 drop table m.steads cascade;
@@ -45,7 +45,7 @@ ALTER TABLE m.steads_idstead_seq OWNER TO postgres;
 ALTER SEQUENCE m.steads_idstead_seq OWNED BY m.steads.idstead;
 ALTER TABLE ONLY m.steads ALTER COLUMN idstead SET DEFAULT nextval('m.steads_idstead_seq'::regclass);
 SELECT pg_catalog.setval('m.steads_idstead_seq', 1, false);
-ALTER TABLE ONLY m.steads ADD CONSTRAINT unit_pkey PRIMARY KEY (idstead);
+ALTER TABLE ONLY m.steads ADD CONSTRAINT steads_pkey PRIMARY KEY (idstead);
 
 --
 -- GRANTS:
