@@ -8,7 +8,7 @@ block b3
 		.col-xs-1
 		.col-xs-10
 			h3=gallery.last.title
-
+			div!=gallery.last.note
 			div#carousel-example-generic.carousel.slide.top30(data-ride="carousel")
 				ol.carousel-indicators
 					each item,index in gallery.last.items

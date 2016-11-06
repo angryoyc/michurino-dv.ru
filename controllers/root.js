@@ -29,7 +29,6 @@ function getLastGallery(callback, callback_err){
 		gallery.last=gallery.list.reduce(function(prev, row){
 			if(row.enabled){
 				if(!prev){
-					console.log(row);
 					return row;
 				}else{
 					return prev;
@@ -43,6 +42,7 @@ function getLastGallery(callback, callback_err){
 		if(gallery.last && gallery.last.idgallery>0){
 			api_gallery_info_ro({idgallery:gallery.last.idgallery}, function(result){
 				gallery.last.items = result.files;
+				gallery.last.note = result.note;
 				callback(gallery);
 			}, function(){});
 		}else{
