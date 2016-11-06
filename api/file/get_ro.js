@@ -22,7 +22,6 @@ exports.do=function(arg, callback, callback_err){
 	var data;
 	var mimetype;
 	var md5 = (arg.md5 || '');
-
 	if(md5 && md5.length==32){
 		async.parallel(
 			[

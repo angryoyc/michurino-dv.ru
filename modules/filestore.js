@@ -29,11 +29,12 @@ exports.put=function(path, filename, mimetype, callback, callback_err, idata){
 		return pfs.md5(path);
 	})
 	.then(function(md5){
-		return pfs.mv(path, filestorepath + '/' + md5)
+		var a;
+		return pfs.mv( path, filestorepath + '/' + md5 )
 		.then(function(dst){
 			return {path: dst, md5: md5}
 		},function(err){
-			fordelete.push(filestorepath + '/' + md5);
+			fordelete.push( filestorepath + '/' + md5 );
 			return err;
 		});
 	})

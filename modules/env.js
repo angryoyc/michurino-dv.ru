@@ -77,6 +77,25 @@ env.std_go=function(req, res, do_routine, rights){
 	if((user_rght & rght) == rght){
 		do_routine(
 			req.body,
+			function(result, mimetype){
+				if((!mimetype) || (mimetype.match(/^application\/json/))){
+					if(result){
+						ret.error	= 0;
+						ret.message	= 'Ok';
+						ret.data=result;
+						ret.data.elapsed = (new Date() - startat);
+					};
+					env.json_callback(res, ret, mimetype);
+				}else{
+					env.json_callback(res, result, mimetype);
+				}
+			},
+			function(err){
+				env.callback_err(err, ret);
+				env.json_callback(res, ret);
+			}
+/*
+			req.body,
 			function(result){
 				if(result){
 					ret.error	= 0;
@@ -90,6 +109,7 @@ env.std_go=function(req, res, do_routine, rights){
 				env.callback_err(err, ret);
 				env.json_callback(res, ret);
 			}
+*/
 		);
 	}else{
 		console.log('Недостаточный уровень доступа!!!');
@@ -101,11 +121,21 @@ env.std_go=function(req, res, do_routine, rights){
 	};
 };
 
+
+env.json_callback=function(res, ret, mimetype){
+	var mime = mimetype || "application/json; charset=utf-8"
+	res.header("Content-Type", mime);
+	res.header("Access-Control-Allow-Origin", "*");
+	res.send(ret);
+};
+
+/*
 env.json_callback=function(res, ret){
 	res.header("Content-Type", "application/json; charset=utf-8");
 	res.header("Access-Control-Allow-Origin", "*");
 	res.send(ret);
 };
+*/
 
 env.callback_err=function(err, ret){
 	var k;
@@ -180,80 +210,5 @@ var errors={
 	118: 'Invalid password',
 	119: 'Not ready method'
 };
-
-
-/*
-module.exports = {
-	go: function (data, callback, req, res){
-		data.error = 0;
-		data.message = 'Ok';
-		var ret;
-		if(data.incoming.cmd && data.incoming.cmd!='doc'){
-			if(typeof(index[data.incoming.schema+'_' + data.incoming.cmd])!='undefined'){
-				if(typeof(index[data.incoming.schema+'_' + data.incoming.cmd].go)=='function'){
-					index[data.incoming.schema+'_'+data.incoming.cmd].go(env, data, callback, req, res);
-				}else{
-					console.log(data);
-					ret=env.errorGenerator(101);
-					callback(ret);
-				};
-			}else{
-				console.log(data);
-				ret=env.errorGenerator(101);
-				callback(ret);
-			}
-		}else{
-			data.incoming.doc=true;
-			this.gethelp(data,callback);
-		};
-
-	},
-	gethelp: function (data, callback, req, res){
-		console.log('Doc requested!'.warn);
-		if(data.incoming.cmd && data.incoming.cmd!='doc'){
-			data.doctemplate='doc/callapi';
-			if(typeof(index[data.incoming.schema+'_' + data.incoming.cmd].gethelp)=='function'){
-				index[data.incoming.schema+'_'+data.incoming.cmd].gethelp(env, data, function(help){
-					help.schema=data.incoming.schema;
-					help.apicall=data.incoming.cmd;
-					callback(help);
-				});
-			}else{
-				console.log(data);
-				ret=env.errorGenerator(101);
-				callback();
-			};
-		}else{
-			data.doctemplate='doc/'+data.incoming.schema+'_index';
-			schemahelp.apicalls=[];
-			var r=new RegExp('^'+data.incoming.schema+'_');
-			async.forEachLimit(
-				Object.keys(index),
-				3,
-				function(sch, cb){
-					if(sch.match(r)){
-						if(typeof(index[sch].gethelp)=='function'){
-							index[sch].gethelp(env, data, function(help){
-								schemahelp.apicalls.push({'callname':sch.replace(r,''), title:help.title});
-								cb();
-							});
-						}else{
-							cb();
-						};
-					}else{
-						cb();
-					};
-				},
-				function(err){
-					schemahelp.schema=data.incoming.schema;
-					callback(schemahelp);
-				}
-			);
-		};
-	}
-};
-*/
-
-
 
 module.exports=env;

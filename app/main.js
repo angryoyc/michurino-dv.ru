@@ -61,11 +61,11 @@ if ('development' == app.get('env')){app.use(express.errorHandler());};
 
 
 
-var api = require('../modules/api');
+	var api = require('../modules/api');
 
 	if(uploader) app.post('/api/file/uploader', uploader.single('ufile'));
 
-	app.all('/api/:scheme/:method', api.go);
+	app.all('/api/:scheme/:method/:p1?', api.go);
 
 /* ----------------------- routes ------------------------------ */
 	app.all('/', require('../modules/common_actions_mw'));
