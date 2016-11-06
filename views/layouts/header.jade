@@ -1,7 +1,7 @@
 style.
 	.menu{
 		position: absolute;
-		bottom: 7px;
+		bottom: 0px;
 		width: 100%;
 	}
 	.menu > .item {
@@ -31,6 +31,21 @@ style.
 	.menu > .item > a{
 		color: #00977f;
 	}
+	.email{
+		position: absolute;
+		bottom: 23%;
+		left: 45px;
+		font-size:26px;
+	}
+	.email a{
+		color: white;
+	}
+	.phone{
+		position: absolute;
+		top: 23%;
+		left: 45px;
+		font-size: 42px;
+	}
 
 //-
 	svg(xmlns:osb="http://www.openswatchbook.org/uri/2009/osb", xmlns:dc="http://purl.org/dc/elements/1.1/", xmlns:cc="http://creativecommons.org/ns#", xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#",  xmlns:svg="http://www.w3.org/2000/svg", xmlns="http://www.w3.org/2000/svg", xmlns:xlink="http://www.w3.org/1999/xlink", xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd", version="1.1", width="100%", viewBox="0 12 2750 408", style='padding:0px; margin: 0px;')
@@ -38,7 +53,14 @@ style.
 	g(inkscape:groupmode="layer", id="layer00", inkscape:label="декор", style="display:inline")!= xml2
 
 div(style='position: relative;')
-	object#graph(type="image/svg+xml", data="/static/svg/header.svg", width="100%", style='border-bottom: solid #60b57b 1px;', viewBox="0 0 2750 408")
+	//- object#graph(type="image/svg+xml", data="/static/svg/header.svg", width="100%", style='border-bottom: solid #60b57b 1px;', viewBox="0 0 2750 408")
+	
+	img#graph(src="/static/svg/header.png", viewBox="0 12 2750 408", style='padding:0px; margin: 0px; width:100%;')
+	
+	div.email
+		a(href='mailto:' + params['email'])=params['email']
+	div.phone=params['phone']
+	
 	.menu
 		each m, i in menu
 			div( class='item' + ((i==selected)?' active':'') + (m.isbig?' big':'') )

@@ -7,17 +7,19 @@ block b3
 	.row
 		.col-xs-1
 		.col-xs-10
+			h3=gallery.last.title
+
 			div#carousel-example-generic.carousel.slide.top30(data-ride="carousel")
 				ol.carousel-indicators
-					li.active(data-target="#carousel-example-generic", data-slide-to="0")
-					li(data-target="#carousel-example-generic", data-slide-to="1")
+					each item,index in gallery.last.items
+						li(data-target="#carousel-example-generic", data-slide-to=index, class=(index==0)?'active':'')
 				.carousel-inner(role="listbox")
-					.item.active
-						img(src="/static/images/sputnik2.png")
-						.carousel-caption 
-					.item
-						img(src="/static/images/sputnik3.png")
-						.carousel-caption 
+					each item,index in gallery.last.items
+						.item(class=(index==0)?'active':'')
+							img(src='/img/920x920/' + item.md5)
+							.carousel-caption
+								h3=item.title
+								p=item.note
 				a.left.carousel-control(role="button", data-slide="prev", ng-click='prevSlide()')
 					span.glyphicon.glyphicon-chevron-left(aria-hidden="true")
 					span.sr-only Previous

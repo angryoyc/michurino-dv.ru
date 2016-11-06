@@ -6,25 +6,31 @@ angular.module('root').config(['$routeProvider', function($routeProvider) {
 	$routeProvider.otherwise({redirectTo: '/main'});
 }]);
 
+/*
 angular.module('root').controller('index', function($scope, $rootScope){
 });
+
 
 angular.module('root').controller('main', function($scope, $rootScope, $timeout){
 	$timeout(function(){
 		$scope.mode=true;
 	}, 200);
+});
+*/
+
+angular.module('root').controller('schem', function($scope, api, geom, $timeout){
+
+	$scope.data={cost:550};
+
+
+
 	$scope.nextSlide=function(){
 		$('div#carousel-example-generic.carousel').carousel('next');
 	}
 	$scope.prevSlide=function(){
 		$('div#carousel-example-generic.carousel').carousel('prev');
 	}
-});
 
-
-angular.module('root').controller('schem', function($scope, api, geom, $timeout){
-
-	$scope.data={cost:550};
 
 	$scope.loadSteads=function(){
 		return api.call('/api/stead/list_ro', {}, true, true)

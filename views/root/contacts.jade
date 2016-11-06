@@ -10,13 +10,12 @@ block b3
 			.row
 				.col-md-6
 					div.top30.text-left
-						big Тел.: +7 (4212) 778 706
-						br
-						big Тел.: +7 (4212) 25 87 87
+						big Тел.: 
+						big=params['phone']
 						br
 						big E-mail:  
 						big
-							a(href='mailto:info@michurino-dv.ru') info@michurino-dv.ru
+							a(href='mailto:' + params['email'])=params['email']
 				.col-md-6.text-center
 					div.top30
 						script(src="//yastatic.net/es5-shims/0.0.2/es5-shims.min.js")
