@@ -14,7 +14,7 @@ var db		= require('db');
 // GO
 exports.go = function(req, res){
 	req.body.md5=param(req, 'p1', '');
-	env.std_go(req, res, exports.do, (8+1));
+	env.std_go(req, res, exports.do);
 };
 
 // DO
