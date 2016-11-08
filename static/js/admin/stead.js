@@ -6,6 +6,10 @@ angular.module('admin').controller('stead', function($scope, api, geom){
 		api.call('/api/stead/list_ro', {}, true, true)
 		.then(function(result){
 			$scope.data.rows=result.rows;
+			return api.call('/api/params/list_ro', {}, true, true)
+		})
+		.then(function(result){
+			$scope.data.cost = result.rows.filter(function(r){return r.param=='cost'})[0].val;
 		});
 	};
 

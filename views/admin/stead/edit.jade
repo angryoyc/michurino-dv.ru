@@ -98,7 +98,17 @@
 							div.form-group
 								label.col-sm-5.control-label Стоимость, руб.
 								.col-sm-7
-									input.form-control(type="text", readonly=true, value='{{data.cost*data.curr.s | currency}}')
+									//- input.form-control(type="text", readonly=true, value='{{1*data.cost*data.curr.s | currency}}')
+									input.form-control(type="text", ng-model='data.curr.price')
+
+							div.form-group
+								label.col-sm-5.control-label Наценка/скидка, %
+								.col-sm-7
+									input.form-control(type="text", readonly=true, value='{{((data.curr.price/(1*data.cost*data.curr.s)-1)*100).toFixed(1)}}%')
+							div.form-group
+								label.col-sm-5.control-label Наценка/скидка, %
+								.col-sm-7
+									input.form-control(type="text", readonly=true, value='{{data.curr.k}}')
 
 							div.form-group
 								label.col-sm-5.control-label Статус

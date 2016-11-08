@@ -15,10 +15,14 @@ exports.go = function(req, res){
 exports.do=function(arg, callback, callback_err, idata){
 	var data = idata || {};
 
-	var idstead  = arg.idstead?parseInt(arg.idstead):0;
-	var status  = arg.status?arg.status:'';
-	var points  = arg.points?arg.points:'';
-	var start  = arg.start?arg.start:'';
+	var idstead = arg.idstead?parseInt(arg.idstead):0;
+	var status = arg.status?arg.status:'';
+	var points = arg.points?arg.points:'';
+	var start = arg.start?arg.start:'';
+	var price = arg.price?parseInt(arg.price):0;
+	var cost = 550;
+	
+	console.log('PRICE', price)
 
 	if(idstead){
 		// проверим пользователя на существование
@@ -39,6 +43,11 @@ exports.do=function(arg, callback, callback_err, idata){
 						},
 						function(cb){
 							db.sql("update m.steads set start=$2 where idstead=$1;", [ stead.idstead, start], function(result){
+								cb();
+							}, cb);
+						},
+						function(cb){
+							db.sql("update m.steads set price=$2 where idstead=$1 returning idstead, price;", [ stead.idstead, 1*price], function(result){
 								cb();
 							}, cb);
 						}

@@ -25,6 +25,8 @@ CREATE TABLE m.steads (
 	cadastr varchar(20),
 	s int,
 	groupnum int,
+	price int,
+	k real,
 	status varchar(20),
 	start varchar(100),
 	points varchar(400)
@@ -141,5 +143,8 @@ COPY m.steads (groupnum, pp, cadastr, s) FROM stdin;
 
 update m.steads set status='free';
 update m.steads set start='0,0';
+
+update m.steads set k=1;
+update m.steads set price=s*550;
 
 select * from m.steads;
