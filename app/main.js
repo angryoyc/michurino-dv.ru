@@ -77,7 +77,6 @@ if ('development' == app.get('env')){app.use(express.errorHandler());};
 			'local',
 			function(err, user, info) {
 				if(err){
-//					return res.redirect('/login?err='+err.number);
 					return res.redirect('/login#/error/'+err.number);
 				}else{
 					if(user){
@@ -120,7 +119,6 @@ if ('development' == app.get('env')){app.use(express.errorHandler());};
 		'/auth/vk',
 		passport.authenticate('vkontakte'),
 		function(req, res){
-			// The request will be redirected to Facebook for authentication, so this
 			// function will not be called.
 		}
 	);
@@ -144,7 +142,6 @@ if ('development' == app.get('env')){app.use(express.errorHandler());};
 		'/auth/ok',
 		passport.authenticate('odnoklassniki'),
 		function(req, res){
-			// The request will be redirected to Facebook for authentication, so this
 			// function will not be called.
 		}
 	);
@@ -170,17 +167,10 @@ if ('development' == app.get('env')){app.use(express.errorHandler());};
 	app.all('/admin/info', ensureAuthenticatedAdmin, controllers.admin.info);
 	app.all('/admin/users', ensureAuthenticatedAdmin, controllers.admin.users);
 	app.all('/admin/stead', ensureAuthenticatedAdmin, controllers.admin.stead);
+	app.all('/admin/claims', ensureAuthenticatedAdmin, controllers.admin.claims);
 	app.all('/admin/gallery', ensureAuthenticatedAdmin, controllers.admin.gallery.index);
 	app.all('/admin/gallery/edit', ensureAuthenticatedAdmin, controllers.admin.gallery.edit);
 	app.all('/admin/params', ensureAuthenticatedAdmin, controllers.admin.params);
-
-
-
-
-//	app.all('/video/src/:id', controllers.video.src);
-//	app.all('/video/pvw/:id', controllers.video.pvw);
-//	app.all('/video/tnl/:id', controllers.video.tnl);
-
 
 	app.get('/', controllers.root.index);
 	app.get('/about', controllers.root.about);
@@ -189,17 +179,7 @@ if ('development' == app.get('env')){app.use(express.errorHandler());};
 	app.get('/contacts', controllers.root.contacts);
 	app.get('/ekopark', controllers.root.ekopark);
 
-//	app.all('/root/main', controllers.root.main);
-//	app.all('/root/schem', controllers.root.schem);
-
-
 /* --------------------- end routes ------------------------------ */
-/*
-function ensureAuthenticated(req, res, next) {
-  if (req.isAuthenticated()) { return next(); }
-  res.redirect('/admin')
-};
-*/
 
 function ensureAuthenticatedAdmin(req, res, next) {
   if (req.isAuthenticated() && req.user && ((req.user.rights || 0) & 1)==1) { return next(); }

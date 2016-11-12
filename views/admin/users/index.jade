@@ -5,8 +5,8 @@ h4 Пользователи
 	table.table
 		thead
 			tr
-				th(rowspan=2)
-					input#term(ng-model='data.term', placeholder='начни набирать имя')
+				th(rowspan=2, style='width:30%;')
+					input#term.form-control(ng-model='data.term', placeholder='начни набирать')
 				th(rowspan=2) Включен
 				th(rowspan=2) Провайдер
 				th.text-center(colspan=4) Права
@@ -23,7 +23,7 @@ h4 Пользователи
 			tr(ng-repeat='u in data.list')
 				td 
 					a(href='#', ng-click='showPanelEdit($index, $event)') {{u.username}}
-				td
+				td.text-center
 					input(type='checkbox', ng-model='u.enabled', disabled='')
 				td {{u.provider}}
 				td(ng-class="{red: rightBit(u.rights,1)=='Да'}") {{rightBit(u.rights,1)}}

@@ -84,17 +84,27 @@ angular.module('root').controller('schem', function($scope, api, geom, $timeout)
 			if(!$scope.data.curr.form){
 				$scope.data.curr.form = {};
 				$scope.data.curr.form.phone='';
+				$scope.data.curr.form.alias='';
 				$timeout(function(){$('input#phone').focus();}, 100);
 			}else{
 				delete $scope.data.curr.form;
 			}
 		}
 	};
+	
+	$scope.closeSendForm=function(curr){
+		delete curr.form;
+	};
+
+	$scope.closeDetailsForm=function(data){
+		setSelected(false);
+		delete data.curr;
+	};
 
 	$scope.sendReserveRequest=function(st){
-		if($scope.data.curr.form.phone){
+		if(trim($scope.data.curr.form.phone).length>0){
 			$scope.data.curr.form.sending=true;
-			api.call('/api/send/reserve_request', {phone: $scope.data.curr.form.phone, pp:st.pp}, true, true)
+			api.call('/api/claims/reserve_request', {phone: $scope.data.curr.form.phone, alias: $scope.data.curr.form.alias, pp:st.pp}, true, true)
 			.then(function(result){
 				if(result.sent){
 					$scope.data.curr.form.sending=false;
@@ -106,6 +116,8 @@ angular.module('root').controller('schem', function($scope, api, geom, $timeout)
 				};
 				$timeout($scope.setSidebarPosition, 300);
 			});
+		}else{
+			swal("Есть проблема", "Телефон не указан. Пожалуйста, обязательно укажите средство связи!", "error");
 		};
 	};
 
@@ -119,6 +131,10 @@ angular.module('root').controller('schem', function($scope, api, geom, $timeout)
 		}
 		$("#sidebar").css('top', top);
 	};
+
+	var trim = function(s){
+		return s.replace(/^ +/,'').replace(/ +$/,'')
+	}
 
 });
 

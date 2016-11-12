@@ -1,0 +1,32 @@
+include edit
+
+h4 Обращения
+.pad
+	table.table
+		thead
+			tr
+				th Участок
+				th Дата/Время
+				th(style='width: 17%;') Обращенье
+				th ФИО
+				th(style='width: 17%;') Телефон
+		thead
+			tr
+				th
+					select.form-control.input-sm(ng-model='data.filter.idstead')
+						option(value=0) все
+						option(ng-repeat='st in data.steads', value='{{st.idstead}}') {{st.pp}}
+				th
+				th
+					input.form-control.input-sm(ng-model='data.filter.alias')
+				th
+					input.form-control.input-sm(ng-model='data.filter.fio')
+				th
+					input.form-control.input-sm(ng-model='data.filter.phone')
+		tbody
+			tr(ng-repeat='cl in data.rows')
+				td {{cl.pp}}
+				td {{moment(cl.dt).format('YYYY-MM-DD')}}
+				td {{cl.alias}}
+				td {{cl.fio}}
+				td {{cl.phone}}

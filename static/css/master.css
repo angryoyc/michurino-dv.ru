@@ -14,7 +14,7 @@ body{
 	width: 1200px;
 	*/
 	border-radius: 4px;
-	width: 1100px;
+	width: 960px;
 	margin: 16px auto;
 }
 
@@ -54,6 +54,9 @@ body{
 	color: white;
 }
 
+.michurin{
+	color: #009881;
+}
 
 .inp {
 	border-radius: 2px;
@@ -118,13 +121,17 @@ hr{
 	font-weight:800;
 }
 
-.top4{margin-top: 0px;}
-.top5{margin-top: 5px;}
 .top30{margin-top: 30px;}
+.top20{margin-top: 20px;}
+.top10{margin-top: 10px;}
+.top5{margin-top: 5px;}
+.top4{margin-top: 4px;}
+.top0{margin-top: 0px;}
 
-.padding30{
-	padding: 30px !important;
-}
+.padding30{padding: 30px !important;}
+.padding20{padding: 20px !important;}
+.padding10{padding: 10px !important;}
+.padding5{padding: 5px !important;}
 
 .pointer{
 	cursor: pointer;

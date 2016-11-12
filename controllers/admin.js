@@ -11,6 +11,9 @@ module.exports = {
 	stead: function(req, res){
 		res.render('admin/stead/index', {ng_app: 'admin', req:req});
 	},
+	claims: function(req, res){
+		res.render('admin/claims/index', {ng_app: 'admin', req:req});
+	},
 	gallery: {
 		index: function(req, res){
 			res.render('admin/gallery/index', {ng_app: 'admin', req:req});
