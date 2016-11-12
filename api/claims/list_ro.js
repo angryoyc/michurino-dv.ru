@@ -50,7 +50,7 @@ exports.do=function(arg, callback, callback_err, idata){
 
 	sql = sql + ((where.length>0)? ' where ' + where.join(' and '): '') + ' order by dt desc limit 300;'
 
-	console.log(sql);
+	//-	console.log(sql);
 
 	db.sql(sql, values, function(result){
 		data.rows = result.rows;
