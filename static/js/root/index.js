@@ -6,23 +6,10 @@ angular.module('root').config(['$routeProvider', function($routeProvider) {
 	$routeProvider.otherwise({redirectTo: '/main'});
 }]);
 
-/*
-angular.module('root').controller('index', function($scope, $rootScope){
-});
-
-
-angular.module('root').controller('main', function($scope, $rootScope, $timeout){
-	$timeout(function(){
-		$scope.mode=true;
-	}, 200);
-});
-*/
 
 angular.module('root').controller('schem', function($scope, api, geom, $timeout){
 
 	$scope.data={cost:550};
-
-
 
 	$scope.nextSlide=function(){
 		$('div#carousel-example-generic.carousel').carousel('next');
@@ -51,7 +38,7 @@ angular.module('root').controller('schem', function($scope, api, geom, $timeout)
 
 	$scope.hover=function(st){
 		if(st){
-			if(st.status!='busy'){
+			if(st.status=='free'){
 				if($scope.data.curr){
 					var idstead = $scope.data.curr.idstead;
 					if(st.idstead!=idstead){

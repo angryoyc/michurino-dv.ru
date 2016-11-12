@@ -168,6 +168,7 @@ if ('development' == app.get('env')){app.use(express.errorHandler());};
 	app.all('/admin/users', ensureAuthenticatedAdmin, controllers.admin.users);
 	app.all('/admin/stead', ensureAuthenticatedAdmin, controllers.admin.stead);
 	app.all('/admin/claims', ensureAuthenticatedAdmin, controllers.admin.claims);
+	app.all('/admin/reserves', ensureAuthenticatedAdmin, controllers.admin.reserves);
 	app.all('/admin/gallery', ensureAuthenticatedAdmin, controllers.admin.gallery.index);
 	app.all('/admin/gallery/edit', ensureAuthenticatedAdmin, controllers.admin.gallery.edit);
 	app.all('/admin/params', ensureAuthenticatedAdmin, controllers.admin.params);

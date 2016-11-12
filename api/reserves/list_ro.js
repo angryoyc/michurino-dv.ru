@@ -3,6 +3,7 @@
 var env=require('../../modules/env');
 var db = require('db');
 var cf = require('cf');
+var moment = require('moment');
 //var async = require('async');
 
 // GO
@@ -15,33 +16,32 @@ exports.do=function(arg, callback, callback_err, idata){
 	var data = idata || {};
 
 	var idstead = arg.idstead?parseInt(arg.idstead):0;
-	var alias = arg.alias?arg.alias:'';
+	var fio = arg.fio?arg.fio:'';
 	var phone = arg.phone?arg.phone:'';
 
-	alias = cf.trim(alias.replace(/ +/g,' '));
+	fio = cf.trim(fio.replace(/ +/g,' '));
 	phone = cf.trim(phone).replace(/ /g,'').replace(/\-/g,'').replace(/\(/g,'').replace(/\)/g,'');
 
-
-	var sql = 'select claims.*, steads.pp from m.claims left join m.steads on steads.idstead=claims.idstead ';
+	var sql = 'select reserves.*, steads.pp from m.reserves left join m.steads on steads.idstead=reserves.idstead ';
 	var values = [];
 	var where = [];
 
 	if(idstead>0){
 		values.push(idstead);
-		where.push('claims.idstead=$' + values.length);
+		where.push('reserves.idstead=$' + values.length);
 	};
 
-	if(alias.length>0){
-		values.push(alias);
-		where.push("(claims.alias ilike '%' || $" + values.length + " || '%')" );
+	if(fio.length>0){
+		values.push(fio);
+		where.push("(reserves.fio ilike '%' || $" + values.length + " || '%')" );
 	};
 
 	if(phone.length>0){
 		values.push(phone);
-		where.push("(claims.phone ilike '%' || $" + values.length + " || '%')" );
+		where.push("(reserves.phone ilike '%' || $" + values.length + " || '%')" );
 	};
 
-	sql = sql + ((where.length>0)? ' where ' + where.join(' and '): '') + ' order by dt desc limit 300;'
+	sql = sql + ((where.length>0)? ' where ' + where.join(' and '): '') + ' order by idreserve desc limit 300;'
 
 	//-	console.log(sql);
 

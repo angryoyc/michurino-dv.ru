@@ -7,9 +7,8 @@ h4 Обращения
 			tr
 				th Участок
 				th Дата/Время
-				th(style='width: 17%;') Обращенье
-				th ФИО
-				th(style='width: 17%;') Телефон
+				th(style='width: 27%;') Обращение
+				th(style='width: 27%;') Телефон
 		thead
 			tr
 				th
@@ -18,15 +17,13 @@ h4 Обращения
 						option(ng-repeat='st in data.steads', value='{{st.idstead}}') {{st.pp}}
 				th
 				th
-					input.form-control.input-sm(ng-model='data.filter.alias')
+					input.form-control.input-sm(ng-model='data.filter.alias', placeholder='начни вводить')
 				th
-					input.form-control.input-sm(ng-model='data.filter.fio')
-				th
-					input.form-control.input-sm(ng-model='data.filter.phone')
+					input.form-control.input-sm(ng-model='data.filter.phone', placeholder='начни вводить')
 		tbody
 			tr(ng-repeat='cl in data.rows')
 				td {{cl.pp}}
-				td {{moment(cl.dt).format('YYYY-MM-DD')}}
+				td
+					a.pointer(ng-click='showPanelEdit($index, $event)') {{moment(cl.dt).format('YYYY-MM-DD HH:mm')}}
 				td {{cl.alias}}
-				td {{cl.fio}}
 				td {{cl.phone}}

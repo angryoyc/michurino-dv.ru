@@ -27,7 +27,11 @@ style.
 		stroke: red;
 	}
 	
-	.stead.busy{
+	.stead.reserved{
+		fill: #12846e !important;
+	}
+
+	.stead.sold{
 		fill: #12846e !important;
 	}
 
@@ -102,7 +106,7 @@ svg#mainsvg(xmlns:osb="http://www.openswatchbook.org/uri/2009/osb", xmlns:dc="ht
 	g(inkscape:groupmode="layer", id="layer0", inkscape:label="декор", style="display:inline", )!= xml
 
 	g(inkscape:groupmode="layer", id="layer4{{$index+1}}", inkscape:label="Участки", style="display:inline")
-		path.stead(ng-attr-d="m {{st.start}} {{st.points}} z", ng-click='hover(st)', ng-repeat='st in data.rows', ng-class="{selected:st.selected, busy: st.status=='busy'}")
+		path.stead(ng-attr-d="m {{st.start}} {{st.points}} z", ng-click='hover(st)', ng-repeat='st in data.rows', ng-class="{selected:st.selected, sold: st.status=='sold', reserved: st.status=='reserved'}")
 		text.labeltext(ng-repeat='st in data.rows', ng-click='hover(st)', ng-class='{onselected:st.selected}')
 			tspan.labelspan.s1(ng-attr-x="{{st.center.x}}", ng-attr-y="{{st.center.y}}", ng-show='st.center.x>0')
 				tspan(ng-bind='"№ "')

@@ -20,10 +20,9 @@ drop table m.claims cascade;
 
 CREATE TABLE m.claims (
 	idclaim bigint NOT NULL,
-	dt timestamp,
+	dt timestamptz,
 	alias varchar(20),
 	idstead int,
-	fio varchar(50),
 	phone varchar(25),
 	note text
 );

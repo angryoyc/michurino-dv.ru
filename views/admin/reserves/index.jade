@@ -1,0 +1,37 @@
+include edit
+
+.row
+	.col-xs-8
+		h4 Бронирования
+	.col-xs-4.text-right
+		button.btn.btn-primary.btn-sm(ng-click='showPanelEdit(-1, $event)')
+			span.glyphicon.glyphicon-plus
+			|   	Добавить новое
+.pad
+	table.table
+		thead
+			tr
+				th Участок
+				th ФИО
+				th(style='width: 17%;') Телефон
+				th С
+				th По
+		thead
+			tr
+				th
+					select.form-control.input-sm(ng-model='data.filter.idstead')
+						option(value=0) все
+						option(ng-repeat='st in data.steads', value='{{st.idstead}}') {{st.pp}}
+				th
+					input.form-control.input-sm(ng-model='data.filter.fio', placeholder='начни вводить')
+				th
+					input.form-control.input-sm(ng-model='data.filter.phone', placeholder='начни вводить')
+		tbody
+			tr(ng-repeat='cl in data.rows')
+				td {{cl.pp}}
+				td {{cl.fio}}
+				td {{cl.phone}}
+				td
+					a.pointer(ng-click='showPanelEdit($index, $event)') {{moment(cl.from_dt).format('YYYY-MM-DD HH:mm')}}
+				td
+					a.pointer(ng-click='showPanelEdit($index, $event)') {{moment(cl.to_dt).format('YYYY-MM-DD HH:mm')}}

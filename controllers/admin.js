@@ -14,6 +14,9 @@ module.exports = {
 	claims: function(req, res){
 		res.render('admin/claims/index', {ng_app: 'admin', req:req});
 	},
+	reserves: function(req, res){
+		res.render('admin/reserves/index', {ng_app: 'admin', req:req});
+	},
 	gallery: {
 		index: function(req, res){
 			res.render('admin/gallery/index', {ng_app: 'admin', req:req});
