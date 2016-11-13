@@ -1,0 +1,21 @@
+[Unit]
+Description=Node.js Main michurino-dv.ru HTTP server
+# Requires the mysql service to run first
+Requires=postgresql@9.6-main.service
+
+[Service]
+WorkingDirectory=/opt/michurino-dv.ru
+ExecStart=/usr/local/bin/node index.js
+ExecReload=/bin/kill -HUP $MAINPID
+Restart=always
+# Restart service after 10 seconds if node service crashes
+RestartSec=5
+StandardOutput=syslog
+StandardError=syslog
+SyslogIdentifier=nodejs-michurino-dv.ru
+User=serg
+Group=serg
+Environment='NODE_ENV=production'
+
+[Install]
+WantedBy=multi-user.target
