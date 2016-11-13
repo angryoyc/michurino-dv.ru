@@ -113,7 +113,7 @@
 							div.form-group
 								label.col-sm-5.control-label Статус
 								.col-sm-7
-									select.form-control(ng-model='data.curr.status')
+									select.form-control(ng-model='data.curr.status', readonly=true)
 										option(value='free')!='Свободен'
 										option(value='reserved')!='Забронирован'
 										option(value='sold')!='Продан'

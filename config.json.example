@@ -31,6 +31,12 @@
 		"path": "/home/serg/my/projects/michurino-dv.ru/uploads"
 	},
 
+	"cron":[
+		{
+			"interval": 300000,
+			"method": "recalc_all_statuses"
+		}
+	],
 
 	"email": {
 		"checked": "yandex",

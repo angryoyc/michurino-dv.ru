@@ -38,10 +38,10 @@ angular.module('admin').controller('stead', function($scope, api, geom){
 	$scope.calcStart=function(points){
 		var ex = geom.calcExtremums(points);
 		return [(-1)*ex.min.x + 5, (-1)*ex.min.y + 5].join(',');
-	}
+	};
 
 	$scope.calcViewbox=function(points){
 		var ex = geom.calcExtremums(points);
 		return [0, 0, (ex.max.x-ex.min.x) + 10, (ex.max.y - ex.min.y) + 10].join(' ');
-	}
+	};
 });

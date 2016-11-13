@@ -2,11 +2,12 @@ include edit
 
 .row
 	.col-xs-8
-		h4 Бронирования
+		h4 Бронирования/продажи
 	.col-xs-4.text-right
 		button.btn.btn-primary.btn-sm(ng-click='showPanelEdit(-1, $event)')
 			span.glyphicon.glyphicon-plus
 			|   	Добавить новое
+
 .pad
 	table.table
 		thead
@@ -31,7 +32,9 @@ include edit
 				td {{cl.pp}}
 				td {{cl.fio}}
 				td {{cl.phone}}
-				td
+				td.text-center
 					a.pointer(ng-click='showPanelEdit($index, $event)') {{moment(cl.from_dt).format('YYYY-MM-DD HH:mm')}}
+				td.text-center
+					a.pointer(ng-click='showPanelEdit($index, $event)') {{ showdate(cl.to_dt) }}
 				td
-					a.pointer(ng-click='showPanelEdit($index, $event)') {{moment(cl.to_dt).format('YYYY-MM-DD HH:mm')}}
+					small.glyphicon.glyphicon-remove.michurin.pointer(ng-click='remove($index)')

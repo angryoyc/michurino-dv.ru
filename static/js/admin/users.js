@@ -51,7 +51,7 @@ angular.module('admin').controller('users', function($scope, api, $rootScope, $t
 	};
 
 	$scope.saveUserData=function(){
-		$scope.data.curr.rights = ($scope.data.curr.r[0]?1:0) + ($scope.data.curr.r[1]?2:0) + ($scope.data.curr.r[2]?4:0) + ($scope.data.curr.r[3]?8:0) + ($scope.data.curr.r[4]?16:0);
+		$scope.data.curr.rights = ($scope.data.curr.r[0]?1:0) + ($scope.data.curr.r[1]?2:0) + ($scope.data.curr.r[2]?4:0) + ($scope.data.curr.r[3]?8:0) + ($scope.data.curr.r[4]?16:0) + ($scope.data.curr.r[5]?32:0)  + ($scope.data.curr.r[6]?64:0);
 		var sendsms=$scope.data.curr.sendsms;
 		if((($scope.data.curr.pass || $scope.data.curr.pass2) && ($scope.data.curr.pass==$scope.data.curr.pass2)) || !($scope.data.curr.pass || $scope.data.curr.pass2)){
 			var pss;
@@ -110,6 +110,28 @@ angular.module('admin').controller('users', function($scope, api, $rootScope, $t
 					}else{
 						swal('Удалить не удалось - есть связанные элементы');
 					};
+				});
+			}
+		);
+	}
+
+	$scope.newUser=function(){
+		swal({
+			title: "Добавление нового пользователя",
+			text: "Укажите имя нового пользователя:",
+			type: "input",
+			showCancelButton: true,
+			closeOnConfirm: false,
+			animation: "slide-from-bottom",
+			inputPlaceholder: "новое имя входа" }, 
+			function(inputValue){
+				if (inputValue === false){ return false };
+				if (inputValue === "") { return false }
+				api.call('/api/user/add', { login: inputValue, provider:'mc' }, true)
+				.then(function(result){
+					$scope.data.list.unshift(result);
+					swal("Отлично!", "Новый пользователь " + inputValue + " создан! Отредактируйте его, и не забудьте поставить галочку 'включен'"); 
+					$scope.showPanelEdit(0, {preventDefault:function(){}});
 				});
 			}
 		);

@@ -3,7 +3,7 @@
 var env				= require('../../modules/env');
 var db 				= require('db');
 var user_data_ro	= require('../user/data_ro').do;
-var myname 			= 'settv';
+var myname 			= 'mc';
 // GO
 exports.go = function(req, res){
 	env.std_go(req, res, exports.do);

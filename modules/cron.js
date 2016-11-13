@@ -1,5 +1,15 @@
 var supertest = require('supertest')
 var cf = require('cf');
+/*
+conf={
+	"cron":[
+		{
+			"interval": 300000,
+			"method": "recalc_all_statuses"
+		}
+	]
+}
+*/
 
 module.exports=function(app, conf){
 	if(conf && cf.isArray(conf.cron)){

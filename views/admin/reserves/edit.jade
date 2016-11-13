@@ -4,8 +4,8 @@
 			.modal-header
 				button.close(type="button", data-dismiss="modal", aria-label="Close", ng-click="closereserve()")
 					span(aria-hidden="true") &times;
-				h3(ng-show='!(data.curr.idreserve>0)') Добавление бронирования
-				h3(ng-show='(data.curr.idreserve>0)') Изменение бронирования
+				h3(ng-show='!(data.curr.idreserve>0)') Добавление бронирования/продажи
+				h3(ng-show='(data.curr.idreserve>0)') Изменение бронирования/продаж
 			.modal-body(style='background-color:#f9f9f9;')
 				.tabbody
 					table.table.table-condensed
@@ -17,6 +17,13 @@
 									select.form-control.input-sm(ng-model='data.curr.idstead', ng-show='!(data.curr.idreserve>0)')
 										option(ng-repeat='st in data.steads', ng-value='{{st.idstead}}') {{st.pp}}
 									input.form-control(ng-show='(data.curr.idreserve>0)', value='{{data.curr.pp}}', readonly=true) 
+							tr
+								td.text-right Тип:
+								td(colspan=2)
+									//- input.form-control(ng-model='data.curr.type')
+									select.form-control(ng-model='data.curr.type')
+										option(value='reserved') бронирование
+										option(value='sold') продажа
 							tr
 								td.text-right Фио:
 								td(colspan=2)
@@ -30,7 +37,7 @@
 								td 
 									input.form-control(ng-model='data.curr.from_dt')
 								td 
-									input.form-control(ng-model='data.curr.to_dt')
+									input.form-control(ng-model='data.curr.to_dt', ng-show="data.curr.type=='reserved'")
 							tr
 								td.text-right Номер договора:
 								td(colspan=2)

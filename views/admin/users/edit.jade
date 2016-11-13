@@ -32,7 +32,7 @@
 								.col-sm-4
 									input.form-control(type="password", ng-model='data.curr.pass2', placeholder='пароль ещё раз')
 								.col-sm-1
-									input(type='checkbox', tooltip='Оповестить по СМС', ng-model='data.curr.sendsms')
+									//- input(type='checkbox', tooltip='Оповестить по СМС', ng-model='data.curr.sendsms')
 
 					div.form-group
 						label.col-sm-8.control-label Права доступа к интерфейсу Администратора
@@ -54,6 +54,21 @@
 						.col-sm-4
 							div.btn-group
 								input(type='checkbox', ng-model='data.curr.r[3]')
+					div.form-group
+						label.col-sm-8.control-label Права редактирования Обращений
+						.col-sm-4
+							div.btn-group
+								input(type='checkbox', ng-model='data.curr.r[4]')
+					div.form-group
+						label.col-sm-8.control-label Права редактирования Бронирования/продаж
+						.col-sm-4
+							div.btn-group
+								input(type='checkbox', ng-model='data.curr.r[5]')
+					div.form-group
+						label.col-sm-8.control-label Права редактирования Параметров
+						.col-sm-4
+							div.btn-group
+								input(type='checkbox', ng-model='data.curr.r[6]')
 			.modal-footer.margin0
 				.row
 					.col-xs-2.text-left

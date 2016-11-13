@@ -23,6 +23,7 @@ CREATE TABLE m.reserves (
 	idstead int,
 	from_dt timestamptz,
 	to_dt timestamptz,
+	type varchar(10),
 	fio varchar(50),
 	phone varchar(25),
 	contract_nom varchar(25),
@@ -30,6 +31,7 @@ CREATE TABLE m.reserves (
 	price int,
 	note text
 );
+
 ALTER TABLE m.reserves OWNER TO postgres;
 
 CREATE SEQUENCE m.reserves_idreserve_seq

@@ -100,18 +100,21 @@ style.
 		baseline-shift:super;
 	}
 
-svg#mainsvg(xmlns:osb="http://www.openswatchbook.org/uri/2009/osb", xmlns:dc="http://purl.org/dc/elements/1.1/", xmlns:cc="http://creativecommons.org/ns#", xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#",  xmlns:svg="http://www.w3.org/2000/svg", xmlns="http://www.w3.org/2000/svg", xmlns:xlink="http://www.w3.org/1999/xlink", xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd", version="1.1", width="100%", viewBox="0 0 2270 1940")
 
-	- var xml = fs.readFileSync('/home/serg/my/projects/michurino-dv.ru/static/svg/decor_new_fit.svg')
-	g(inkscape:groupmode="layer", id="layer0", inkscape:label="декор", style="display:inline", )!= xml
+div(style='position:relative;')
+	img(src='/static/svg/main.png')
 
-	g(inkscape:groupmode="layer", id="layer4{{$index+1}}", inkscape:label="Участки", style="display:inline")
-		path.stead(ng-attr-d="m {{st.start}} {{st.points}} z", ng-click='hover(st)', ng-repeat='st in data.rows', ng-class="{selected:st.selected, sold: st.status=='sold', reserved: st.status=='reserved'}")
-		text.labeltext(ng-repeat='st in data.rows', ng-click='hover(st)', ng-class='{onselected:st.selected}')
-			tspan.labelspan.s1(ng-attr-x="{{st.center.x}}", ng-attr-y="{{st.center.y}}", ng-show='st.center.x>0')
-				tspan(ng-bind='"№ "')
-				tspan(ng-bind='st.pp')
-			tspan.labelspan.s2(ng-attr-x="{{st.center.x}}", ng-attr-y="{{st.center.y+27}}", ng-show='st.center.x>0')
-				!='{{st.s}} м'
-				tspan.stepen!='2'
+	svg#mainsvg(xmlns:osb="http://www.openswatchbook.org/uri/2009/osb", xmlns:dc="http://purl.org/dc/elements/1.1/", xmlns:cc="http://creativecommons.org/ns#", xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#",  xmlns:svg="http://www.w3.org/2000/svg", xmlns="http://www.w3.org/2000/svg", xmlns:xlink="http://www.w3.org/1999/xlink", xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd", version="1.1", width="100%", viewBox="0 0 2270 1940", style='position: absolute; top:0px;left:0px;')
+		//-
+			- var xml = fs.readFileSync('/home/serg/my/projects/michurino-dv.ru/static/svg/main.svg')
+			g(inkscape:groupmode="layer", id="layer0", inkscape:label="декор", style="display:inline", )!= xml
+		g(inkscape:groupmode="layer", id="layer4{{$index+1}}", inkscape:label="Участки", style="display:inline")
+			path.stead(ng-attr-d="m {{st.start}} {{st.points}} z", ng-click='hover(st)', ng-repeat='st in data.rows', ng-class="{selected:st.selected, sold: st.status=='sold', reserved: st.status=='reserved'}")
+			text.labeltext(ng-repeat='st in data.rows', ng-click='hover(st)', ng-class='{onselected:st.selected}')
+				tspan.labelspan.s1(ng-attr-x="{{st.center.x}}", ng-attr-y="{{st.center.y}}", ng-show='st.center.x>0')
+					tspan(ng-bind='"№ "')
+					tspan(ng-bind='st.pp')
+				tspan.labelspan.s2(ng-attr-x="{{st.center.x}}", ng-attr-y="{{st.center.y+27}}", ng-show='st.center.x>0')
+					!='{{st.s}} м'
+					tspan.stepen!='2'
 

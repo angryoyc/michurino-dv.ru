@@ -37,13 +37,40 @@ angular.module('admin').controller('reserves', function($scope, api, geom, $time
 			$scope.saveBak();
 			$('#modal_edit').modal('show');
 		}else{
-			$scope.data.curr = {idstead: $scope.data.filter.idstead || 0, fio:'', note:'', phone:'', from_dt: moment().format('YYYY-MM-DD HH:mm'), to_dt: moment().add('day',3).format('YYYY-MM-DD HH:mm'), contract_nom:'', contract_date: moment().format('YYYY-MM-DD')}
+			$scope.data.curr = {idstead: $scope.data.filter.idstead || 0, type:'reserved', fio:'', note:'', phone:'', from_dt: moment().format('YYYY-MM-DD HH:mm'), to_dt: moment().add('day',3).format('YYYY-MM-DD HH:mm'), contract_nom:'', contract_date: moment().format('YYYY-MM-DD')}
 			$scope.data.curr_index = -1;
 			$scope.saveBak();
 			$('#modal_edit').modal('show');
 		};
 	};
 
+	$scope.showdate=function(dt){
+		return (dt==null)?' --- ':moment(dt).format('YYYY-MM-DD HH:mm');
+	};
+
+	$scope.remove=function(index){
+		swal(
+			{
+				title: "Уверены?",
+				text: "Удаление бронирования/продажи" ,
+				type: "warning",
+				showCancelButton: true,
+				confirmButtonColor: "#DD6B55",
+				confirmButtonText: "Удалить",
+				cancelButtonText: "Отменить",
+				closeOnConfirm: true 
+			},
+			function(){
+				var rs = $scope.data.rows[index];
+				return api.call('/api/reserves/remove', {idreserve: rs.idreserve}, true, true)
+				.then(function(result){
+					if(result.deleted){
+						$scope.data.rows.splice(index,1);
+					};
+				});
+			}
+		);
+	};
 
 	//-------------------------- EDIT ----------------------------
 	$scope.saveBak=function(){
@@ -51,6 +78,7 @@ angular.module('admin').controller('reserves', function($scope, api, geom, $time
 			var bak = $scope.data.curr.bak = {};
 			bak.pp = $scope.data.curr.pp;
 			bak.idstead = $scope.data.curr.idstead;
+			bak.type = $scope.data.curr.type;
 			bak.fio = $scope.data.curr.fio;
 			bak.phone = $scope.data.curr.phone;
 			bak.note = $scope.data.curr.note;
@@ -65,7 +93,7 @@ angular.module('admin').controller('reserves', function($scope, api, geom, $time
 		if($scope.data.curr){
 			var bak = $scope.data.curr.bak;
 			var curr = $scope.data.curr;
-			return (bak.idstead != curr.idstead) || (bak.to_dt != curr.to_dt) || (bak.from_dt != curr.from_dt) || (bak.fio != curr.fio) || (bak.phone != curr.phone) || (bak.note != curr.note) || (bak.contract_nom != curr.contract_nom) || (bak.contract_date != curr.contract_date);
+			return (bak.idstead != curr.idstead) || (bak.to_dt != curr.to_dt) || (bak.from_dt != curr.from_dt) || (bak.type != curr.type) || (bak.fio != curr.fio) || (bak.phone != curr.phone) || (bak.note != curr.note) || (bak.contract_nom != curr.contract_nom) || (bak.contract_date != curr.contract_date);
 		}else{
 			return false;
 		};
@@ -76,14 +104,38 @@ angular.module('admin').controller('reserves', function($scope, api, geom, $time
 		$('#modal_edit').modal('hide');
 	}
 
-
 	$scope.savereserve=function(){
 		$scope.saveBak();
 		var curr = $scope.data.curr;
-		return api.call('/api/reserves/save', {idstead: curr.idstead, fio: curr.fio, phone: curr.phone, note: curr.note, idreserve: curr.idreserve, from_dt: curr.from_dt, to_dt: curr.to_dt, contract_nom: curr.contract_nom, contract_date: curr.contract_date, price: curr.price}, true, true)
-		.then(function(result){
-			$scope.closereserve();
-		});
+		return api.call('/api/reserves/save', {idreserve: curr.idreserve, idstead: curr.idstead, type: curr.type, fio: curr.fio, phone: curr.phone, note: curr.note, from_dt: curr.from_dt, to_dt:(curr.type=='sold')?null:curr.to_dt, contract_nom: curr.contract_nom, contract_date: curr.contract_date, price: curr.price})
+		.then(
+			function(result){
+				if(curr.idreserve>0){
+					//update
+					curr.pp = result.pp;
+					curr.type = result.type;
+					curr.fio = result.fio;
+					curr.phone = result.phone;
+					curr.note = result.note;
+					curr.from_dt = result.from_dt;
+					curr.to_dt = result.to_dt;
+					curr.contract_nom = result.contract_nom;
+					curr.contract_date = result.contract_date;
+					curr.price = result.price;
+				}else{
+					//insert
+					$scope.data.rows.unshift(result);
+				}
+				$scope.closereserve();
+			},
+			function(err){
+				if(err.error==110){
+					swal('Внимание!', 'Заданный период пересекается с другим по этому участку', 'error');
+				}else{
+					swal('Внимание!', err.message, 'error');
+				}
+			}
+		);
 	};
 
 	//-------------------------------------------------------

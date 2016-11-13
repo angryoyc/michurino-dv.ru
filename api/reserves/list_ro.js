@@ -22,7 +22,24 @@ exports.do=function(arg, callback, callback_err, idata){
 	fio = cf.trim(fio.replace(/ +/g,' '));
 	phone = cf.trim(phone).replace(/ /g,'').replace(/\-/g,'').replace(/\(/g,'').replace(/\)/g,'');
 
-	var sql = 'select reserves.*, steads.pp from m.reserves left join m.steads on steads.idstead=reserves.idstead ';
+	var sql = 
+"select \
+	reserves.idreserve, \
+	reserves.idstead, \
+	reserves.type, \
+	reserves.fio, \
+	reserves.phone, \
+	reserves.note, \
+	to_char(reserves.from_dt, 'YYYY-MM-DD HH24:MI') as from_dt, \
+	to_char(reserves.to_dt, 'YYYY-MM-DD HH24:MI') as to_dt, \
+	reserves.contract_nom, \
+	to_char(reserves.contract_date, 'YYYY-MM-DD') as contract_date, \
+	reserves.price, \
+	steads.pp \
+from \
+	m.reserves \
+	left join m.steads on steads.idstead=reserves.idstead \
+";
 	var values = [];
 	var where = [];
 

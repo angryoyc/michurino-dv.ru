@@ -42,9 +42,16 @@ style.
 	}
 	.phone{
 		position: absolute;
-		top: 23%;
+		top: 25%;
 		left: 45px;
 		font-size: 42px;
+	}
+	.prompt{
+		position: absolute;
+		top: 7%;
+		left: 15px;
+		font-size: 17px;
+		line-height: 18px;
 	}
 
 //-
@@ -60,6 +67,7 @@ div(style='position: relative;')
 	div.email
 		a(href='mailto:' + params['email'])=params['email']
 	div.phone=params['phone']
+	div.prompt.bold!='Договориться о<br>просмотре участка'
 	
 	.menu
 		each m, i in menu

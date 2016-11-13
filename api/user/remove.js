@@ -29,10 +29,14 @@ exports.do=function(arg, callback, callback_err, idata){
 				async.parallel(
 					[
 						function(cb){
+							data.linked_cmmnt = 0;
+							cb();
+							/*
 							db.sql("select count(idcmmnt) as c from cmmnt where iduser=$1;", [ user.iduser ], function(result){
 								data.linked_cmmnt = result.rows[0].c;
 								cb();
 							}, cb);
+							*/
 						}
 					],
 					function(err){

@@ -209,3 +209,7 @@ hr{
 	background-color: white;
 	padding-left: 10px;
 }
+
+.bold{
+	font-weight: bold;
+}

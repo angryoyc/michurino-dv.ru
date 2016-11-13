@@ -1,15 +1,19 @@
 include edit
 
-h4 Пользователи
+.row
+	.col-md-10
+		h4 Пользователи
+	.col-md-2
+		a.btn1(ng-click='newUser()') Новый
 .pad
 	table.table
 		thead
 			tr
 				th(rowspan=2, style='width:30%;')
 					input#term.form-control(ng-model='data.term', placeholder='начни набирать')
-				th(rowspan=2) Включен
-				th(rowspan=2) Провайдер
-				th.text-center(colspan=4) Права
+				th.text-center(rowspan=2) Включен
+				//- th(rowspan=2) Провайдер
+				th.text-center(colspan=7) Права
 				th.text-center(rowspan=2) 
 				th.text-center(rowspan=2) 
 			tr
@@ -17,19 +21,23 @@ h4 Пользователи
 				th.pointer(title='Пользователи') [+2]
 				th.pointer(title='Участки') [+4]
 				th.pointer(title='Галереи') [+8]
-				//-
-					th.pointer(title='Новости') [+16]
+				th.pointer(title='Обращения') [+16]
+				th.pointer(title='Бронирование/продажи') [+32]
+				th.pointer(title='Параметры') [+64]
 		tbody
 			tr(ng-repeat='u in data.list')
 				td 
 					a(href='#', ng-click='showPanelEdit($index, $event)') {{u.username}}
 				td.text-center
 					input(type='checkbox', ng-model='u.enabled', disabled='')
-				td {{u.provider}}
-				td(ng-class="{red: rightBit(u.rights,1)=='Да'}") {{rightBit(u.rights,1)}}
-				td(ng-class="{red: rightBit(u.rights,2)=='Да'}") {{rightBit(u.rights,2)}}
-				td(ng-class="{red: rightBit(u.rights,4)=='Да'}") {{rightBit(u.rights,4)}}
-				td(ng-class="{red: rightBit(u.rights,8)=='Да'}") {{rightBit(u.rights,8)}}
+				//- td {{u.provider}}
+				td.bold(ng-class="{green: rightBit(u.rights,1)=='Да'}") {{rightBit(u.rights,1)}}
+				td.bold(ng-class="{green: rightBit(u.rights,2)=='Да'}") {{rightBit(u.rights,2)}}
+				td.bold(ng-class="{green: rightBit(u.rights,4)=='Да'}") {{rightBit(u.rights,4)}}
+				td.bold(ng-class="{green: rightBit(u.rights,8)=='Да'}") {{rightBit(u.rights,8)}}
+				td.bold(ng-class="{green: rightBit(u.rights,16)=='Да'}") {{rightBit(u.rights,16)}}
+				td.bold(ng-class="{green: rightBit(u.rights,32)=='Да'}") {{rightBit(u.rights,32)}}
+				td.bold(ng-class="{green: rightBit(u.rights,64)=='Да'}") {{rightBit(u.rights,64)}}
 				//-
 					td(ng-class="{red: rightBit(u.rights,8)=='Да'}") {{rightBit(u.rights,8)}}
 					td(ng-class="{red: rightBit(u.rights,16)=='Да'}") {{rightBit(u.rights,16)}}

@@ -33,11 +33,13 @@ exports.do=function(arg, callback, callback_err, idata){
 					var stead = result.rows[0];
 					async.parallel(
 						[
+						/*
 							function(cb){
 								db.sql("update m.steads set status=$2 where idstead=$1;", [ stead.idstead, status], function(result){
 									cb();
 								}, cb);
 							},
+						*/
 							function(cb){
 								db.sql("update m.steads set points=$2 where idstead=$1;", [ stead.idstead, points], function(result){
 									cb();
