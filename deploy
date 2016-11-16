@@ -1,5 +1,5 @@
 #!/bin/sh
 
-ssh db.settv.ru /home/serg/my/projects/new.settv.ru/gpl
-ssh db.settv.ru /home/serg/my/projects/new.settv.ru/restart.sh
+ssh michurino-dv.ru /home/serg/my/projects/michurino-dv.ru/gpl
+ssh michurino-dv.ru /home/serg/my/projects/michurino-dv.ru/restart.sh
 
