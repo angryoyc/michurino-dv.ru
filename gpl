@@ -1,3 +1,4 @@
 #!/bin/sh
 
+cd /home/serg/my/projects/michurino-dv.ru/
 git pull origin master
