@@ -12,10 +12,11 @@ body{
 	height: calc(100% - 32px);
 	bottom: 16px;
 	width: 1200px;
+	width: 960px;
 	*/
 	border-radius: 4px;
-	width: 960px;
-	margin: 16px auto;
+	width: 800px;
+	margin: 0px auto;
 }
 
 .mainslider .mpad{
@@ -158,9 +159,8 @@ hr{
 	position:absolute;
 	top: -100%;
 	display: none;
-
-	right: calc(18% - 150px);
-	width: 300px;
+	right: calc(17% - 110px);
+	width: 220px;
 	border: solid 1px white;
 	border-radius: 4px;
 	padding: 10px;
