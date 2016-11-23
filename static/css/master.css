@@ -19,6 +19,10 @@ body{
 	margin: 0px auto;
 }
 
+.mainslider_adm{
+	width: 1024px !important;
+}
+
 .mainslider .mpad{
 	margin: 0;
 	width: 100%;
