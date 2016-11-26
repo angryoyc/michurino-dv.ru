@@ -22,12 +22,13 @@ function getParams(callback, callback_err){
 	}, function(){});
 }
 
-function getLastGallery(callback, callback_err){
+
+function getLastGallery(idgallery, callback, callback_err){
 	var gallery={};
 	api_gallery_list_ro({}, function(result){
 		gallery.list = result.rows;
 		gallery.last=gallery.list.reduce(function(prev, row){
-			if(row.enabled){
+			if(row.enabled && ((!idgallery) || (idgallery==row.idgallery))){
 				if(!prev){
 					return row;
 				}else{
@@ -40,6 +41,9 @@ function getLastGallery(callback, callback_err){
 
 
 		if(gallery.last && gallery.last.idgallery>0){
+			gallery.list = gallery.list.filter(function(g){
+				return g.enabled && (1*gallery.last.idgallery!=1*g.idgallery)
+			});
 			api_gallery_info_ro({idgallery:gallery.last.idgallery}, function(result){
 				gallery.last.items = result.files;
 				gallery.last.note = result.note;
@@ -65,8 +69,9 @@ function getLastGallery(callback, callback_err){
 			});
 		},
 		gallery: function(req, res){
+			var idgallery = req.params['idgallery'] || 0;
 			getParams(function(params){
-				getLastGallery(function(gallery){
+				getLastGallery(idgallery, function(gallery){
 					res.render('root/gallery', {ng_app:'root', req:req, conf:conf, fs: require('fs'), menu: menu, params:params, gallery:gallery, selected: 2});
 				});
 			});

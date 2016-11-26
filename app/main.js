@@ -176,7 +176,7 @@ if ('development' == app.get('env')){app.use(express.errorHandler());};
 	app.get('/', controllers.root.index);
 	app.get('/about', controllers.root.about);
 	app.get('/news', controllers.root.news);
-	app.get('/gallery', controllers.root.gallery);
+	app.get('/gallery/:idgallery?', controllers.root.gallery);
 	app.get('/contacts', controllers.root.contacts);
 	app.get('/ekopark', controllers.root.ekopark);
 

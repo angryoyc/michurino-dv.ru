@@ -123,6 +123,13 @@ angular.module('root').controller('schem', function($scope, api, geom, $timeout)
 		return s.replace(/^ +/,'').replace(/ +$/,'')
 	}
 
+
+/*  Галерея */
+	$scope.expand=function(){
+		$scope.data.gallerylist=true
+	}
+
+
 });
 
 

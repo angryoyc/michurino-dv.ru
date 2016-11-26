@@ -217,3 +217,45 @@ hr{
 .bold{
 	font-weight: bold;
 }
+
+.gallery-list-item{
+	background-color: #76c4b4;
+	border-radius: 3px;
+	padding-top: 7px;
+	padding-bottom: 7px;
+	margin-top: 5px;
+}
+
+.gallery-list-item .icon{
+	width: 15%;
+/*	padding-left: 30px;
+	padding-right: 30px;
+*/
+	margin-top:10px;
+	text-align: center;
+	float: left;
+}
+
+.gallery-list-item .title{
+	width: 80%;
+	float: left;
+}
+
+.gallery-list-item .title a{
+	color: #0d5f4f;
+	font-size: 18px;
+}
+.gallery-list-item .title a .cnt{
+	color: white;
+}
+
+
+a.yet{
+	color: #0d5f4f;
+	font-size: 18px;
+	cursor: pointer;
+}
+
+.clear{
+	clear: both;
+}

@@ -5,8 +5,7 @@ block b1
 
 block b3
 	.row
-		.col-xs-1
-		.col-xs-10
+		.col-xs-12
 			h3=gallery.last.title
 			div!=gallery.last.note
 			div#carousel-example-generic.carousel.slide.top30(data-ride="carousel")
@@ -26,9 +25,24 @@ block b3
 				a.right.carousel-control(role="button", data-slide="next", ng-click='nextSlide()')
 					span.glyphicon.glyphicon-chevron-right(aria-hidden="true")
 					span.sr-only Next
-		.col-xs-1
-	.row.top30
-
+	if gallery.list.length>0
+		.row.top30(ng-show='!data.gallerylist')
+			.col-xs-12.text-right
+				a.yet(ng-click='expand()') Ещё...
+			.col-xs-12
+		.row.top30(ng-show='data.gallerylist')
+			.col-xs-2
+			.col-xs-8
+				each g in gallery.list
+					div.gallery-list-item
+						.icon
+							big.glyphicon.glyphicon-picture
+						.title
+							a.pointer(href='/gallery/'+g.idgallery)=g.title
+								br
+								small.cnt='  ('+g.filecounter+' фото)'
+						.clear
+			.col-xs-2
 block b4
 	script(src='/static/js/root/index.js')
 
