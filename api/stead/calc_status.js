@@ -24,12 +24,15 @@ exports.do=function(arg, callback, callback_err, idata){
 			if(result.rows.length>0){
 				var status='free';
 				db.sql("select * from m.reserves where idstead=$1 and (from_dt<$2::timestamptz) and ((to_dt>$2::timestamptz) or (to_dt is null)) order by idreserve desc;", [ idstead , new Date() ], function(result){
+
 					if(result.rows.length>0){
 						status=result.rows[0].type;
 					};
+
 					if(status!=st.status){
 						getUsername(arg.iduser, function(username){
 							var text = 'Статус участка №' + idstead + ' изменён! [' + trans(st.status) + ' --> ' + trans(status) + ']\nПользователь: ' + username;
+							console.log('статус участка изменён');
 							db.sql("update m.steads set status=$2 where idstead=$1;", [ idstead, status ], function(result){
 								var emailconf = conf.email[conf.email.checked];
 								delivery.mail.send({to: emailconf.user, subj: 'Сообщение с сайта MICHURINO-DV.RU', text: text}, emailconf, 2);
