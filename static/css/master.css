@@ -1,6 +1,7 @@
 body{
 	height: 100%;
-	background: #ededed;
+/*	background: #ededed; */
+	background: #00977f;
 	display: block;
 	position: relative;
 }
