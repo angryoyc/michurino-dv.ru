@@ -1,6 +1,7 @@
 extends ../layouts/admin_layout
 block b1
-	link(rel='stylesheet', href='/static/css/master.css')
+	link(rel="stylesheet", media="screen and (max-width: 1300px)", href="/static/css/master800.css")
+	link(rel="stylesheet", media="screen and (min-width: 1300px)", href="/static/css/master.css")
 
 block b3
 	div(ng-controller='main', ng-init="init('"+(username?username:'')+"', '"+message+"')")
