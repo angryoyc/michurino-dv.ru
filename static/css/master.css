@@ -172,11 +172,16 @@ hr{
 	height:130px;
 }
 
+.mainheader{
+	position: relative;
+	height: 262px;
+	width: 100%;
+}
+
 #graph{
 	padding:0px; 
 	margin: 0px; 
 	width: 100%;
-	heigth:262px;'
 }
 
 

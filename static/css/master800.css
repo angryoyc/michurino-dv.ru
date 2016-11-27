@@ -167,16 +167,20 @@ hr{
 
 .footer{
 	position: relative;
-	height:110px;
+	height: 110px;
+}
+
+.mainheader{
+	position: relative;
+	height: 218px;
+	width: 100%;
 }
 
 #graph{
 	padding:0px; 
 	margin: 0px; 
 	width: 100%;
-	heigth:218px;'
 }
-
 
 .details{
 	position:absolute;
