@@ -219,20 +219,23 @@ hr{
 	font-weight: bold;
 }
 
-.gallery-list-item{
-	background-color: #76c4b4;
+.gallery-list{
+/*	background-color: #76c4b4;*/
 	border-radius: 3px;
+}
+
+.gallery-list-item{
 	padding-top: 7px;
 	padding-bottom: 7px;
-	margin-top: 5px;
+	margin-top: 10px;
 }
 
 .gallery-list-item .icon{
-	width: 15%;
+	width: 11%;
 /*	padding-left: 30px;
 	padding-right: 30px;
 */
-	margin-top:10px;
+	margin-top: 2px;
 	text-align: center;
 	float: left;
 }
@@ -243,11 +246,11 @@ hr{
 }
 
 .gallery-list-item .title a{
-	color: #0d5f4f;
+	color: #0d5f4f; 
 	font-size: 18px;
 }
 .gallery-list-item .title a .cnt{
-	color: white;
+	color: #777;
 }
 
 
