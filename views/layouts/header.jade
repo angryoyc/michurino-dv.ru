@@ -62,7 +62,8 @@ style.
 div(style='position: relative;')
 	//- object#graph(type="image/svg+xml", data="/static/svg/header.svg", width="100%", style='border-bottom: solid #60b57b 1px;', viewBox="0 0 2750 408")
 	
-	img#graph(src="/static/svg/header.png", viewBox="0 12 2750 408", style='padding:0px; margin: 0px; width:100%;')
+	img#graph(src="/static/svg/header.png", viewBox="0 12 2750 408")
+	//- , style='padding:0px; margin: 0px; width:100%;heigth:262px;'
 	
 	div.email
 		a(href='mailto:' + params['email'])=params['email']
