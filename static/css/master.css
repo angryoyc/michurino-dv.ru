@@ -159,17 +159,86 @@ hr{
 	box-shadow: 0 0 10px 2px rgba(0,0,0,0.3) ;
 }
 
-
 .mainsvg{
 	height:822px; 
 	width:960; 
 	background-image: url(/static/svg/main.png);
 }
 
+.menu{
+	position: absolute;
+	bottom: 0px;
+	width: 100%;
+}
+.menu > .item {
+	overflow: hidden;
+	float: left;
+	width: 130px;
+	padding: 10px;
+	background-color: #ededed;
+	border: 0px;
+	font-size: 16px;
+	font-weight: bold;
+	text-align: center;
+	margin-left: 7px;
+	height: 40px;
+	margin-bottom: 1px;
+	border-left: solid #60b57b 1px;
+	border-top: solid #60b57b 1px;
+	border-right: solid #60b57b 1px;
+}
+.menu > .big{
+	width: 190px;
+}
+.menu > .active{
+	height: 41px !important;
+	margin-bottom: 0px !important;
+}
+.menu > .item > a{
+	color: #00977f;
+}
+.email{
+	position: absolute;
+	bottom: 22%;
+	left: 20px;
+	font-size:22px;
+}
+.email a{
+	color: white;
+}
+.phone{
+	position: absolute;
+	top: 25%;
+	left: 45px;
+	font-size: 36px;
+}
+.prompt{
+	position: absolute;
+	top: 7%;
+	left: 15px;
+	font-size: 17px;
+	line-height: 18px;
+}
+
+
+
 
 .footer{
 	position: relative;
-	height:130px;
+}
+
+.footer .copyright{
+	margin-top: 85px;
+	margin-left: 36px;
+	color: #eee;
+	font-size: 11px;
+}
+
+.footer .bg{
+	position: relative;
+	height: 112px;
+	width: 100%;
+	background-image: url(/static/svg/footer.png);
 }
 
 .mainheader{
@@ -183,7 +252,6 @@ hr{
 	margin: 0px; 
 	width: 100%;
 }
-
 
 .details{
 	position:absolute;
