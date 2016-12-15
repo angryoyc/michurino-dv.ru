@@ -212,6 +212,7 @@ hr{
 	left: 45px;
 	font-size: 36px;
 }
+
 .prompt{
 	position: absolute;
 	top: 7%;
@@ -221,25 +222,33 @@ hr{
 }
 
 
+.spacer{
+	height: 45px;
+	width: 100%;
+}
 
 
 .footer{
 	position: relative;
+	height: 57px;
 }
 
 .footer .copyright{
-	margin-top: 85px;
+	margin-top: 30px;
 	margin-left: 36px;
 	color: #eee;
 	font-size: 11px;
 }
 
 .footer .bg{
-	position: relative;
+	position: absolute;
+	bottom: 0px;
 	height: 112px;
 	width: 100%;
 	background-image: url(/static/svg/footer.png);
 }
+
+
 
 .mainheader{
 	position: relative;

@@ -220,24 +220,30 @@ hr{
 	line-height: 18px;
 }
 
-
+.spacer{
+	height: 45px;
+	width: 100%;
+}
 
 .footer{
 	position: relative;
-}
-
-.footer .copyright{
-	margin-top: 68px;
-	margin-left: 27px;
-	color: #eee;
-	font-size: 11px;
+	height: 48px;
 }
 
 .footer .bg{
-	position: relative;
+	position: absolute;
+	bottom: 0px;
 	height: 93px;
-	width: 100%;
 	background-image: url(/static/svg/footer800.png);
+	width: 100%;
+}
+
+.footer .copyright{
+	margin-top: 26px;
+	margin-left: 30px;
+	color: #eee;
+	font-size: 11px;
+	line-height: 22px;
 }
 
 .mainheader{
