@@ -17,5 +17,5 @@ h4 Участки
 					a(href='#', ng-click='showPanelEdit($index, $event)', ng-class="{red:(st.status=='busy')}")  {{st.cadastr}}
 				td {{st.groupnum}}
 				td {{st.s}}
-				td(ng-class="{red:(st.status=='busy')}") {{st.price | currency}}
-	span Стоимость указана с исходя из цены {{cost | currency}} за кв. метр.
+				td(ng-class="{red:(st.status=='busy')}") {{st.price | currency: 'р.'}}
+	span Стоимость указана с исходя из цены {{cost | currency: 'р.'}} за кв. метр.

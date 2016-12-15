@@ -27,7 +27,7 @@ div#sidebar.details.shadow
 		.row
 			.col-xs-12.lbl Стоимость:
 			.col-xs-12.val
-				strong {{data.curr.price | currency}}
+				strong {{data.curr.price | currency: 'р.'}}
 		.row(ng-show='data.curr.form')
 			.col-xs-12(style='position: relative;')
 				form.top10(ng-submit='sendReserveRequest(data.curr)')
