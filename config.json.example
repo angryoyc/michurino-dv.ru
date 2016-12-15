@@ -40,13 +40,6 @@
 
 	"email": {
 		"checked": "yandex",
-		"settv.old": {
-			"host": "172.16.2.1",
-			"port": "25",
-			"user": "bot@settv.ru",
-			"pass": "ctnjykfqy",
-			"name": "SETTV.RU"
-		},
 		"yandex": {
 			"service": "Yandex",
 			"user": "info@michurino-dv.ru",
