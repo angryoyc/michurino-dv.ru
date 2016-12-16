@@ -11,3 +11,4 @@ trash/*
 .DS_Store
 sql/!!config.conf
 uploads/
+sql/bak
