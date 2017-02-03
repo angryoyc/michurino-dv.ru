@@ -1,11 +1,12 @@
 angular.module('root', ['ngRoute', 'api', 'geom']);
 
+/*
 angular.module('root').config(['$routeProvider', function($routeProvider) {
-	$routeProvider.when('/main',   {templateUrl: '/root/main', controller: 'main'});
+//	$routeProvider.when('/main',   {templateUrl: '/root/main', controller: 'main'});
 	$routeProvider.when('/schem',   {templateUrl: '/root/schem', controller: 'schem'});
-	$routeProvider.otherwise({redirectTo: '/main'});
+	$routeProvider.otherwise({redirectTo: '/schem'});
 }]);
-
+*/
 
 angular.module('root').controller('schem', function($scope, api, geom, $timeout){
 
