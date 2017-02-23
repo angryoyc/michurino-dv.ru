@@ -1,9 +1,7 @@
 div#sidebar.details.shadow
 	.row
 		.col-xs-12.text-center
-			//- label.top10 Выбран участок:
-			img(src='/static/images/logo_transp_smsm.png')
-			//- img(src='/static/images/logo_transp.png')
+			img(src='/static/images/logo_transp_smsm.png', alt='Логотип')
 		button.btn.btn-default.btn-sm(style='position: absolute; top0px; right: 10px;', ng-click='closeDetailsForm(data)')
 			//small.glyphicon.glyphicon-minus
 			small.glyphicon.glyphicon-remove.michurin
@@ -49,7 +47,7 @@ div#sidebar.details.shadow
 								button.btn1.top10 отправить
 						div.text-center(ng-show='data.curr.form.sending')
 							h4 отправляю...
-							img(src='/static/images/progress25.gif')
+							img(src='/static/images/progress25.gif', alt='прогресбар')
 			
 		.row(ng-show='!data.curr.form')
 			.col-xs-12.text-center

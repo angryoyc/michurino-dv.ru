@@ -2,8 +2,13 @@ doctype html
 html(lang='en', ng-app=ng_app)
 	head
 
+		meta(name="copyright", content="Мичурино")
 		meta(charset='utf-8')
+		meta(name="description", content="Участки под застройку в уютном котеджном посёлке Мичурино")
+		meta(name="keywords", content="участки, купить, свой, дом, котедж, экологичный, чистый")
+		meta(property="og:image", content="http://michurino-dv.ru/static/images/logo_transp.png")
 		meta(name="viewport", content="width=device-width")
+		link(rel="image_src", href="http://michurino-dv.ru/static/images/logo_transp.png")
 
 		if title
 			title=title
@@ -79,3 +84,28 @@ html(lang='en', ng-app=ng_app)
 		script(src="/static/js/geom.js")
 
 		block b4
+		script(type="text/javascript").
+			(function (d, w, c) {
+				(w[c] = w[c] || []).push(function() {
+					try {
+						w.yaCounter43016159 = new Ya.Metrika({
+							id:43016159,
+							clickmap:true,
+							trackLinks:true,
+							accurateTrackBounce:true
+						});
+					} catch(e) { }
+				});
+				var n = d.getElementsByTagName("script")[0],
+					s = d.createElement("script"),
+					f = function () { n.parentNode.insertBefore(s, n); };
+				s.type = "text/javascript";
+				s.async = true;
+				s.src = "https://mc.yandex.ru/metrika/watch.js";
+				if (w.opera == "[object Opera]") {
+					d.addEventListener("DOMContentLoaded", f, false);
+				} else { f(); }
+			})(document, window, "yandex_metrika_callbacks");
+		noscript
+			div
+			img(src="https://mc.yandex.ru/watch/43016159", style="position:absolute; left:-9999px;" alt="")

@@ -20,7 +20,7 @@ block b3
 				.carousel-inner(role="listbox")
 					each item,index in gallery.last.items
 						.item(class=(index==0)?'active':'')
-							img(src='/img/1196x1196/' + item.md5, style='margin: 0 auto !important;')
+							img(src='/img/1196x1196/' + item.md5, style='margin: 0 auto !important;', alt=item.title)
 							.carousel-caption
 								h3=item.title
 								p=item.note
