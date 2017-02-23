@@ -60,35 +60,35 @@ function getLastGallery(idgallery, callback, callback_err){
 	module.exports={
 		index: function(req, res){
 			getParams(function(params){
-				res.render('root/main', {ng_app:'root', req:req, conf:conf, fs: require('fs'), menu: menu, params:params, selected: 0});
+				res.render('root/main', {ng_app:'root', req:req, conf:conf, fs: require('fs'), menu: menu, params:params, selected: 0, title:'Мичурино. Участки под застройку.'});
 			});
 		},
 		about: function(req, res){
 			getParams(function(params){
-				res.render('root/about', {ng_app:'root', req:req, conf:conf, fs: require('fs'), menu: menu, params:params, selected: 1});
+				res.render('root/about', {ng_app:'root', req:req, conf:conf, fs: require('fs'), menu: menu, params:params, selected: 1, title:'Мичурино. Участки под застройку. О проекте.'});
 			});
 		},
 		gallery: function(req, res){
 			var idgallery = req.params['idgallery'] || 0;
 			getParams(function(params){
 				getLastGallery(idgallery, function(gallery){
-					res.render('root/gallery', {ng_app:'root', req:req, conf:conf, fs: require('fs'), menu: menu, params:params, gallery:gallery, selected: 2});
+					res.render('root/gallery', {ng_app:'root', req:req, conf:conf, fs: require('fs'), menu: menu, params:params, gallery:gallery, selected: 2, title:'Мичурино. Участки под застройку. Галерея.'});
 				});
 			});
 		},
 		contacts: function(req, res){
 			getParams(function(params){
-				res.render('root/contacts', {ng_app:'root', req:req, conf:conf, fs: require('fs'), menu: menu, params:params, selected: 3});
+				res.render('root/contacts', {ng_app:'root', req:req, conf:conf, fs: require('fs'), menu: menu, params:params, selected: 3, title:'Мичурино. Участки под застройку. Контакты.'});
 			});
 		},
 		ekopark: function(req, res){
 			getParams(function(params){
-				res.render('root/main', {ng_app:'root', req:req, conf:conf, fs: require('fs'), menu: menu, params:params, selected: 4});
+				res.render('root/main', {ng_app:'root', req:req, conf:conf, fs: require('fs'), menu: menu, params:params, selected: 4, title:'Мичурино. Участки под застройку. Экопарк.'});
 			});
 		},
 		news: function(req, res){
 			getParams(function(params){
-				res.render('root/news', {ng_app:'root', req:req, conf:conf, fs: require('fs'), menu: menu, params:params, selected: 2});
+				res.render('root/news', {ng_app:'root', req:req, conf:conf, fs: require('fs'), menu: menu, params:params, selected: 2, title:'Мичурино. Участки под застройку. Новости.'});
 			});
 		}
 	};
