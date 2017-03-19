@@ -12,7 +12,7 @@
 ############################################
 HOST='127.0.0.1'             # Сервер
 BASE='michurino'             # База данных
-USER='postgres'                  # Пользоватьель БД
+USER='site'                  # Пользоватьель БД
 a=('m') # Список сохраняемых схем
 ROOT='/home/serg/my/projects/michurino-dv.ru/sql/bak'       # Путь, где будут сохраняться резервные копии (без слеша в конце)
 
@@ -41,7 +41,7 @@ echo `pwd`
 
 for i in ${a[*]}
 do
-	`pg_dump -U ${USER} -n ${i} ${BASE} --exclude-table=public.search_strings > "./${BASE}_${i}_${DATE}.sql"`
+	`pg_dump -h 127.0.0.1 -U ${USER} -n ${i} ${BASE} --exclude-table=public.search_strings > "./${BASE}_${i}_${DATE}.sql"`
 done
 echo 'ok'
 
@@ -56,7 +56,7 @@ then
 	then
 		echo "REMOVING temp and old"
 		rm ${b[*]}
-		find ./ -type f -name "*.tar.gz" \! -newerct '5 days ago' -exec rm {} \;
+		find ./ -type f -name "*.tar.gz" \! -newerct '15 days ago' -exec rm {} \;
 	fi
 else
 	echo "Bull shit ./${BASE}_${DATE}.tar"
